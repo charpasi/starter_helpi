@@ -34,7 +34,7 @@ function App() {
         <p>
           Roger Cronin
           
-          my name is Charmaine Pasicolan
+          Charmaine Pasicolan
         </p>
         <a
           className="App-link"
