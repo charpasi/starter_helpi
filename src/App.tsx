@@ -33,7 +33,6 @@ function App() {
         </p>
         <p>
           Roger Cronin
-          
           Charmaine Pasicolan
         </p>
         <a
