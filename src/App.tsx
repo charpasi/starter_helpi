@@ -12,7 +12,7 @@ if(prevKey !== null) {
     keyData = JSON.parse(prevKey);
 }
 
-type Page = "main";
+type Page = "main" | "debug";
 
 function App() {
     const [key, setKey] = useState<string>(keyData);
@@ -28,9 +28,14 @@ function App() {
             <Header/>
             {
                 {
-                    "main": <HomePage/>
+                    "main": <HomePage/>,
+                    "debug": <p>Debug</p>
                 }[currentPage]
             }
+            <div>
+                <button onClick={() => setCurrentPage("main")}>Main page</button>
+                <button onClick={() => setCurrentPage("debug")}>Debug page</button>
+            </div>
             <Footer
                 setKey={setKey}
                 handleSubmit={handleSubmit}
