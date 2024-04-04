@@ -5,7 +5,11 @@ function HomePage() {
     return (
         <div>
             <Header/>
-            <p>Home page!!!</p>
+            <p>
+                Roger Cronin
+                Charmaine Pasicolan
+                Matthew Nadar
+            </p>
             <Footer/>
         </div>
     );

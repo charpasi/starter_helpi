@@ -29,31 +29,6 @@ function App() {
     return (
         <div className="App">
             <HomePage/>
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.tsx</code> and save to reload.
-                </p>
-                <p>
-                    Roger Cronin
-                    Charmaine Pasicolan
-                    Matthew Nadar
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-            <Form>
-                <Form.Label>API Key:</Form.Label>
-                <Form.Control type="password" placeholder="Insert API Key Here" onChange={changeKey}></Form.Control>
-                <br></br>
-                <Button className="Submit-Button" onClick={handleSubmit}>Submit</Button>
-            </Form>
         </div>
     );
 }
