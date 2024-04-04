@@ -34,6 +34,7 @@ function App() {
         <p>
           Roger Cronin
           Charmaine Pasicolan
+          Matthew Nadar
         </p>
         <a
           className="App-link"
