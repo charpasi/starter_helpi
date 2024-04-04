@@ -1,34 +1,40 @@
 import React, { useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import { Button, Form } from "react-bootstrap";
-import HomePage from "./pages/HomePage";
 
-// local storage and API Key: key should be entered in by the user and will be stored in local storage (NOT session storage)
+import HomePage from "./pages/HomePage";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
 let keyData = "";
 const saveKeyData = "MYKEY";
-const prevKey = localStorage.getItem(saveKeyData); // so it'll look like: MYKEY: <api_key_value here> in the local storage when you inspect
+const prevKey = localStorage.getItem(saveKeyData);
 if(prevKey !== null) {
     keyData = JSON.parse(prevKey);
 }
 
+type Page = "main";
+
 function App() {
-    const [key, setKey] = useState<string>(keyData); // for api key input
-    
-    // sets the local storage item to the api key the user inputed
+    const [key, setKey] = useState<string>(keyData);
+    const [currentPage, setCurrentPage] = useState<Page>("main");
+
     function handleSubmit() {
         localStorage.setItem(saveKeyData, JSON.stringify(key));
-        window.location.reload(); // when making a mistake and changing the key again, I found that I have to reload the whole site before openai refreshes what it has stores for the local storage variable
-    }
-
-    // whenever there's a change it'll store the api key in a local state called key but it won't be set in the local storage until the user clicks the submit button
-    function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
-        setKey(event.target.value);
+        window.location.reload();
     }
 
     return (
         <div className="App">
-            <HomePage/>
+            <Header/>
+            {
+                {
+                    "main": <HomePage/>
+                }[currentPage]
+            }
+            <Footer
+                setKey={setKey}
+                handleSubmit={handleSubmit}
+            />
         </div>
     );
 }

@@ -10,14 +10,13 @@ if(prevKey !== null) {
     keyData = JSON.parse(prevKey);
 }
 
-function Footer() {
-    const [key, setKey] = useState<string>(keyData);
-
-    function handleSubmit() {
-        localStorage.setItem(saveKeyData, JSON.stringify(key));
-        window.location.reload();
-    }
-
+function Footer({
+    setKey,
+    handleSubmit
+}: {
+    setKey: (key: string) => void;
+    handleSubmit: () => void;
+}) {
     function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
         setKey(event.target.value);
     }
