@@ -30,6 +30,9 @@ function Footer({
                 <p><a>Contact us here</a></p>
             </div>
             <div>
+                Roger Cronin, Charmaine Pasicolan, Matthew Nadar
+            </div>
+            <div>
                 <Form>
                     <Form.Control type="password" placeholder="API Key" onChange={changeKey}/>
                     <Button className="submit-api-key" onClick={handleSubmit}>Submit</Button>
