@@ -23,7 +23,7 @@ function HomePage() {
             <div>
                 <h1>Take your personalized quiz now!</h1>
             </div>
-            <div>
+            <div className="quiz-wrapper">
                 <div className="quiz-card">
                     <div>
                         <h2>Short questionnaire (5 min)</h2>
