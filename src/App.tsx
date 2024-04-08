@@ -26,12 +26,14 @@ function App() {
     return (
         <div className="App">
             <Header/>
-            {
+            <div className="page-renderer">
                 {
-                    "main": <HomePage/>,
-                    "debug": <p>Debug</p>
-                }[currentPage]
-            }
+                    {
+                        "main": <HomePage/>,
+                        "debug": <p>Debug</p>
+                    }[currentPage]
+                }
+            </div>
             <div>
                 <button onClick={() => setCurrentPage("main")}>Main page</button>
                 <button onClick={() => setCurrentPage("debug")}>Debug page</button>
