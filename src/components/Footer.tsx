@@ -1,14 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button, Form } from "react-bootstrap";
 
 import "./Footer.css";
-
-let keyData = "";
-const saveKeyData = "MYKEY";
-const prevKey = localStorage.getItem(saveKeyData);
-if(prevKey !== null) {
-    keyData = JSON.parse(prevKey);
-}
 
 function Footer({
     setKey,
@@ -27,7 +20,7 @@ function Footer({
                 <p>Career Genie™ All Rights Reserved</p>
             </div>
             <div>
-                <p><a>Contact us here</a></p>
+                <p><a href="www.google.com">Contact us here</a></p>
             </div>
             <div>
                 Roger Cronin, Charmaine Pasicolan, Matthew Nadar
