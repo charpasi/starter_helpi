@@ -9,9 +9,9 @@ import Footer from "../components/Footer";
 function basicQuestionsPage() {
     return (
         <div>
-            <Header/>
+            
             <p>Basic Questionnaire</p>
-            <Footer/>
+            
         </div>
     )
 }
