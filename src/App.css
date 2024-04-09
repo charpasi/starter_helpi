@@ -1,3 +1,9 @@
 div.page-renderer {
     margin: 0 4rem;
 }
+
+button {
+    padding: 1rem;
+    border-radius: 1rem;
+    border: none;
+}
