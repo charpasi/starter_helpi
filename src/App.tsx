@@ -4,6 +4,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import BasicQuestionsPage from "./pages/basicQuestions";
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -33,7 +34,7 @@ function App() {
                             setCurrentPage={setCurrentPage}
                         />,
                         "debug": <p>Debug</p>,
-                        "basic": <p>Basic</p>,
+                        "basic": <BasicQuestionsPage setCurrentPage={setCurrentPage}/>,
                         "detailed": <p>Detailed</p>
                     }[currentPage]
                 }
