@@ -1,9 +1,38 @@
+:root {
+    --morado: #513B56;
+    --purple: #525174;
+    --blue: #348AA7;
+    --green: #5DD39E;
+    --verde: #BCE784;
+}
+
 div.page-renderer {
-    margin: 0 4rem;
+    margin: 2rem 4rem;
 }
 
 button {
     padding: 1rem;
     border-radius: 1rem;
     border: none;
+}
+
+.larger {
+    font-size: 1.1rem;
+}
+
+a:link {
+    color: var(--blue);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    color: var(--verde);
+}
+
+a:visited {
+    color: var(--green);
 }

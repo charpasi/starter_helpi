@@ -34,7 +34,7 @@ function HomePage({
                 <div className="quiz-card">
                     <div>
                         <h2>Short questionnaire (5 min)</h2>
-                        <button onClick={() => setCurrentPage("basic")}>Click me!</button>
+                        <button onClick={() => setCurrentPage("basic")} className="larger">Click me!</button>
                     </div>
                     <p>
                         A short, basic, multiple choice quiz catered towards those who already have an idea of what they want to do.
@@ -43,7 +43,7 @@ function HomePage({
                 <div className="quiz-card">
                     <div>
                         <h2>Long questionnaire (15 min)</h2>
-                        <button onClick={() => setCurrentPage("detailed")}>Click me!</button>
+                        <button onClick={() => setCurrentPage("detailed")} className="larger">Click me!</button>
                     </div>
                     <p>
                         Long, detailed, open ended quiz catered towards those who want a thorough list of possible career options.

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./App.css";
 
 import HomePage from "./pages/HomePage";
@@ -42,7 +42,8 @@ function App() {
             <div>
                 <button onClick={() => setCurrentPage("main")}>Main page</button>
                 <button onClick={() => setCurrentPage("debug")}>Debug page</button>
-                
+                <button onClick={() => setCurrentPage("basic")}>Basic</button>
+                <button onClick={() => setCurrentPage("detailed")}>Detailed</button>
             </div>
             <Footer
                 setKey={setKey}
