@@ -4,6 +4,8 @@ footer.Footer {
     flex-direction: row;
     justify-content: center;
     gap: 0.5rem;
+    background-color: var(--morado);
+    color: white;
 
     div {
         display: flex;
@@ -18,5 +20,13 @@ footer.Footer {
 
     div:first-child:before {
         content: "";
+    }
+
+    button {
+        padding: 0.25rem 1rem;
+    }
+
+    input {
+        margin-right: 0.5rem;
     }
 }
