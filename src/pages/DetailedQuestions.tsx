@@ -1,12 +1,14 @@
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import { Page } from "../App";
+import Question from "../components/Question";
 
-function DetailedQuestions() {
-    return (
-        <div>
-            <Header/>
-            <p>Detailed Questions</p>
-            <Footer/>
+function DetailedQuestions({
+    setCurrentPage
+}: {
+    setCurrentPage: (pageName: Page) => void
+}) {return (
+        <div className="DetailedPage">
+             <h1>Detailed Questions </h1>
+             <Question/>
         </div>
     );
 }
