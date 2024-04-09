@@ -1,0 +1,38 @@
+div.HomePage {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    > div {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 4rem;
+        width: 100%;
+    }
+
+    .genie-image {
+        width: 315px;
+        height: 315px;
+        object-fit: cover;
+        border: 0.25rem solid black;
+        object-position: 10% 60%;
+        border-radius: 1rem;
+    }
+
+    button {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .quiz-card {
+        width: 500px;
+
+        > div {
+            h2 {
+                text-align: center;
+            }
+        }
+    }
+}
