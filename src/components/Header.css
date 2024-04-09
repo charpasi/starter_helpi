@@ -5,6 +5,8 @@ header.Header {
     justify-content: center;
     align-items: center;
     gap: 2rem;
+    background-color: var(--morado);
+    color: white;
 
     > h1 {
         font-size: 3rem;
