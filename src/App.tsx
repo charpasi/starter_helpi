@@ -12,7 +12,7 @@ if(prevKey !== null) {
     keyData = JSON.parse(prevKey);
 }
 
-type Page = "main" | "debug";
+export type Page = "main" | "debug" | "basic" | "detailed";
 
 function App() {
     const [key, setKey] = useState<string>(keyData);
@@ -29,8 +29,12 @@ function App() {
             <div className="page-renderer">
                 {
                     {
-                        "main": <HomePage/>,
-                        "debug": <p>Debug</p>
+                        "main": <HomePage
+                            setCurrentPage={setCurrentPage}
+                        />,
+                        "debug": <p>Debug</p>,
+                        "basic": <p>Basic</p>,
+                        "detailed": <p>Detailed</p>
                     }[currentPage]
                 }
             </div>
