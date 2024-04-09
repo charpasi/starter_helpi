@@ -12,3 +12,7 @@ div.BasicPage {
     display: flex;
     justify-content: center;
 }
+
+div.Title {
+    font-size: 50px;
+}

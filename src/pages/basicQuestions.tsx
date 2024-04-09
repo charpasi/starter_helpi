@@ -17,6 +17,7 @@ function BasicQuestionsPage({
                 <p>Basic Quiz</p>
             </div>
         </div>
+        
     )
 }
 export default BasicQuestionsPage;

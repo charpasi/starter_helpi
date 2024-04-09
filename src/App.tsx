@@ -42,6 +42,7 @@ function App() {
             <div>
                 <button onClick={() => setCurrentPage("main")}>Main page</button>
                 <button onClick={() => setCurrentPage("debug")}>Debug page</button>
+                
             </div>
             <Footer
                 setKey={setKey}
