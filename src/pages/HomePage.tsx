@@ -1,8 +1,14 @@
 import "./HomePage.css";
 
+import { Page } from "../App";
+
 import genie from "../assets/pikmin.png";
 
-function HomePage() {
+function HomePage({
+    setCurrentPage
+}: {
+    setCurrentPage: (pageName: Page) => void
+}) {
     return (
         <div className="HomePage">
             <div>
@@ -23,11 +29,11 @@ function HomePage() {
             <div>
                 <h1>Take your personalized quiz now!</h1>
             </div>
-            <div>
+            <div className="quiz-wrapper">
                 <div className="quiz-card">
                     <div>
                         <h2>Short questionnaire (5 min)</h2>
-                        <button>Click me!</button>
+                        <button onClick={() => setCurrentPage("basic")}>Click me!</button>
                     </div>
                     <p>
                         Lengthy description of the short quesitonnaire
@@ -36,7 +42,7 @@ function HomePage() {
                 <div className="quiz-card">
                     <div>
                         <h2>Long questionnaire (15 min)</h2>
-                        <button>Click me!</button>
+                        <button onClick={() => setCurrentPage("detailed")}>Click me!</button>
                     </div>
                     <p>
                         Lengthy description of the long questionnaire
