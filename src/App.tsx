@@ -4,6 +4,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Results from "./pages/Results";
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -12,7 +13,7 @@ if(prevKey !== null) {
     keyData = JSON.parse(prevKey);
 }
 
-export type Page = "main" | "debug" | "basic" | "detailed";
+export type Page = "main" | "debug" | "basic" | "detailed" | "results";
 
 function App() {
     const [key, setKey] = useState<string>(keyData);
@@ -34,7 +35,8 @@ function App() {
                         />,
                         "debug": <p>Debug</p>,
                         "basic": <p>Basic</p>,
-                        "detailed": <p>Detailed</p>
+                        "detailed": <p>Detailed</p>,
+                        "results": <Results/>
                     }[currentPage]
                 }
             </div>
@@ -43,6 +45,7 @@ function App() {
                 <button onClick={() => setCurrentPage("debug")}>Debug page</button>
                 <button onClick={() => setCurrentPage("basic")}>Basic</button>
                 <button onClick={() => setCurrentPage("detailed")}>Detailed</button>
+                <button onClick={() => setCurrentPage("results")}>Results</button>
             </div>
             <Footer
                 setKey={setKey}
