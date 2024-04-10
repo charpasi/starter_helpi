@@ -4,6 +4,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import DetailedQuestions from "./pages/DetailedQuestions";
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -25,7 +26,10 @@ function App() {
 
     return (
         <div className="App">
-            <Header/>
+            <Header
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+            />
             <div className="page-renderer">
                 {
                     {
@@ -34,7 +38,7 @@ function App() {
                         />,
                         "debug": <p>Debug</p>,
                         "basic": <p>Basic</p>,
-                        "detailed": <p>Detailed</p>
+                        "detailed": <DetailedQuestions setCurrentPage={setCurrentPage}/>
                     }[currentPage]
                 }
             </div>

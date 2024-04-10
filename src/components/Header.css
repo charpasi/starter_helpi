@@ -17,3 +17,7 @@ header.Header {
         height: 6rem;
     }
 }
+
+header.Header.pointer {
+    cursor: pointer;
+}
