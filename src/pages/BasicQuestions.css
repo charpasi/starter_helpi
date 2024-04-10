@@ -14,5 +14,13 @@ div.BasicPage {
 }
 
 div.Title {
-    font-size: 50px;
+  text-align: center;
+  font-size: 50px;
+  justify-content: center;
+  margin-bottom: 0px;
+}
+
+div.Description {
+  text-align: center;
+  justify-content: center;
 }

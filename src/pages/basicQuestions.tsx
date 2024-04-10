@@ -13,8 +13,17 @@ function BasicQuestionsPage({
 }) {
     return (
         <div className="BasicPage">
-            <div className="Title">
-                <p>Basic Quiz</p>
+            <div className="Header">
+                <div className="Title">
+                    <p>
+                        Basic Quiz
+                    </p>
+                </div>
+                <div className="Description">
+                    <p>
+                      A short, basic, multiple choice quiz catered towards those who already have an idea of what they want to do.
+                    </p>
+                </div>
             </div>
         </div>
         

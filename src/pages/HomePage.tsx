@@ -54,4 +54,4 @@ function HomePage({
     );
 }
 
-export default basicQuestionsPage;
+export default HomePage;
