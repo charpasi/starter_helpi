@@ -16,7 +16,7 @@ FAIL src/App.test.tsx
           [33mclass[39m=[32m"App"[39m
         [36m>[39m
           [36m<header[39m
-            [33mclass[39m=[32m"Header"[39m
+            [33mclass[39m=[32m"Header "[39m
           [36m>[39m
             [36m<img[39m
               [33malt[39m=[32m"logo"[39m
@@ -171,14 +171,14 @@ FAIL src/App.test.tsx
 ---------------------|---------|----------|---------|---------|-------------------
 File                 | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ---------------------|---------|----------|---------|---------|-------------------
-All files            |   31.25 |    16.66 |   26.66 |   31.25 |                   
+All files            |   28.94 |    16.66 |   23.52 |   29.72 |                   
  src                 |      28 |    16.66 |    12.5 |      28 |                   
-  App.tsx            |      50 |       50 |   16.66 |      50 | 12,22-23,42-45    
+  App.tsx            |      50 |       50 |   16.66 |      50 | 12,22-23,45-48    
   index.tsx          |       0 |      100 |     100 |       0 | 7-19              
   reportWebVitals.ts |       0 |        0 |       0 |       0 | 3-10              
- src/components      |   66.66 |      100 |   66.66 |   66.66 |                   
+ src/components      |   33.33 |    16.66 |      40 |    37.5 |                   
   Footer.tsx         |      50 |      100 |      50 |      50 | 14                
-  Header.tsx         |     100 |      100 |     100 |     100 |                   
+  Header.tsx         |   28.57 |    16.66 |   33.33 |   33.33 | 16-18,23          
  src/pages           |      25 |      100 |      25 |      25 |                   
   HomePage.tsx       |   33.33 |      100 |   33.33 |   33.33 | 36-45             
   basicQuestions.tsx |       0 |      100 |       0 |       0 | 9                 
@@ -186,7 +186,7 @@ All files            |   31.25 |    16.66 |   26.66 |   31.25 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        2.939 s
+Time:        2.922 s
 Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
