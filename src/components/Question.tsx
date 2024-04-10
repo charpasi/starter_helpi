@@ -2,7 +2,7 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import "./Question.css";
 import React, { useState } from 'react';
 import { detailedQuestions } from './QuestionArrays';
-
+import ProgressBar from './ProgressBar';
 
 export function Question(): JSX.Element {
     const [questions, setQuestions] = useState<string[]>(detailedQuestions);
@@ -26,6 +26,7 @@ export function Question(): JSX.Element {
     }
     return (
         <div className="Question"> 
+            <ProgressBar current={index + 1} max={questions.length} />
             <h2>Question {index + 1}:</h2>
             <div className="question-container">
                 <p>{ questions[index] }</p>
