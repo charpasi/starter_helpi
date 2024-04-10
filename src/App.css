@@ -6,6 +6,12 @@
     --verde: #BCE784;
 }
 
+.App {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 div.page-renderer {
     margin: 2rem 4rem;
 }

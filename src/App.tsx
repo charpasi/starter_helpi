@@ -4,6 +4,7 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import DetailedQuestions from "./pages/DetailedQuestions";
 import BasicQuestionsPage from "./pages/basicQuestions";
 
 let keyData = "";
@@ -26,7 +27,10 @@ function App() {
 
     return (
         <div className="App">
-            <Header/>
+            <Header
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+            />
             <div className="page-renderer">
                 {
                     {
@@ -34,8 +38,8 @@ function App() {
                             setCurrentPage={setCurrentPage}
                         />,
                         "debug": <p>Debug</p>,
-                        "basic": <BasicQuestionsPage setCurrentPage={setCurrentPage}/>,
-                        "detailed": <p>Detailed</p>
+                        "basic": <p>Basic</p>,
+                        "detailed": <DetailedQuestions setCurrentPage={setCurrentPage}/>
                     }[currentPage]
                 }
             </div>
