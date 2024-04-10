@@ -6,6 +6,7 @@ footer.Footer {
     gap: 0.5rem;
     background-color: var(--morado);
     color: white;
+    margin-top: auto;
 
     div {
         display: flex;
