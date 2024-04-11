@@ -1,6 +1,7 @@
 import { Page } from '../App';
 import "./BasicQuestions.css"
 import Question, { basicQuestions } from '../components/Question';
+import { MultipleChoiceInput } from '../components/MultipleChoiceInput';
 
 function BasicQuestionsPage({
     setCurrentPage
@@ -23,6 +24,9 @@ function BasicQuestionsPage({
             </div>
             <div className="QuestionBox">
             <Question questionArray = {basicQuestions}/>
+            </div>
+            <div className="Options">
+                <MultipleChoiceInput/>
             </div>
         </div>
         
