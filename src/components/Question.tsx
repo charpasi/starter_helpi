@@ -1,4 +1,4 @@
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "./Question.css";
 import React, { useState } from 'react';
 import ProgressBar from './ProgressBar';
