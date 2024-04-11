@@ -38,7 +38,7 @@ function App() {
                             setCurrentPage={setCurrentPage}
                         />,
                         "debug": <p>Debug</p>,
-                        "basic": <p>Basic</p>,
+                        "basic": <BasicQuestionsPage setCurrentPage={setCurrentPage}/>,
                         "detailed": <DetailedQuestions setCurrentPage={setCurrentPage}/>
                     }[currentPage]
                 }

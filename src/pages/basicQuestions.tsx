@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Page } from '../App';
 import "./BasicQuestions.css"
+import Question, { basicQuestions } from '../components/Question';
 
 function BasicQuestionsPage({
     setCurrentPage
@@ -24,6 +25,9 @@ function BasicQuestionsPage({
                       A short, basic, multiple choice quiz catered towards those who already have an idea of what they want to do.
                     </p>
                 </div>
+            </div>
+            <div className="QuestionBox">
+            <Question questionArray = {basicQuestions}/>
             </div>
         </div>
         
