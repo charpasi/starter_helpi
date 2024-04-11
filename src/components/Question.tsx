@@ -36,7 +36,6 @@ export const detailedQuestions: string[] = [
     "What kind of impact do you hope to make through your career?",
     "What industries or sectors are you most passionate about?",
     "How do you handle pressure and tight deadlines?",
-    "What is your desired salary range for your future job?"
 ];
 
 export const Question: React.FC<QuestionProps> = ({questionArray}) => {

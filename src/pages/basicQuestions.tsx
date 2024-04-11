@@ -1,8 +1,3 @@
-import React, { useState } from 'react';
-import logo from './logo.svg';
-import { Button, Form } from 'react-bootstrap';
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { Page } from '../App';
 import "./BasicQuestions.css"
 import Question, { basicQuestions } from '../components/Question';
