@@ -1,0 +1,7 @@
+.QuestionButtons.button-container {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 10px;
+}
