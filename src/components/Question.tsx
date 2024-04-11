@@ -5,7 +5,7 @@ import { detailedQuestions } from './QuestionArrays';
 import ProgressBar from './ProgressBar';
 
 export function Question(): JSX.Element {
-    const [questions, setQuestions] = useState<string[]>(detailedQuestions);
+    const [questions] = useState<string[]>(detailedQuestions);
     const [index, setIndex] = useState(0);
     const [text, setText] = useState<string>('Enter response here');
     const nextClick = () => {
