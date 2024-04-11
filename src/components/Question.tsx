@@ -1,4 +1,4 @@
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "./Question.css";
 import React, { useState } from 'react';
 import ProgressBar from './ProgressBar';
@@ -41,7 +41,6 @@ export const detailedQuestions: string[] = [
 export const Question: React.FC<QuestionProps> = ({questionArray}) => {
     const [questions] = useState<string[]>(questionArray);
     const [index, setIndex] = useState(0);
-    const [text, setText] = useState<string>('Enter response here');
     const nextClick = () => {
         if (index < questions.length - 1 ){
             setIndex(index + 1);
