@@ -1,5 +1,6 @@
 import { Page } from "../App";
 import Question from "../components/Question";
+import { detailedQuestions } from "../components/Question"
 
 function DetailedQuestions( {
     setCurrentPage
@@ -8,7 +9,7 @@ function DetailedQuestions( {
 }) {return (
         <div className="DetailedPage">
              <h1>Detailed Questions </h1>
-             <Question/>
+             <Question questionArray = {detailedQuestions}/>
         </div>
     );
 }
