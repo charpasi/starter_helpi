@@ -1,4 +1,4 @@
-import { Col, Form, Row } from "react-bootstrap";
+import {Form} from "react-bootstrap";
 import React, { useState } from 'react';
 import "./MultipleChoiceInput.css";
 
