@@ -3,6 +3,7 @@ import "./HomePage.css";
 import { Page } from "../App";
 
 import genie from "../assets/pikmin.png";
+import basicQuestionsPage from "./basicQuestions";
 
 function HomePage({
     setCurrentPage
