@@ -2,10 +2,10 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import "./Question.css";
 import React, { useState } from 'react';
 import { detailedQuestions } from './QuestionArrays';
-
+import ProgressBar from './ProgressBar';
 
 export function Question(): JSX.Element {
-    const [questions, setQuestions] = useState<string[]>(detailedQuestions);
+    const [questions] = useState<string[]>(detailedQuestions);
     const [index, setIndex] = useState(0);
     const [text, setText] = useState<string>('Enter response here');
     const nextClick = () => {
@@ -26,6 +26,7 @@ export function Question(): JSX.Element {
     }
     return (
         <div className="Question"> 
+            <ProgressBar current={index + 1} max={questions.length} />
             <h2>Question {index + 1}:</h2>
             <div className="question-container">
                 <p>{ questions[index] }</p>

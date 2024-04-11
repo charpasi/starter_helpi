@@ -1,7 +1,7 @@
 import { Page } from "../App";
 import Question from "../components/Question";
 
-function DetailedQuestions({
+function DetailedQuestions( {
     setCurrentPage
 }: {
     setCurrentPage: (pageName: Page) => void

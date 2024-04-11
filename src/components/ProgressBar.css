@@ -1,0 +1,8 @@
+.progressBar {
+    height: 10px;
+    border-radius: 100px;
+    overflow: hidden;
+}
+.progressBar::-webkit-progress-value {
+    background-color: purple; 
+}
