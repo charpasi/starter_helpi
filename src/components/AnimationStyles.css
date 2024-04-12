@@ -1,0 +1,35 @@
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-30px);
+      }
+      60% {
+        transform: translateY(-15px);
+      }
+}
+
+.genie {
+    width: 100px;
+    height: auto;
+    animation: bounce 2s infinite;
+    display: block;
+    margin: 20px auto;
+}
+
+.loading-bar {
+    height: 20px;
+    width: 0;
+    background-color: purple;
+    animation: load 2s infinite;
+}
+  
+@keyframes load {
+    0%, 100% {
+      width: 0%;
+    }
+    50% {
+      width: 100%;
+    }
+  }

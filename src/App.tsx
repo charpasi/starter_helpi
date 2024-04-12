@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import DetailedQuestions from "./pages/DetailedQuestions";
 import BasicQuestionsPage from "./pages/basicQuestions";
+import StartupAnimation from "./components/StartupAnimation";
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -19,12 +20,17 @@ export type Page = "main" | "debug" | "basic" | "detailed";
 function App() {
     const [key, setKey] = useState<string>(keyData);
     const [currentPage, setCurrentPage] = useState<Page>("main");
+    const [animationFinished, setAnimationFinished] = useState<boolean>(false);
 
     function handleSubmit() {
         localStorage.setItem(saveKeyData, JSON.stringify(key));
         window.location.reload();
     }
 
+    if (!animationFinished) {
+        return <StartupAnimation onAnimationComplete={() => setAnimationFinished(true)} />;
+    }
+    
     return (
         <div className="App">
             <Header
