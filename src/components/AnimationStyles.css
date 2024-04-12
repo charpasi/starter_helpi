@@ -13,7 +13,7 @@
 .genie {
     width: 100px;
     height: auto;
-    animation: bounce 2s infinite;
+    animation: bounce 1s infinite;
     display: block;
     margin: 20px auto;
 }
@@ -22,7 +22,8 @@
     height: 20px;
     width: 0;
     background-color: purple;
-    animation: load 2s infinite;
+    animation: load 1.5s infinite;
+    justify-content: center;
 }
   
 @keyframes load {
@@ -30,6 +31,14 @@
       width: 0%;
     }
     50% {
-      width: 100%;
+      width: 30%;
     }
   }
+
+.startup-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; 
+}

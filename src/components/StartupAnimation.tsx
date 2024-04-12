@@ -8,7 +8,7 @@ interface StartupAnimationProps {
   
   const StartupAnimation: React.FC<StartupAnimationProps> = ({ onAnimationComplete }) => {
       useEffect(() => {
-          const timer = setTimeout(onAnimationComplete, 4000); // Duration of your animation
+          const timer = setTimeout(onAnimationComplete, 2000); // Duration of your animation
           return () => clearTimeout(timer);
       }, [onAnimationComplete]);
   
