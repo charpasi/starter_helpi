@@ -1,11 +1,6 @@
-import { Button } from "react-bootstrap";
 import "./Question.css";
 import React, { useState } from 'react';
 import ProgressBar from './ProgressBar';
-
-interface QuestionProps {
-    questionArray: string[];
-}
 
 export const basicQuestions: string[] = [
     "I express my creativity whenever I work.", 
@@ -38,36 +33,19 @@ export const detailedQuestions: string[] = [
     "How do you handle pressure and tight deadlines?",
 ];
 
-export const Question: React.FC<QuestionProps> = ({questionArray}) => {
+interface QuestionProps {
+    questionArray: string[];
+    current: number;
+}
+
+export const Question: React.FC<QuestionProps> = ({current, questionArray}) => {
     const [questions] = useState<string[]>(questionArray);
-    const [index, setIndex] = useState(0);
-    const nextClick = () => {
-        if (index < questions.length - 1 ){
-            setIndex(index + 1);
-        }
-        else {
-            setIndex(index);
-        }
-    }
-    const previousClick = () => {
-        if (index > 0 && index < questions.length){
-            setIndex(index - 1);
-        }
-        else {
-            setIndex(index);
-        }
-    }
     return (
         <div className="Question"> 
-            <ProgressBar current={index + 1} max={questions.length} />
-            <h2>Question {index + 1}:</h2>
+            <ProgressBar current={current + 1} max={questions.length} />
+            <h2>Question {current + 1}:</h2>
             <div className="question-container">
-                <p>{ questions[index] }</p>
-            </div>
-            <div className="button-container">
-            <Button onClick={previousClick} disabled={index === 0}>Previous</Button>
-            <Button onClick={nextClick} disabled={index === questions.length - 1}>Next</Button>
-            <Button onClick={nextClick} disabled={index !== questions.length - 1}>Finish</Button>
+                <p>{ questions[current] }</p>
             </div>
         </div>
     );
