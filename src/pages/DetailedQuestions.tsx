@@ -5,7 +5,6 @@ import Question from "../components/Question";
 import TextInput from "../components/TextInput";
 import QuestionButtons from "../components/QuestionButtons";
 
-
 function DetailedQuestions( {
     setCurrentPage
 }: {
@@ -18,12 +17,15 @@ function DetailedQuestions( {
     const handlePrevious = () => {
         setCurrentQuestion(prevIndex => prevIndex - 1);
       };
+    const handleFinish = () => {
+        setCurrentPage("main");
+    };
     return (
         <div className="DetailedPage">
              <h1>Detailed Questions </h1>
              <Question current = {currentQuestion} questionArray = { detailedQuestions}/>
              <TextInput/>
-             <QuestionButtons onNext = {handleNext} onPrevious = {handlePrevious} current={currentQuestion} length = {detailedQuestions.length} />
+             <QuestionButtons onNext = {handleNext} onPrevious = {handlePrevious} onFinish={handleFinish} current={currentQuestion} length = {detailedQuestions.length} />
         </div>
     );
 }

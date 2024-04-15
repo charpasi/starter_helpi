@@ -5,11 +5,11 @@ import "./MultipleChoiceInput.css";
 export function MultipleChoiceInput(): JSX.Element {
     const [selectedOption, setSelectedOption] = useState<string>("");
     const answerOptions: string[] = [
-        "Strongly Agree",
-        "Agree",
-        "Neutral",
+        "Strongly Disagree",
         "Disagree",
-        "Strongly Disagree"
+        "Neutral",
+        "Agree",
+        "Strongly Agree"
     ];
     const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedOption(e.target.value);

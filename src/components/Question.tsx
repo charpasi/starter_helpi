@@ -40,13 +40,12 @@ interface QuestionProps {
 
 export const Question: React.FC<QuestionProps> = ({current, questionArray}) => {
     const [questions] = useState<string[]>(questionArray);
-    const [index] = useState(current);
     return (
         <div className="Question"> 
-            <ProgressBar current={index + 1} max={questions.length} />
-            <h2>Question {index + 1}:</h2>
+            <ProgressBar current={current + 1} max={questions.length} />
+            <h2>Question {current + 1}:</h2>
             <div className="question-container">
-                <p>{ questions[index] }</p>
+                <p>{ questions[current] }</p>
             </div>
         </div>
     );
