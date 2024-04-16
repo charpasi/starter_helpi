@@ -5,6 +5,9 @@ import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Results from "./pages/Results";
+import DetailedQuestions from "./pages/DetailedQuestions";
+import BasicQuestionsPage from "./pages/BasicQuestions";
+import StartupAnimation from "./components/StartupAnimation";
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -13,40 +16,48 @@ if(prevKey !== null) {
     keyData = JSON.parse(prevKey);
 }
 
-export type Page = "main" | "debug" | "basic" | "detailed" | "results";
+export type Page = "main" | "basic" | "detailed" | "results";
 
 function App() {
     const [key, setKey] = useState<string>(keyData);
     const [currentPage, setCurrentPage] = useState<Page>("main");
+    const [animationFinished, setAnimationFinished] = useState<boolean>(false);
 
     function handleSubmit() {
         localStorage.setItem(saveKeyData, JSON.stringify(key));
         window.location.reload();
     }
 
+    if (!animationFinished) {
+        return <StartupAnimation onAnimationComplete={() => setAnimationFinished(true)} />;
+    }
+    
     return (
         <div className="App">
-            <Header/>
+            <Header
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage}
+            />
             <div className="page-renderer">
                 {
                     {
                         "main": <HomePage
                             setCurrentPage={setCurrentPage}
                         />,
-                        "debug": <p>Debug</p>,
-                        "basic": <p>Basic</p>,
-                        "detailed": <p>Detailed</p>,
+                        "basic": <BasicQuestionsPage setCurrentPage={setCurrentPage}/>,
+                        "detailed": <DetailedQuestions setCurrentPage={setCurrentPage}/>,
                         "results": <Results/>
                     }[currentPage]
                 }
             </div>
+            {/*
             <div>
                 <button onClick={() => setCurrentPage("main")}>Main page</button>
-                <button onClick={() => setCurrentPage("debug")}>Debug page</button>
                 <button onClick={() => setCurrentPage("basic")}>Basic</button>
                 <button onClick={() => setCurrentPage("detailed")}>Detailed</button>
                 <button onClick={() => setCurrentPage("results")}>Results</button>
             </div>
+            */}
             <Footer
                 setKey={setKey}
                 handleSubmit={handleSubmit}

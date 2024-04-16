@@ -4,6 +4,7 @@ import { Page } from "../App";
 
 import genie from "../assets/pikmin.png";
 
+
 function HomePage({
     setCurrentPage
 }: {
