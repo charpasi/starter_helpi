@@ -10,7 +10,7 @@ import BasicQuestionsPage from "./pages/BasicQuestions";
 import StartupAnimation from "./components/StartupAnimation";
 
 let keyData = "";
-const saveKeyData = "MYKEY";
+export const saveKeyData = "MYKEY";
 const prevKey = localStorage.getItem(saveKeyData);
 if(prevKey !== null) {
     keyData = JSON.parse(prevKey);
@@ -21,7 +21,7 @@ export type Page = "main" | "basic" | "detailed" | "results";
 function App() {
     const [key, setKey] = useState<string>(keyData);
     const [currentPage, setCurrentPage] = useState<Page>("main");
-    const [animationFinished, setAnimationFinished] = useState<boolean>(false);
+    const [animationFinished, setAnimationFinished] = useState<boolean>(true);
 
     function handleSubmit() {
         localStorage.setItem(saveKeyData, JSON.stringify(key));
