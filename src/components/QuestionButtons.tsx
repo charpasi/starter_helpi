@@ -1,6 +1,6 @@
 import { Button } from "react-bootstrap";
 import "./Question.css";
-import React, { useState } from 'react';
+import React from 'react';
 
 interface ButtonProps {
     onNext: () => void;
