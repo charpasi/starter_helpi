@@ -35,9 +35,9 @@ function BasicQuestionsPage({
                 </div>
             </div>
             <div className="QuestionBox">
-            <Question current = {currentQuestion} questionArray = { basicQuestions}/>
+            <Question current = {currentQuestion} questionArray = {basicQuestions}/>
             <div className="Options">
-                <MultipleChoiceInput/>
+                <MultipleChoiceInput currentQuestion={currentQuestion}/>
             </div>
             <QuestionButtons onNext = {handleNext} onPrevious = {handlePrevious} onFinish={handleFinish} current={currentQuestion} length = {basicQuestions.length} />
             </div>

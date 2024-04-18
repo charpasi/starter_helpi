@@ -1,8 +1,12 @@
 import {Form} from "react-bootstrap";
-import React, { useState } from 'react';
+import React, {useEffect, useState } from 'react';
 import "./MultipleChoiceInput.css";
 
-export function MultipleChoiceInput(): JSX.Element {
+interface MultipleChoiceInputProps {
+    currentQuestion: number; 
+}
+
+export function MultipleChoiceInput({ currentQuestion }: MultipleChoiceInputProps): JSX.Element {
     const [selectedOption, setSelectedOption] = useState<string>("");
     const answerOptions: string[] = [
         "Strongly Disagree",
@@ -11,6 +15,11 @@ export function MultipleChoiceInput(): JSX.Element {
         "Agree",
         "Strongly Agree"
     ];
+
+    useEffect(() => {
+        // Reset selected option when the question changes
+        setSelectedOption("");
+    }, [currentQuestion]); // Dependency on currentQuestion
     const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedOption(e.target.value);
     };
