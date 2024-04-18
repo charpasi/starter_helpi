@@ -7,7 +7,7 @@ function clickMe() {
 function Results() {
     return (
         <div className="Results">
-            <p>Results :)</p>
+            <p>Results :3</p>
             <button onClick={() => clickMe()}>Send API request</button>
         </div>
     )
