@@ -19,7 +19,8 @@ export function MultipleChoiceInput({ currentQuestion }: MultipleChoiceInputProp
     useEffect(() => {
         // Reset selected option when the question changes
         setSelectedOption("");
-    }, [currentQuestion]); // Dependency on currentQuestion
+    }, [currentQuestion]); 
+    
     const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedOption(e.target.value);
     };

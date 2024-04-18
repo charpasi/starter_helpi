@@ -24,7 +24,7 @@ function DetailedQuestions( {
         <div className="DetailedPage">
              <h1>Detailed Questions </h1>
              <Question current = {currentQuestion} questionArray = { detailedQuestions}/>
-             <TextInput/>
+             <TextInput currentQuestion={currentQuestion}/>
              <QuestionButtons onNext = {handleNext} onPrevious = {handlePrevious} onFinish={handleFinish} current={currentQuestion} length = {detailedQuestions.length} />
         </div>
     );

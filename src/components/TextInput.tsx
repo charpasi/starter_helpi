@@ -1,10 +1,17 @@
 import { Col, Form, Row } from "react-bootstrap";
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./TextInput.css";
 
+interface TextInputProps {
+    currentQuestion: number; 
+}
 
-export function TextInput(): JSX.Element  {
+export function TextInput({ currentQuestion }: TextInputProps): JSX.Element  {
     const [text, setText] = useState<string>('Enter response here');
+    // Reset text when the current question changes
+    useEffect(() => {
+        setText('Enter response here');
+    }, [currentQuestion]); 
     return (
         <div className="TextInput"> 
         <Form.Group controlId="formTextInput" as={Row} >
