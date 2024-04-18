@@ -24,7 +24,7 @@ function BasicQuestionsPage({ setCurrentPage }: { setCurrentPage: (pageName: Pag
     };
 
     const handleFinish = () => {
-        console.log('Collected Answers:', answers); // Optionally send these to AI for processing
+        console.log('Collected Answers:', answers); 
         setCurrentPage("main");
     };
 
