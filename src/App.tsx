@@ -7,6 +7,8 @@ import Footer from "./components/Footer";
 import DetailedQuestions from "./pages/DetailedQuestions";
 import BasicQuestionsPage from "./pages/basicQuestions";
 import StartupAnimation from "./components/StartupAnimation";
+import Results from "./pages/Results";
+
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -45,7 +47,8 @@ function App() {
                         />,
                         "debug": <p>Debug</p>,
                         "basic": <BasicQuestionsPage setCurrentPage={setCurrentPage}/>,
-                        "detailed": <DetailedQuestions setCurrentPage={setCurrentPage}/>
+                        "detailed": <DetailedQuestions setCurrentPage={setCurrentPage}/>,
+                        "results": <Results setCurrentPage={setCurrentPage}/>
                     }[currentPage]
                 }
             </div>
