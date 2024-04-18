@@ -17,7 +17,7 @@ if(prevKey !== null) {
     keyData = JSON.parse(prevKey);
 }
 
-export type Page = "main" | "debug" | "basic" | "detailed";
+export type Page = "main" | "debug" | "basic" | "detailed" | "results";
 
 function App() {
     const [key, setKey] = useState<string>(keyData);

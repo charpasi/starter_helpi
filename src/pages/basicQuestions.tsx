@@ -18,7 +18,7 @@ function BasicQuestionsPage({
         setCurrentQuestion(prevIndex => prevIndex - 1);
       };
     const handleFinish = () => {
-        setCurrentPage("main");
+        setCurrentPage("results");
     };
     return (
         <div className="BasicPage">

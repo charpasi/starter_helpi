@@ -9,6 +9,7 @@ function Results( {
     return (
     <div className="Results">
          <h1>Career Report </h1>
+         
     </div>
 );
 }
