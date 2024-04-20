@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 import DetailedQuestions from "./pages/DetailedQuestions";
 import BasicQuestionsPage from "./pages/basicQuestions";
 import StartupAnimation from "./components/StartupAnimation";
+import BasicQuestionsReviewPage from "./pages/ReviewAnswersBasic"; // Import BasicQuestionsReviewPage
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -15,7 +16,7 @@ if(prevKey !== null) {
     keyData = JSON.parse(prevKey);
 }
 
-export type Page = "main" | "debug" | "basic" | "detailed";
+export type Page = "main" | "debug" | "basic" | "detailed" | "basicReview";;
 
 function App() {
     const [key, setKey] = useState<string>(keyData);
@@ -45,7 +46,8 @@ function App() {
                         />,
                         "debug": <p>Debug</p>,
                         "basic": <BasicQuestionsPage setCurrentPage={setCurrentPage}/>,
-                        "detailed": <DetailedQuestions setCurrentPage={setCurrentPage}/>
+                        "detailed": <DetailedQuestions setCurrentPage={setCurrentPage}/>,
+                        "basicReview": <BasicQuestionsReviewPage setCurrentPage={setCurrentPage} answers={[]} />,
                     }[currentPage]
                 }
             </div>
