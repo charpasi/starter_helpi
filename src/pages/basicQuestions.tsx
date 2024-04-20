@@ -24,8 +24,8 @@ function BasicQuestionsPage({ setCurrentPage }: { setCurrentPage: (pageName: Pag
     };
 
     const handleFinish = () => {
-        console.log('Collected Answers:', answers); 
-        setCurrentPage("main");
+        console.log('Collected Answers:', answers); // placeholder for now :3 
+        setCurrentPage("main"); // change to results page later
     };
 
     return (
