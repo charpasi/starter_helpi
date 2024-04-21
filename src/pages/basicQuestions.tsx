@@ -1,48 +1,60 @@
+import { useState } from 'react';
 import { Page } from '../App';
-import "./BasicQuestions.css"
 import Question, { basicQuestions } from '../components/Question';
 import { MultipleChoiceInput } from '../components/MultipleChoiceInput';
 import QuestionButtons from '../components/QuestionButtons';
-import { useState } from 'react';
+import "./BasicQuestions.css";
 
-function BasicQuestionsPage({
-    setCurrentPage
-}: {
-    setCurrentPage: (pageName: Page) => void
-}) {
+function BasicQuestionsPage({ setCurrentPage }: { setCurrentPage: (pageName: Page) => void }) {
     const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+    const [answers, setAnswers] = useState<(string | null)[]>(new Array(basicQuestions.length).fill(null));
+
+    const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const newAnswers = [...answers];
+        newAnswers[currentQuestion] = e.target.value;
+        setAnswers(newAnswers);
+    };
+
     const handleNext = () => {
-        setCurrentQuestion(prevIndex => prevIndex + 1);
+        setCurrentQuestion(prev => prev + 1);
     };
+
     const handlePrevious = () => {
-        setCurrentQuestion(prevIndex => prevIndex - 1);
-      };
-    const handleFinish = () => {
-        setCurrentPage("results");
+        setCurrentQuestion(prev => prev - 1);
     };
+
+    const handleFinish = () => {
+        setCurrentPage("main");
+    };
+
     return (
         <div className="BasicPage">
             <div className="Header">
                 <div className="Title">
-                    <p>
-                        Basic Quiz
-                    </p>
+                    <p>Basic Quiz</p>
                 </div>
                 <div className="Description">
-                    <p>
-                      A short, basic, multiple choice quiz catered towards those who already have an idea of what they want to do.
-                    </p>
+                    <p>A short, basic, multiple choice quiz catered towards those who already have an idea of what they want to do.</p>
                 </div>
             </div>
             <div className="QuestionBox">
-            <Question current = {currentQuestion} questionArray = {basicQuestions}/>
-            <div className="Options">
-                <MultipleChoiceInput currentQuestion={currentQuestion}/>
-            </div>
-            <QuestionButtons onNext = {handleNext} onPrevious = {handlePrevious} onFinish={handleFinish} current={currentQuestion} length = {basicQuestions.length} />
+                <Question current={currentQuestion} questionArray={basicQuestions}/>
+                <div className="Options">
+                    <MultipleChoiceInput
+                        selectedOption={answers[currentQuestion]}
+                        handleOptionChange={handleOptionChange}
+                    />
+                </div>
+                <QuestionButtons
+                    onNext={handleNext}
+                    onPrevious={handlePrevious}
+                    onFinish={handleFinish}
+                    current={currentQuestion}
+                    length={basicQuestions.length}
+                />
             </div>
         </div>
-        
-    )
+    );
 }
+
 export default BasicQuestionsPage;
