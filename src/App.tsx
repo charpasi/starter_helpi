@@ -8,6 +8,7 @@ import Results from "./pages/ResultsPage";
 import DetailedQuestions from "./pages/DetailedQuestions";
 import BasicQuestionsPage from "./pages/BasicQuestions";
 import StartupAnimation from "./components/StartupAnimation";
+import BasicQuestionsReviewPage from "./pages/ReviewAnswersBasic";
 
 let keyData = "";
 export const saveKeyData = "MYKEY";
@@ -16,7 +17,7 @@ if(prevKey !== null) {
     keyData = JSON.parse(prevKey);
 }
 
-export type Page = "main" | "basic" | "detailed" | "results";
+export type Page = "main" | "basic" | "basicReview" | "detailed" | "results";
 
 function App() {
     const [key, setKey] = useState<string>(keyData);
@@ -47,6 +48,11 @@ function App() {
                         "basic": <BasicQuestionsPage
                             setCurrentPage={setCurrentPage}
                         />,
+                        "basicReview": <BasicQuestionsReviewPage
+                            setCurrentPage={setCurrentPage}
+                            answers={[]}
+                            setReviewMode={handleSubmit}
+                        />,
                         "detailed": <DetailedQuestions
                             setCurrentPage={setCurrentPage}
                         />,
@@ -56,14 +62,6 @@ function App() {
                     }[currentPage]
                 }
             </div>
-            {/*
-            <div>
-                <button onClick={() => setCurrentPage("main")}>Main page</button>
-                <button onClick={() => setCurrentPage("basic")}>Basic</button>
-                <button onClick={() => setCurrentPage("detailed")}>Detailed</button>
-                <button onClick={() => setCurrentPage("results")}>Results</button>
-            </div>
-            */}
             <Footer
                 setKey={setKey}
                 handleSubmit={handleSubmit}
