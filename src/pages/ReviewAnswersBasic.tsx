@@ -1,6 +1,7 @@
 import React from 'react';
 import { basicQuestions } from '../components/Question';
 import { Page } from '../App';
+import "./ReviewAnswersBasic.css";
 
 interface ReviewAnswersPageBasicProps {
     answers: (string|null)[];

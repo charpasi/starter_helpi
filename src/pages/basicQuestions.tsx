@@ -49,6 +49,7 @@ function BasicQuestionsPage({ setCurrentPage }: { setCurrentPage: (pageName: Pag
                 {reviewMode ? ( // conditionally render the review page
                     <BasicQuestionsReviewPage answers={answers} setCurrentPage={setCurrentPage} setReviewMode={setReviewMode} />
                 ) : (
+                    // if review mode is false, then just dsplay the questions like normal.
                     <>
                         <Question current={currentQuestion} questionArray={basicQuestions} />
                         <div className="Options">
