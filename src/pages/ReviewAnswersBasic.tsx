@@ -5,9 +5,10 @@ import { Page } from '../App';
 interface ReviewAnswersPageBasicProps {
     answers: (string|null)[];
     setCurrentPage: (pageName: Page) => void;
+    setReviewMode: (mode: boolean) => void;
 }
 
-const BasicQuestionsReviewPage: React.FC<ReviewAnswersPageBasicProps> = ({ answers, setCurrentPage }) => {
+const BasicQuestionsReviewPage: React.FC<ReviewAnswersPageBasicProps> = ({ answers, setCurrentPage, setReviewMode }) => {
     
     return (
         <div className="BasicQuestionsReviewPage">
@@ -22,7 +23,7 @@ const BasicQuestionsReviewPage: React.FC<ReviewAnswersPageBasicProps> = ({ answe
                 ))}
             </ul>
             <button onClick={() => setCurrentPage("main")}>Submit All Answers</button>
-            <button onClick={() => setCurrentPage("basic")}>Change Response</button>
+            <button onClick={() => setReviewMode(false)}>Change Response</button> 
         </div>
     );
 }

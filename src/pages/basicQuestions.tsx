@@ -4,7 +4,7 @@ import { Page } from '../App';
 import Question, { basicQuestions } from '../components/Question';
 import { MultipleChoiceInput } from '../components/MultipleChoiceInput';
 import QuestionButtons from '../components/QuestionButtons';
-import BasicQuestionsReviewPage from '../pages/ReviewAnswersBasic'; // Import the review page component
+import BasicQuestionsReviewPage from '../pages/ReviewAnswersBasic'; 
 import "./BasicQuestions.css";
 
 function BasicQuestionsPage({ setCurrentPage }: { setCurrentPage: (pageName: Page) => void }) {
@@ -28,11 +28,11 @@ function BasicQuestionsPage({ setCurrentPage }: { setCurrentPage: (pageName: Pag
 
     const handleFinish = () => {
         console.log('Collected Answers:', answers); // placeholder for now :3 
-        setReviewMode(true); // Set review mode to true when finishing
+        setReviewMode(true); // review mode goes on once we finish
     };
 
     const handleReturn = () => {
-        setCurrentPage("main");
+        setReviewMode(false);
     };
 
     return (
@@ -47,7 +47,7 @@ function BasicQuestionsPage({ setCurrentPage }: { setCurrentPage: (pageName: Pag
             </div>
             <div className="QuestionBox">
                 {reviewMode ? ( // conditionally render the review page
-                    <BasicQuestionsReviewPage answers={answers} setCurrentPage={setCurrentPage} />
+                    <BasicQuestionsReviewPage answers={answers} setCurrentPage={setCurrentPage} setReviewMode={setReviewMode} />
                 ) : (
                     <>
                         <Question current={currentQuestion} questionArray={basicQuestions} />

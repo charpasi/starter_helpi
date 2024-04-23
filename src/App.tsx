@@ -47,7 +47,7 @@ function App() {
                         "debug": <p>Debug</p>,
                         "basic": <BasicQuestionsPage setCurrentPage={setCurrentPage}/>,
                         "detailed": <DetailedQuestions setCurrentPage={setCurrentPage}/>,
-                        "basicReview": <BasicQuestionsReviewPage setCurrentPage={setCurrentPage} answers={[]} />,
+                        "basicReview": <BasicQuestionsReviewPage setCurrentPage={setCurrentPage} answers={[]} setReviewMode={handleSubmit}/>,
                     }[currentPage]
                 }
             </div>
