@@ -57,7 +57,7 @@ Please format your responses in this format:
 
 Please do not write anything else in your response other than information in the above format. Please respond with four different careers on different lines.`;
 
-function Results({
+function ResultsPage({
     setCurrentPage
 }: {
     setCurrentPage: (pageName: Page) => void
@@ -162,4 +162,4 @@ function Results({
     )
 }
 
-export default Results;
+export default ResultsPage;

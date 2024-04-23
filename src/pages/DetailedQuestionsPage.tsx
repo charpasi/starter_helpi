@@ -4,7 +4,7 @@ import Question, { detailedQuestions } from "../components/Question";
 import TextInput from "../components/TextInput";
 import QuestionButtons from "../components/QuestionButtons";
 
-function DetailedQuestions({
+function DetailedQuestionsPage({
     setCurrentPage,
     answers,
     setAnswers
@@ -53,4 +53,4 @@ function DetailedQuestions({
     );
 }
 
-export default DetailedQuestions;
+export default DetailedQuestionsPage;

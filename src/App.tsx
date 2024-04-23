@@ -4,9 +4,9 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Results from "./pages/ResultsPage";
-import DetailedQuestions from "./pages/DetailedQuestions";
-import BasicQuestionsPage from "./pages/BasicQuestions";
+import ResultsPage from "./pages/ResultsPage";
+import DetailedQuestionsPage from "./pages/DetailedQuestionsPage";
+import BasicQuestionsPage from "./pages/BasicQuestionsPage";
 import StartupAnimation from "./components/StartupAnimation";
 
 import { basicQuestions, detailedQuestions } from "./components/Question";
@@ -54,12 +54,12 @@ function App() {
                             answers={basicAnswers}
                             setAnswers={setBasicAnswers}
                         />,
-                        "detailed": <DetailedQuestions
+                        "detailed": <DetailedQuestionsPage
                             setCurrentPage={setCurrentPage}
                             answers={detailedAnswers}
                             setAnswers={setDetailedAnswers}
                         />,
-                        "results": <Results
+                        "results": <ResultsPage
                             setCurrentPage={setCurrentPage}
                         />
                     }[currentPage]
