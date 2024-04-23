@@ -5,7 +5,7 @@ import { Page } from '../App';
 import Question, { basicQuestions } from '../components/Question';
 import { MultipleChoiceInput } from '../components/MultipleChoiceInput';
 import QuestionButtons from '../components/QuestionButtons';
-import BasicQuestionsReviewPage from '../pages/ReviewAnswersBasic'; 
+import BasicQuestionsReviewPage from '../components/ReviewAnswersBasic'; 
 import "./BasicQuestions.css";
 
 function BasicQuestionsPage({ setCurrentPage }: { setCurrentPage: (pageName: Page) => void }) {
