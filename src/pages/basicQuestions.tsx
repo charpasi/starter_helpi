@@ -1,13 +1,16 @@
+import React from 'react';
 import { useState } from 'react';
 import { Page } from '../App';
 import Question, { basicQuestions } from '../components/Question';
 import { MultipleChoiceInput } from '../components/MultipleChoiceInput';
 import QuestionButtons from '../components/QuestionButtons';
+import BasicQuestionsReviewPage from '../pages/ReviewAnswersBasic'; 
 import "./BasicQuestions.css";
 
 function BasicQuestionsPage({ setCurrentPage }: { setCurrentPage: (pageName: Page) => void }) {
     const [currentQuestion, setCurrentQuestion] = useState<number>(0);
     const [answers, setAnswers] = useState<(string | null)[]>(new Array(basicQuestions.length).fill(null));
+    const [reviewMode, setReviewMode] = useState<boolean>(false);
 
     const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newAnswers = [...answers];
@@ -24,8 +27,12 @@ function BasicQuestionsPage({ setCurrentPage }: { setCurrentPage: (pageName: Pag
     };
 
     const handleFinish = () => {
-        console.log('Collected Answers:', answers); 
-        setCurrentPage("main");
+        console.log('Collected Answers:', answers); // placeholder for now :3 
+        setReviewMode(true); // review mode goes on once we finish
+    };
+
+    const handleReturn = () => {
+        setReviewMode(false);
     };
 
     return (
@@ -39,20 +46,27 @@ function BasicQuestionsPage({ setCurrentPage }: { setCurrentPage: (pageName: Pag
                 </div>
             </div>
             <div className="QuestionBox">
-                <Question current={currentQuestion} questionArray={basicQuestions}/>
-                <div className="Options">
-                    <MultipleChoiceInput
-                        selectedOption={answers[currentQuestion]}
-                        handleOptionChange={handleOptionChange}
-                    />
-                </div>
-                <QuestionButtons
-                    onNext={handleNext}
-                    onPrevious={handlePrevious}
-                    onFinish={handleFinish}
-                    current={currentQuestion}
-                    length={basicQuestions.length}
-                />
+                {reviewMode ? ( // conditionally render the review page
+                    <BasicQuestionsReviewPage answers={answers} setCurrentPage={setCurrentPage} setReviewMode={setReviewMode} />
+                ) : (
+                    // if review mode is false, then just dsplay the questions like normal.
+                    <>
+                        <Question current={currentQuestion} questionArray={basicQuestions} />
+                        <div className="Options">
+                            <MultipleChoiceInput
+                                selectedOption={answers[currentQuestion]}
+                                handleOptionChange={handleOptionChange}
+                            />
+                        </div>
+                        <QuestionButtons
+                            onNext={handleNext}
+                            onPrevious={handlePrevious}
+                            onFinish={handleFinish}
+                            current={currentQuestion}
+                            length={basicQuestions.length}
+                        />
+                    </>
+                )}
             </div>
         </div>
     );
