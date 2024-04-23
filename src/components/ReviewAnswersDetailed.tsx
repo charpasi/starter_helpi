@@ -13,7 +13,7 @@ const ReviewAnswersDetailed: React.FC<ReviewAnswersPageDetailedProps> = ({ answe
     
     return (
         <div className="DetailedQuestionsReviewPage">
-            <h1>Review Your Detailed Answers Before Submitting</h1>
+            <h1>Review Your Answers Before Submitting</h1>
             <ul>
                 {answers.map((answer, index) => (
                     <li key={index}>
