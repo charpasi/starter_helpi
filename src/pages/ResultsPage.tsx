@@ -53,31 +53,31 @@ const detailedQuestionsSystem = `You are tasked with helping a user find the bes
 Each question and response will be separated by "&&&" as shown above.
 
 Please format your responses in this format:
-[Career name] - $[starting salary]###
-[Short description of career]###
-[Short explanation as to why this career would be good]###
+[Career name] - $[starting salary]###[Short description of career]###[Short explanation as to why this career would be good]###
 
-Please do not write anything else in your response other than information in the above format. Please respond with four different careers, separating each response with "&&&" on a new line.`;
+Please do not write anything else in your response other than information in the above format. Please respond with four different careers on different lines.`;
 
 function Results({
     setCurrentPage
 }: {
     setCurrentPage: (pageName: Page) => void
 }) {
-    async function getBasicQuestionsResponse(answers: string[]): Promise<Career[] | null> {
+    async function getQuestionsResponse(answers: string[], type: "basic" | "detailed"): Promise<Career[] | null> {
         if(answers.length !== basicQuestions.length) {
             console.error("Responses array and questions array are of different lengths");
             return null;
         }
 
-        const answersText = answers.map((r, i) => `${basicQuestions[i]} ${r}`).join("\n").trim();
+        const answersText = type === "basic" ?
+            answers.map((r, i) => `${basicQuestions[i]} ${r}`).join("\n").trim() :
+            answers.map((r, i) => `${detailedQuestions[i]} ${r}`).join("\n").trim();
     
         const postData = JSON.stringify({
             "model": "gpt-3.5-turbo",
             "messages": [
                 {
                     "role": "system",
-                    "content": basicQuestionsSystem
+                    "content": type === "basic" ? basicQuestionsSystem : detailedQuestionsSystem
                 },
                 {
                     "role": "user",
@@ -138,10 +138,6 @@ function Results({
     
         return careers;
     }
-    
-    async function getDetailedQuestionsResponse(responses: string[]): Promise<void> {
-        
-    }
 
     function clickMe(): void {
         const exampleResponses = [
@@ -154,7 +150,7 @@ function Results({
             "Disagree"
         ];
 
-        const careers = getBasicQuestionsResponse(exampleResponses);
+        const careers = getQuestionsResponse(exampleResponses, "basic");
         console.log(careers);
     }
 
