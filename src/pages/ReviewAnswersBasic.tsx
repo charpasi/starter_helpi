@@ -23,7 +23,7 @@ const BasicQuestionsReviewPage: React.FC<ReviewAnswersPageBasicProps> = ({ answe
                     </li>
                 ))}
             </ul>
-            <button onClick={() => setCurrentPage("main")}>Submit All Answers</button>
+            <button onClick={() => setCurrentPage("results")}>Submit All Answers</button>
             <button onClick={() => setReviewMode(false)}>Change Response</button> 
         </div>
     );

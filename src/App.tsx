@@ -8,6 +8,8 @@ import DetailedQuestions from "./pages/DetailedQuestions";
 import BasicQuestionsPage from "./pages/basicQuestions";
 import StartupAnimation from "./components/StartupAnimation";
 import BasicQuestionsReviewPage from "./pages/ReviewAnswersBasic"; // Import BasicQuestionsReviewPage
+import Results from "./pages/Results";
+
 
 let keyData = "";
 const saveKeyData = "MYKEY";
@@ -16,7 +18,7 @@ if(prevKey !== null) {
     keyData = JSON.parse(prevKey);
 }
 
-export type Page = "main" | "debug" | "basic" | "detailed" | "basicReview";;
+export type Page = "main" | "debug" | "basic" | "detailed" | "basicReview" | "results";
 
 function App() {
     const [key, setKey] = useState<string>(keyData);
@@ -47,6 +49,7 @@ function App() {
                         "debug": <p>Debug</p>,
                         "basic": <BasicQuestionsPage setCurrentPage={setCurrentPage}/>,
                         "detailed": <DetailedQuestions setCurrentPage={setCurrentPage}/>,
+                        "results": <Results setCurrentPage={setCurrentPage}/>,
                         "basicReview": <BasicQuestionsReviewPage setCurrentPage={setCurrentPage} answers={[]} setReviewMode={handleSubmit}/>,
                     }[currentPage]
                 }
