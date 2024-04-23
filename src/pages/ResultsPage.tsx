@@ -1,5 +1,8 @@
-import { saveKeyData, Page } from "../App";
+import { useState, useEffect } from "react";
 
+import LoadingAnimation from "../components/LoadingAnimation";
+
+import { saveKeyData, Page } from "../App";
 import { basicQuestions, detailedQuestions } from "../components/Question";
 
 type ResponseObject = {
@@ -68,6 +71,34 @@ function ResultsPage({
     basicAnswers: string[],
     detailedAnswers: string[]
 }) {
+    const [careers, setCareers] = useState<Career[]>([]);
+    const [loading, setLoading] = useState<boolean | null>(null);
+
+    useEffect(() => {
+        if(loading !== null) return;
+
+        setLoading(true);
+
+        const apiResponse = currentQuiz === "basic" ?
+            getQuestionsResponse(basicAnswers, "basic") :
+            getQuestionsResponse(detailedAnswers, "detailed");
+
+            apiResponse.then(careerList => {
+            if(careerList === null) {
+                console.error("Cannot update results page");
+                alert("Fatal error while contacting the genie. Try rubbing the lamp again in a few minutes.");
+                return;
+            }
+    
+            setCareers(careerList);
+            setLoading(false);
+        });
+    });
+
+    if(!loading) {
+        return <LoadingAnimation/>;
+    }
+
     async function getQuestionsResponse(answers: string[], type: "basic" | "detailed"): Promise<Career[] | null> {
         if(answers.length !== basicQuestions.length) {
             console.error("Responses array and questions array are of different lengths");
@@ -145,18 +176,11 @@ function ResultsPage({
         return careers;
     }
 
-    function clickMe(): void {
-        const careers = currentQuiz === "basic" ?
-            getQuestionsResponse(basicAnswers, "basic") :
-            getQuestionsResponse(detailedAnswers, "detailed");
-
-        console.log(careers);
-    }
+    console.log(careers);
 
     return (
         <div className="Results">
             <p>Results :3</p>
-            <button onClick={() => clickMe()}>Send API request</button>
         </div>
     )
 }

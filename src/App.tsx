@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import ResultsPage from "./pages/ResultsPage";
 import DetailedQuestionsPage from "./pages/DetailedQuestionsPage";
 import BasicQuestionsPage from "./pages/BasicQuestionsPage";
-import StartupAnimation from "./components/StartupAnimation";
+import StartupAnimation from "./components/LoadingAnimation";
 
 import { basicQuestions, detailedQuestions } from "./components/Question";
 
@@ -23,7 +23,6 @@ export type Page = "main" | "basic" | "detailed" | "results";
 function App() {
     const [key, setKey] = useState<string>(keyData);
     const [currentPage, setCurrentPage] = useState<Page>("main");
-    const [animationFinished, setAnimationFinished] = useState<boolean>(true);
 
     const [basicAnswers, setBasicAnswers] = useState<string[]>(new Array(basicQuestions.length).fill(""));
     const [detailedAnswers, setDetailedAnswers] = useState<string[]>(new Array(detailedQuestions.length).fill(""));
@@ -32,10 +31,6 @@ function App() {
     function handleSubmit() {
         localStorage.setItem(saveKeyData, JSON.stringify(key));
         window.location.reload();
-    }
-
-    if (!animationFinished) {
-        return <StartupAnimation onAnimationComplete={() => setAnimationFinished(true)} />;
     }
     
     return (
