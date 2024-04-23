@@ -27,6 +27,7 @@ function App() {
 
     const [basicAnswers, setBasicAnswers] = useState<string[]>(new Array(basicQuestions.length).fill(""));
     const [detailedAnswers, setDetailedAnswers] = useState<string[]>(new Array(detailedQuestions.length).fill(""));
+    const [currentQuiz, setCurrentQuiz] = useState<"basic" | "detailed">("basic");
 
     function handleSubmit() {
         localStorage.setItem(saveKeyData, JSON.stringify(key));
@@ -48,6 +49,7 @@ function App() {
                     {
                         "main": <HomePage
                             setCurrentPage={setCurrentPage}
+                            setCurrentQuiz={setCurrentQuiz}
                         />,
                         "basic": <BasicQuestionsPage
                             setCurrentPage={setCurrentPage}
@@ -61,6 +63,9 @@ function App() {
                         />,
                         "results": <ResultsPage
                             setCurrentPage={setCurrentPage}
+                            currentQuiz={currentQuiz}
+                            basicAnswers={basicAnswers}
+                            detailedAnswers={detailedAnswers}
                         />
                     }[currentPage]
                 }

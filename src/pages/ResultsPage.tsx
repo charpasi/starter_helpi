@@ -58,9 +58,15 @@ Please format your responses in this format:
 Please do not write anything else in your response other than information in the above format. Please respond with four different careers on different lines.`;
 
 function ResultsPage({
-    setCurrentPage
+    setCurrentPage,
+    currentQuiz,
+    basicAnswers,
+    detailedAnswers
 }: {
     setCurrentPage: (pageName: Page) => void
+    currentQuiz: "basic" | "detailed",
+    basicAnswers: string[],
+    detailedAnswers: string[]
 }) {
     async function getQuestionsResponse(answers: string[], type: "basic" | "detailed"): Promise<Career[] | null> {
         if(answers.length !== basicQuestions.length) {
@@ -140,17 +146,10 @@ function ResultsPage({
     }
 
     function clickMe(): void {
-        const exampleResponses = [
-            "Strongly agree",
-            "Neither agree nor disagree",
-            "Agree",
-            "Strongly agree",
-            "Neither agree nor disagree",
-            "Agree",
-            "Disagree"
-        ];
+        const careers = currentQuiz === "basic" ?
+            getQuestionsResponse(basicAnswers, "basic") :
+            getQuestionsResponse(detailedAnswers, "detailed");
 
-        const careers = getQuestionsResponse(exampleResponses, "basic");
         console.log(careers);
     }
 
