@@ -1,5 +1,5 @@
 import React from 'react';
-import { basicQuestions } from '../components/Question';
+import { basicQuestions } from './Question';
 import { Page } from '../App';
 import "./ReviewAnswersBasic.css";
 

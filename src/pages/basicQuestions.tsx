@@ -4,12 +4,19 @@ import { Page } from '../App';
 import Question, { basicQuestions } from '../components/Question';
 import { MultipleChoiceInput } from '../components/MultipleChoiceInput';
 import QuestionButtons from '../components/QuestionButtons';
-import BasicQuestionsReviewPage from '../pages/ReviewAnswersBasic'; 
+import BasicQuestionsReviewPage from '../components/ReviewAnswersBasic'; 
 import "./BasicQuestions.css";
 
-function BasicQuestionsPage({ setCurrentPage }: { setCurrentPage: (pageName: Page) => void }) {
+function BasicQuestionsPage({
+    setCurrentPage,
+    answers,
+    setAnswers
+}: {
+    setCurrentPage: (pageName: Page) => void
+    answers: string[]
+    setAnswers: (answers: string[]) => void
+}) {
     const [currentQuestion, setCurrentQuestion] = useState<number>(0);
-    const [answers, setAnswers] = useState<(string | null)[]>(new Array(basicQuestions.length).fill(null));
     const [reviewMode, setReviewMode] = useState<boolean>(false);
 
     const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {

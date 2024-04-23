@@ -8,7 +8,8 @@ import Results from "./pages/ResultsPage";
 import DetailedQuestions from "./pages/DetailedQuestions";
 import BasicQuestionsPage from "./pages/BasicQuestions";
 import StartupAnimation from "./components/StartupAnimation";
-import BasicQuestionsReviewPage from "./pages/ReviewAnswersBasic";
+
+import { basicQuestions, detailedQuestions } from "./components/Question";
 
 let keyData = "";
 export const saveKeyData = "MYKEY";
@@ -17,12 +18,15 @@ if(prevKey !== null) {
     keyData = JSON.parse(prevKey);
 }
 
-export type Page = "main" | "basic" | "basicReview" | "detailed" | "results";
+export type Page = "main" | "basic" | "detailed" | "results";
 
 function App() {
     const [key, setKey] = useState<string>(keyData);
     const [currentPage, setCurrentPage] = useState<Page>("main");
     const [animationFinished, setAnimationFinished] = useState<boolean>(true);
+
+    const [basicAnswers, setBasicAnswers] = useState<string[]>(new Array(basicQuestions.length).fill(""));
+    const [detailedAnswers, setDetailedAnswers] = useState<string[]>(new Array(detailedQuestions.length).fill(""));
 
     function handleSubmit() {
         localStorage.setItem(saveKeyData, JSON.stringify(key));
@@ -47,14 +51,13 @@ function App() {
                         />,
                         "basic": <BasicQuestionsPage
                             setCurrentPage={setCurrentPage}
-                        />,
-                        "basicReview": <BasicQuestionsReviewPage
-                            setCurrentPage={setCurrentPage}
-                            answers={[]}
-                            setReviewMode={handleSubmit}
+                            answers={basicAnswers}
+                            setAnswers={setBasicAnswers}
                         />,
                         "detailed": <DetailedQuestions
                             setCurrentPage={setCurrentPage}
+                            answers={detailedAnswers}
+                            setAnswers={setDetailedAnswers}
                         />,
                         "results": <Results
                             setCurrentPage={setCurrentPage}

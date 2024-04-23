@@ -4,9 +4,16 @@ import Question, { detailedQuestions } from "../components/Question";
 import TextInput from "../components/TextInput";
 import QuestionButtons from "../components/QuestionButtons";
 
-function DetailedQuestions({ setCurrentPage }: { setCurrentPage: (pageName: Page) => void }) {
+function DetailedQuestions({
+    setCurrentPage,
+    answers,
+    setAnswers
+}: {
+    setCurrentPage: (pageName: Page) => void
+    answers: string[]
+    setAnswers: (answers: string[]) => void
+}) {
     const [currentQuestion, setCurrentQuestion] = useState<number>(0);
-    const [answers, setAnswers] = useState<string[]>(new Array(detailedQuestions.length).fill(''));
 
     const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const updatedAnswers = [...answers];

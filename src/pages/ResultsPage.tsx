@@ -73,7 +73,7 @@ function Results({
             answers.map((r, i) => `${detailedQuestions[i]} ${r}`).join("\n").trim();
     
         const postData = JSON.stringify({
-            "model": "gpt-3.5-turbo",
+            "model": "gpt-3.5-turbo", // gpt-4-turbo-preview
             "messages": [
                 {
                     "role": "system",
