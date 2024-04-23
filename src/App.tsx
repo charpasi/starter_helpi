@@ -7,7 +7,7 @@ import Footer from "./components/Footer";
 import DetailedQuestions from "./pages/DetailedQuestions";
 import BasicQuestionsPage from "./pages/basicQuestions";
 import StartupAnimation from "./components/StartupAnimation";
-import BasicQuestionsReviewPage from "./pages/ReviewAnswersBasic"; // Import BasicQuestionsReviewPage
+import BasicQuestionsReviewPage from "./components/ReviewAnswersBasic"; // Import BasicQuestionsReviewPage
 import Results from "./pages/Results";
 
 

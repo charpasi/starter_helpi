@@ -1,0 +1,53 @@
+.DetailedQuestionsReviewPage {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.DetailedQuestionsReviewPage h1 {
+    text-align: center;
+    color: #333;
+}
+
+.DetailedQuestionsReviewPage ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.DetailedQuestionsReviewPage li {
+    margin-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+.DetailedQuestionsReviewPage li:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.DetailedQuestionsReviewPage h3 {
+    color: #555;
+}
+
+.DetailedQuestionsReviewPage p {
+    color: #777;
+}
+
+.DetailedQuestionsReviewPage button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.DetailedQuestionsReviewPage button:hover {
+    background-color: #0056b3;
+}

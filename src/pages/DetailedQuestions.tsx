@@ -3,10 +3,12 @@ import { Page } from "../App";
 import Question, { detailedQuestions } from "../components/Question";
 import TextInput from "../components/TextInput";
 import QuestionButtons from "../components/QuestionButtons";
+import ReviewAnswersDetailed from "../components/ReviewAnswersDetailed"
 
 function DetailedQuestions({ setCurrentPage }: { setCurrentPage: (pageName: Page) => void }) {
     const [currentQuestion, setCurrentQuestion] = useState<number>(0);
     const [answers, setAnswers] = useState<string[]>(new Array(detailedQuestions.length).fill(''));
+    const [reviewMode, setReviewMode] = useState<boolean>(false);
 
     const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const updatedAnswers = [...answers];
@@ -23,27 +25,39 @@ function DetailedQuestions({ setCurrentPage }: { setCurrentPage: (pageName: Page
     };
 
     const handleFinish = () => {
-        console.log('Collected Answers:', answers); // placeholder for now :3
-        setCurrentPage("main"); // change to results page later
+        console.log('Collected Answers:', answers);
+        setReviewMode(true); 
     };
+    
 
     return (
         <div className="DetailedPage">
             <h1>Detailed Questions</h1>
-            <Question current={currentQuestion} questionArray={detailedQuestions}/>
-            <TextInput
-                text={answers[currentQuestion]}
-                handleTextChange={handleTextChange}
-            />
-            <QuestionButtons
-                onNext={handleNext}
-                onPrevious={handlePrevious}
-                onFinish={handleFinish}
-                current={currentQuestion}
-                length={detailedQuestions.length}
-            />
+            {reviewMode ? ( // conditionally rendering the review page again like in basic
+                <ReviewAnswersDetailed
+                    answers={answers}
+                    setCurrentPage={setCurrentPage}
+                    setReviewMode={setReviewMode}
+                />
+            ) : (
+                <>
+                    <Question current={currentQuestion} questionArray={detailedQuestions}/>
+                    <TextInput
+                        text={answers[currentQuestion]}
+                        handleTextChange={handleTextChange}
+                    />
+                    <QuestionButtons
+                        onNext={handleNext}
+                        onPrevious={handlePrevious}
+                        onFinish={handleFinish}
+                        current={currentQuestion}
+                        length={detailedQuestions.length}
+                    />
+                </>
+            )}
         </div>
     );
 }
+
 
 export default DetailedQuestions;
