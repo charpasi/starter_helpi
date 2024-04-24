@@ -1,4 +1,14 @@
+.MultipleChoiceInput {
+    display: flex;
+    justify-content: center;
+}
+
+.FormCheck {
+    margin-right: 10px; 
+}
+
 .radio-inline {
-    display: inline-block;
-    margin-right: 10px; /* Adjust spacing between radio buttons as needed */
+    display: inline-flex;
+    align-items: center; 
+    margin-right: 40px;
 }
