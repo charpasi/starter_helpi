@@ -19,18 +19,20 @@ export function MultipleChoiceInput({ selectedOption, handleOptionChange }: Mult
     return (
         <div className="MultipleChoiceInput">
             <Form>
-                {answerOptions.map((answer, index) => (
-                    <div className="radio-inline" key={index}>
-                        <Form.Check
-                            type="radio"
-                            name="responseGroup"
-                            label={answer}
-                            value={answer}
-                            checked={selectedOption === answer}
-                            onChange={handleOptionChange}
-                        />
-                    </div>
-                ))}
+                <div className="radio-group">
+                    {answerOptions.map((answer, index) => (
+                        <div className="radio-inline" key={index}>
+                            <Form.Check
+                                type="radio"
+                                name="responseGroup"
+                                label={answer}
+                                value={answer}
+                                checked={selectedOption === answer}
+                                onChange={handleOptionChange}
+                            />
+                        </div>
+                    ))}
+                </div>
             </Form>
         </div>
     );

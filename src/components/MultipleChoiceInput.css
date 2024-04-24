@@ -3,12 +3,17 @@
     justify-content: center;
 }
 
-.FormCheck {
-    margin-right: 10px; 
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .radio-inline {
-    display: inline-flex;
-    align-items: center; 
     margin-right: 30px;
+    text-align: center;
+}
+
+.radio-inline label {
+    display: block;
+    text-align: center;
 }
