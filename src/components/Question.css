@@ -1,7 +1,11 @@
+/* Question.css */
+
 .Question {
     display: flex;
     flex-direction: column;
-    align-items: left;
+    align-items: center; 
+    text-align: center; 
+    margin-bottom: 20px;
 }
 
 .Question h2 {
@@ -10,9 +14,8 @@
 
 .question-container {
     border: 1px solid purple;
-    padding: 4px;
-    width: 100%;
+    border-radius: 8px;
+    padding: 12px;
+    width: 50%;
     box-sizing: border-box;
-    margin-top: 10px;
-    margin-bottom: 10px;
 }
