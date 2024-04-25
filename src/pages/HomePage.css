@@ -15,7 +15,7 @@ div.HomePage {
 
     .intro{
         background-color: white;
-        border-radius: 25px;
+        border-radius: 10px;
         padding: 25px;
         justify-content: center;
         margin-bottom: 50px;
@@ -24,16 +24,16 @@ div.HomePage {
         text-align: center;
         font-weight: 500;
         font-family: "verdana";
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
     .quiz-wrapper {
         background-color: white;
-        border-radius: 25px;
+        border-radius: 10px;
         padding: 25px;
         justify-content: center;
         text-align: center;
         flex-wrap: wrap;
+        flex-direction: row;
         /*text*/
         color: var(--navy);
         font-weight: 500;
@@ -42,16 +42,17 @@ div.HomePage {
 
     .quiz-card {
         background-color: white;
-        border-radius: 25px;
+        border-radius: 10px;
         padding: 25px;
         justify-content: center;
         text-align: center;
         flex-wrap: wrap;
-        flex-direction: column-reverse;
-        min-width: 500px;
         > div {
-            h2, h4 {
+            h2 {
                 text-align: center;
+            }
+            h3 {
+                color: var(--morado);
             }
         }
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -59,6 +60,17 @@ div.HomePage {
     }
 
     button {
+        background-color: var(--blue);
         width: 100%;
+        /*text*/
+        color: white;
+        font-weight: bold;
+        font-family: "verdana";
     }
+
+    .quiz-card:hover {
+    background-color: darken(#0cf, 15%);
+    transform: translateY(-1px);
+}
+
 }
