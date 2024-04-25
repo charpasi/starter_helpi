@@ -4,6 +4,7 @@ import Question, { detailedQuestions } from "../components/Question";
 import TextInput from "../components/TextInput";
 import QuestionButtons from "../components/QuestionButtons";
 import ReviewAnswersDetailed from "../components/ReviewAnswersDetailed"
+import "./DetailedQuestions.css"
 
 function DetailedQuestions({ setCurrentPage }: { setCurrentPage: (pageName: Page) => void }) {
     const [currentQuestion, setCurrentQuestion] = useState<number>(0);
