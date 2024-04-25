@@ -1,5 +1,5 @@
 import './PieChart.css';
-
+/*
 interface IPie {
     x0: number;
     y0: number;
@@ -13,4 +13,4 @@ interface IPie {
     endAngle: number;
   };
   
-  export class PieChart {}
+  export class PieChart {}*/

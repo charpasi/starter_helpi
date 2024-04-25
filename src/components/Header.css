@@ -1,23 +1,57 @@
 header.Header {
+    position: fixed;
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-    background-color: var(--morado);
+    gap: 1rem;
+    background-color: rgb(41, 57, 124);
     color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
     > h1 {
-        font-size: 3rem;
+        font-family: "luminari";
+        font-size: 5rem;
+        margin-bottom: 0;
     }
 
-    > img {
-        clip-path: circle();
-        height: 6rem;
+    > img.genie-image {
+        position: absolute;
+        top: 1; /* Place at the top */
+        height: 5rem;
     }
 }
 
 header.Header.pointer {
     cursor: pointer;
+}
+
+.NavBar {
+    background-color: var(--blue);
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    text-align: left;
+    text-indent: 10px;
+    font-weight: bold;
+    width: 100%;
+}
+
+.NavBar ul {
+    margin: 0;
+    padding: 0;
+}
+
+.NavBar ul li {
+    display: inline-block;
+    margin-right: 5px;
+    cursor: pointer;
+}
+.NavBar ul li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.NavBar ul li.active {
+    font-weight: bold;
 }

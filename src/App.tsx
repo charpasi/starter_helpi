@@ -54,12 +54,6 @@ function App() {
                     }[currentPage]
                 }
             </div>
-            <div>
-                <button onClick={() => setCurrentPage("main")}>Main page</button>
-                <button onClick={() => setCurrentPage("debug")}>Debug page</button>
-                <button onClick={() => setCurrentPage("basic")}>Basic</button>
-                <button onClick={() => setCurrentPage("detailed")}>Detailed</button>
-            </div>
             <Footer
                 setKey={setKey}
                 handleSubmit={handleSubmit}

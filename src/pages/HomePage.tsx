@@ -1,9 +1,5 @@
 import "./HomePage.css";
-
 import { Page } from "../App";
-
-import genie from "../assets/pikmin.png";
-
 
 function HomePage({
     setCurrentPage
@@ -12,10 +8,7 @@ function HomePage({
 }) {
     return (
         <div className="HomePage">
-            <div>
-                <div>
-                    <img src={genie} alt="genie" className="genie-image"/>
-                </div>
+            <div className = "intro">
                 <div>
                     <h1>Do YOU Know what field you'll go into?</h1>
                     <p>
@@ -27,27 +20,26 @@ function HomePage({
                     </p>
                 </div>
             </div>
-            <div>
-                <h1>Take your personalized quiz now!</h1>
-            </div>
             <div className="quiz-wrapper">
                 <div className="quiz-card">
                     <div>
-                        <h2>Short questionnaire (5 min)</h2>
-                        <button onClick={() => setCurrentPage("basic")} className="larger">Click me!</button>
+                        <h2>Short Questionnaire </h2>
+                        <h4>Estimated: 5 minutes</h4>
                     </div>
                     <p>
                         A short, basic, multiple choice quiz catered towards those who already have an idea of what they want to do.
                     </p>
+                    <button onClick={() => setCurrentPage("basic")} className="larger">Click me!</button>
                 </div>
                 <div className="quiz-card">
                     <div>
-                        <h2>Long questionnaire (15 min)</h2>
-                        <button onClick={() => setCurrentPage("detailed")} className="larger">Click me!</button>
+                        <h2>Long Questionnaire </h2>
+                        <h4>Estimated: 15 minutes</h4>
                     </div>
                     <p>
                         Long, detailed, open ended quiz catered towards those who want a thorough list of possible career options.
                     </p>
+                    <button onClick={() => setCurrentPage("detailed")} className="larger">Click me!</button>
                 </div>
             </div>
         </div>
