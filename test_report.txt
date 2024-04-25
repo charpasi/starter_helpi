@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (27 ms)
+  ✕ renders learn react link (47 ms)
 
   ● renders learn react link
 
@@ -13,16 +13,125 @@ FAIL src/App.test.tsx
     [36m<body>[39m
       [36m<div>[39m
         [36m<div[39m
-          [33mclass[39m=[32m"startup-animation"[39m
+          [33mclass[39m=[32m"App"[39m
         [36m>[39m
-          [36m<img[39m
-            [33malt[39m=[32m"Logo"[39m
-            [33mclass[39m=[32m"genie"[39m
-            [33msrc[39m=[32m"pikmin.png"[39m
-          [36m/>[39m
+          [36m<header[39m
+            [33mclass[39m=[32m"Header "[39m
+          [36m>[39m
+            [36m<img[39m
+              [33malt[39m=[32m"logo"[39m
+              [33msrc[39m=[32m"logo.jpg"[39m
+            [36m/>[39m
+            [36m<h1>[39m
+              [0mCareer Genie[0m
+            [36m</h1>[39m
+          [36m</header>[39m
           [36m<div[39m
-            [33mclass[39m=[32m"loading-bar"[39m
-          [36m/>[39m
+            [33mclass[39m=[32m"page-renderer"[39m
+          [36m>[39m
+            [36m<div[39m
+              [33mclass[39m=[32m"HomePage"[39m
+            [36m>[39m
+              [36m<div>[39m
+                [36m<div>[39m
+                  [36m<img[39m
+                    [33malt[39m=[32m"genie"[39m
+                    [33mclass[39m=[32m"genie-image"[39m
+                    [33msrc[39m=[32m"pikmin.png"[39m
+                  [36m/>[39m
+                [36m</div>[39m
+                [36m<div>[39m
+                  [36m<h1>[39m
+                    [0mDo YOU Know what field you'll go into?[0m
+                  [36m</h1>[39m
+                  [36m<p>[39m
+                    [0mA quarter of high school graduates still have no idea what career they'd like to have post-graduation. But don't worry: you're in good hands. Meet the Career Genie: a helpful purple spirit tasked with figuring out what makes you tick. With Career Genie, discovering your ideal career path isn't just a quiz—it's an adventure tailored uniquely to you. Our intuitive platform leverages the latest in AI technology to provide you the insights that illuminate your true calling. Take one of our personalized quizzes to narrow down your interests, and maybe find the future career that's right for you![0m
+                  [36m</p>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+              [36m<div>[39m
+                [36m<h1>[39m
+                  [0mTake your personalized quiz now![0m
+                [36m</h1>[39m
+              [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"quiz-wrapper"[39m
+              [36m>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"quiz-card"[39m
+                [36m>[39m
+                  [36m<div>[39m
+                    [36m<h2>[39m
+                      [0mShort questionnaire (5 min)[0m
+                    [36m</h2>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"larger"[39m
+                    [36m>[39m
+                      [0mClick me![0m
+                    [36m</button>[39m
+                  [36m</div>[39m
+                  [36m<p>[39m
+                    [0mA short, basic, multiple choice quiz catered towards those who already have an idea of what they want to do.[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+                [36m<div[39m
+                  [33mclass[39m=[32m"quiz-card"[39m
+                [36m>[39m
+                  [36m<div>[39m
+                    [36m<h2>[39m
+                      [0mLong questionnaire (15 min)[0m
+                    [36m</h2>[39m
+                    [36m<button[39m
+                      [33mclass[39m=[32m"larger"[39m
+                    [36m>[39m
+                      [0mClick me![0m
+                    [36m</button>[39m
+                  [36m</div>[39m
+                  [36m<p>[39m
+                    [0mLong, detailed, open ended quiz catered towards those who want a thorough list of possible career options.[0m
+                  [36m</p>[39m
+                [36m</div>[39m
+              [36m</div>[39m
+            [36m</div>[39m
+          [36m</div>[39m
+          [36m<footer[39m
+            [33mclass[39m=[32m"Footer"[39m
+          [36m>[39m
+            [36m<div>[39m
+              [36m<p>[39m
+                [0mCareer Genie™ All Rights Reserved[0m
+              [36m</p>[39m
+            [36m</div>[39m
+            [36m<div>[39m
+              [36m<p>[39m
+                [36m<a[39m
+                  [33mhref[39m=[32m"www.google.com"[39m
+                [36m>[39m
+                  [0mContact us here[0m
+                [36m</a>[39m
+              [36m</p>[39m
+            [36m</div>[39m
+            [36m<div>[39m
+              [0mRoger Cronin, Charmaine Pasicolan, Matthew Nadar[0m
+            [36m</div>[39m
+            [36m<div>[39m
+              [36m<form[39m
+                [33mclass[39m=[32m""[39m
+              [36m>[39m
+                [36m<input[39m
+                  [33mclass[39m=[32m"form-control"[39m
+                  [33mplaceholder[39m=[32m"API Key"[39m
+                  [33mtype[39m=[32m"password"[39m
+                [36m/>[39m
+                [36m<button[39m
+                  [33mclass[39m=[32m"submit-api-key btn btn-primary"[39m
+                  [33mtype[39m=[32m"button"[39m
+                [36m>[39m
+                  [0mApply[0m
+                [36m</button>[39m
+              [36m</form>[39m
+            [36m</div>[39m
+          [36m</footer>[39m
         [36m</div>[39m
       [36m</div>[39m
     [36m</body>[39m
@@ -45,37 +154,6 @@ FAIL src/App.test.tsx
       at _run10000 (node_modules/@jest/core/build/cli/index.js:320:7)
       at runCLI (node_modules/@jest/core/build/cli/index.js:173:3)
 
-----------------------------|---------|----------|---------|---------|-------------------
-File                        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-----------------------------|---------|----------|---------|---------|-------------------
-All files                   |   20.18 |       10 |    7.84 |   20.58 |                   
- src                        |   31.03 |       25 |   11.11 |   32.14 |                   
-  App.tsx                   |      50 |       50 |   14.28 |   52.94 | 18,29-30,37-61    
-  index.tsx                 |       0 |      100 |     100 |       0 | 7-19              
-  reportWebVitals.ts        |       0 |        0 |       0 |       0 | 3-10              
- src/components             |    32.5 |        0 |   13.04 |   31.57 |                   
-  Footer.tsx                |       0 |      100 |       0 |       0 | 14-17             
-  Header.tsx                |       0 |        0 |       0 |       0 | 15-23             
-  MultipleChoiceInput.tsx   |       0 |      100 |       0 |       0 | 11-24             
-  PieChart.tsx              |       0 |        0 |       0 |       0 |                   
-  ProgressBar.tsx           |      25 |      100 |       0 |      25 | 10-13             
-  Question.tsx              |      60 |      100 |       0 |      60 | 55-56             
-  QuestionButtons.tsx       |      50 |      100 |       0 |      50 | 15                
-  ReviewAnswersBasic.tsx    |      20 |        0 |       0 |      20 | 14-27             
-  ReviewAnswersDetailed.tsx |      20 |      100 |       0 |      20 | 14-26             
-  StartupAnimation.tsx      |     100 |      100 |     100 |     100 |                   
-  TextInput.tsx             |       0 |      100 |       0 |       0 | 11                
- src/pages                  |       0 |        0 |       0 |       0 |                   
-  DetailedQuestions.tsx     |       0 |        0 |       0 |       0 | 10-34             
-  HomePage.tsx              |       0 |      100 |       0 |       0 | 13-46             
-  Results.tsx               |       0 |      100 |       0 |       0 | 9                 
-  basicQuestions.tsx        |       0 |        0 |       0 |       0 | 12-39             
-----------------------------|---------|----------|---------|---------|-------------------
-Test Suites: 1 failed, 1 total
-Tests:       1 failed, 1 total
-Snapshots:   0 total
-Time:        3.239 s
-Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
 declaring it in its dependencies. This is currently working because
@@ -88,3 +166,35 @@ ever be fixed. Add "@babel/plugin-proposal-private-property-in-object" to
 your devDependencies to work around this error. This will make this message
 go away.[0m
   
+----------------------------|---------|----------|---------|---------|-------------------
+File                        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------------------------|---------|----------|---------|---------|-------------------
+All files                   |   14.36 |        4 |    6.66 |   15.33 |                   
+ src                        |   41.66 |    16.66 |      25 |   41.66 |                   
+  App.tsx                   |   76.92 |       50 |      50 |   76.92 | 17,31-32          
+  index.tsx                 |       0 |      100 |     100 |       0 | 6-17              
+  reportWebVitals.ts        |       0 |        0 |       0 |       0 | 3-10              
+ src/components             |   27.77 |     12.5 |    9.09 |   28.57 |                   
+  CareerDisplay.tsx         |       0 |      100 |       0 |       0 | 9                 
+  Footer.tsx                |      50 |      100 |      50 |      50 | 14                
+  Header.tsx                |   28.57 |    16.66 |   33.33 |   33.33 | 16-18,23          
+  LoadingAnimation.tsx      |       0 |      100 |       0 |       0 | 5                 
+  MultipleChoiceInput.tsx   |       0 |      100 |       0 |       0 | 11-24             
+  PieChart.tsx              |       0 |        0 |       0 |       0 |                   
+  ProgressBar.tsx           |      25 |      100 |       0 |      25 | 10-13             
+  Question.tsx              |      60 |      100 |       0 |      60 | 55-56             
+  QuestionButtons.tsx       |      50 |      100 |       0 |      50 | 15                
+  ReviewAnswersBasic.tsx    |      20 |        0 |       0 |      20 | 14-27             
+  ReviewAnswersDetailed.tsx |      20 |      100 |       0 |      20 | 14-26             
+  TextInput.tsx             |       0 |      100 |       0 |       0 | 11                
+ src/pages                  |    4.38 |        0 |    2.94 |     4.8 |                   
+  BasicQuestionsPage.tsx    |       0 |        0 |       0 |       0 | 20-54             
+  DetailedQuestionsPage.tsx |       0 |        0 |       0 |       0 | 18-41             
+  HomePage.tsx              |   14.28 |      100 |      20 |   14.28 | 15-21,48-57       
+  ResultsPage.tsx           |    5.97 |        0 |       0 |    6.45 | 78-219            
+----------------------------|---------|----------|---------|---------|-------------------
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 total
+Snapshots:   0 total
+Time:        3.32 s
+Ran all test suites.
