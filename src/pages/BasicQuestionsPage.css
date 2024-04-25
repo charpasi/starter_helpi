@@ -1,5 +1,5 @@
 div.BasicPage {
-  margin-top: 200px;
+  margin-top: 210px;
   display: block;
   justify-content: center;
   font-family: Verdana;
@@ -7,7 +7,7 @@ div.BasicPage {
 }
 
 div.Title {
-  color: var(--morado);
+  color: purple;
   text-align: center;
   font-size: 50px;
   justify-content: center;

@@ -3,7 +3,6 @@ import { useCallback } from "react";
 import "./Header.css";
 
 import { Page } from "../App";
-import logo from "../assets/logo.jpg";
 import genie from "../assets/pikmin.png";
 
 

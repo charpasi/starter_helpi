@@ -1,8 +1,11 @@
-.DetailedPage {
-    margin-top: 200px;
-    text-align: center; /* Center align all text content */
+div.DetailedPage {
+    margin-top: 210px;
+    font-family: Verdana;
+    font-weight: 600;
+    text-align: center;
+    color: purple;
 }
 
 .DetailedPage h1 {
-    margin-bottom: 20px; /* Add margin for spacing */
+    margin-bottom: 20px; 
 }
