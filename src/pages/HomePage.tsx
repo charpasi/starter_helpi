@@ -1,11 +1,24 @@
 import "./HomePage.css";
 import { Page } from "../App";
+import genie from "../assets/pikmin.png";
 
 function HomePage({
-    setCurrentPage
+    setCurrentPage,
+    setCurrentQuiz
 }: {
     setCurrentPage: (pageName: Page) => void
+    setCurrentQuiz: (quiz: "basic" | "detailed") => void
 }) {
+    function navigateToBasicQuestions() {
+        setCurrentQuiz("basic");
+        setCurrentPage("basic");
+    }
+
+    function navigateToDetailedQuestions() {
+        setCurrentQuiz("detailed");
+        setCurrentPage("detailed");
+    }
+
     return (
         <div className="HomePage">
             <div className = "intro">
@@ -23,23 +36,23 @@ function HomePage({
             <div className="quiz-wrapper">
                 <div className="quiz-card">
                     <div>
-                        <h2>Short Questionnaire </h2>
-                        <h4>Estimated: 5 minutes</h4>
+                        <h2>Basic Quiz</h2>
+                        <h3>Estimated: 5 minutes</h3>
+                        <button onClick={() => navigateToBasicQuestions()} className="larger">Click me!</button>
                     </div>
                     <p>
                         A short, basic, multiple choice quiz catered towards those who already have an idea of what they want to do.
                     </p>
-                    <button onClick={() => setCurrentPage("basic")} className="larger">Click me!</button>
                 </div>
                 <div className="quiz-card">
                     <div>
-                        <h2>Long Questionnaire </h2>
-                        <h4>Estimated: 15 minutes</h4>
+                        <h2>Detailed Quiz</h2>
+                        <h3>Estimated: 15 minutes</h3>
+                        <button onClick={() => navigateToDetailedQuestions()} className="larger">Click me!</button>
                     </div>
                     <p>
                         Long, detailed, open ended quiz catered towards those who want a thorough list of possible career options.
                     </p>
-                    <button onClick={() => setCurrentPage("detailed")} className="larger">Click me!</button>
                 </div>
             </div>
         </div>

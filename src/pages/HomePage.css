@@ -2,6 +2,7 @@ div.HomePage {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    margin-top: 200px;
 
     > div {
         display: flex;
@@ -12,30 +13,52 @@ div.HomePage {
         width: 100%;
     }
 
-    .quiz-wrapper {
-        flex-wrap: wrap;
+    .intro{
+        background-color: white;
+        border-radius: 25px;
+        padding: 25px;
+        justify-content: center;
+        margin-bottom: 50px;
+        /*text*/
+        color: var(--navy);
+        text-align: center;
+        font-weight: 500;
+        font-family: "verdana";
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     }
 
-    .genie-image {
-        width: 315px;
-        height: 315px;
-        object-fit: cover;
-        border: 0.25rem solid black;
-        object-position: 10% 60%;
-        border-radius: 1rem;
+    .quiz-wrapper {
+        background-color: white;
+        border-radius: 25px;
+        padding: 25px;
+        justify-content: center;
+        text-align: center;
+        flex-wrap: wrap;
+        /*text*/
+        color: var(--navy);
+        font-weight: 500;
+        font-family: "verdana";
+    }
+
+    .quiz-card {
+        background-color: white;
+        border-radius: 25px;
+        padding: 25px;
+        justify-content: center;
+        text-align: center;
+        flex-wrap: wrap;
+        flex-direction: column-reverse;
+        min-width: 500px;
+        > div {
+            h2, h4 {
+                text-align: center;
+            }
+        }
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
     }
 
     button {
         width: 100%;
-    }
-
-    .quiz-card {
-        min-width: 500px;
-
-        > div {
-            h2 {
-                text-align: center;
-            }
-        }
     }
 }

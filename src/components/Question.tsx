@@ -42,8 +42,8 @@ export const detailedQuestions: string[] = [
     "How do you manage your time and prioritize tasks?",
     "What extracurricular activities or hobbies reflect your interests?",
     "What do you hope to achieve through your career?",
-    "What extracurricular activities or hobbies do you enjoy in your free time?"
-    ,"How do you handle pressure and tight deadlines?"
+    "What extracurricular activities or hobbies do you enjoy in your free time?",
+    "How do you handle pressure and tight deadlines?"
 ];
 
 interface QuestionProps {

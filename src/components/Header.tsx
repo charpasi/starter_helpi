@@ -28,7 +28,6 @@ function Header({
             <nav className="NavBar">
                 <ul>
                     <li onClick={() => setCurrentPage("main")}>Main Page</li>
-                    <li onClick={() => setCurrentPage("debug")}>Debug Page</li>
                     <li onClick={() => setCurrentPage("basic")}>Basic Quiz</li>
                     <li onClick={() => setCurrentPage("detailed")}>Detailed Quiz</li>
                 </ul>
