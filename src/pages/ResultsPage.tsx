@@ -99,7 +99,7 @@ function ResultsPage({
             setCareers(careerList);
             setLoading(false);
         });
-    }, []);
+    }, [basicAnswers, detailedAnswers, currentQuiz, loading]);
 
     if(!!loading) {
         return <LoadingAnimation/>;
