@@ -2,16 +2,27 @@ div.BasicPage {
   margin-top: 200px;
   display: block;
   justify-content: center;
+  font-family: Verdana;
+  font-weight: 600;
 }
 
 div.Title {
+  color: var(--morado);
   text-align: center;
   font-size: 50px;
   justify-content: center;
-  margin-bottom: 0px;
 }
 
 div.Description {
   text-align: center;
   justify-content: center;
+  color: var(--morado);
+}
+
+div.Options {
+  color: var(--morado);
+}
+
+.radio-inline input[type="radio"]:checked + label {
+  color: var(--blue); 
 }

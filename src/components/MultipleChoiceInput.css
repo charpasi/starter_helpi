@@ -17,3 +17,11 @@
     display: block;
     text-align: center;
 }
+
+.radio-inline input[type="radio"] {
+    transform: scale(1.5); 
+}
+
+.radio-inline input[type="radio"] {
+    accent-color: var(--blue);
+}
