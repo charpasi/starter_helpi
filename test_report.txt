@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (28 ms)
+  ✕ renders learn react link (27 ms)
 
   ● renders learn react link
 
@@ -56,17 +56,17 @@ All files                   |   20.18 |       10 |    7.84 |   20.58 |
  src/components             |    32.5 |        0 |   13.04 |   31.57 |                   
   Footer.tsx                |       0 |      100 |       0 |       0 | 14-17             
   Header.tsx                |       0 |        0 |       0 |       0 | 15-23             
-  MultipleChoiceInput.tsx   |       0 |      100 |       0 |       0 | 11-23             
+  MultipleChoiceInput.tsx   |       0 |      100 |       0 |       0 | 11-24             
   PieChart.tsx              |       0 |        0 |       0 |       0 |                   
   ProgressBar.tsx           |      25 |      100 |       0 |      25 | 10-13             
   Question.tsx              |      60 |      100 |       0 |      60 | 55-56             
-  QuestionButtons.tsx       |      50 |      100 |       0 |      50 | 14                
+  QuestionButtons.tsx       |      50 |      100 |       0 |      50 | 15                
   ReviewAnswersBasic.tsx    |      20 |        0 |       0 |      20 | 14-27             
   ReviewAnswersDetailed.tsx |      20 |      100 |       0 |      20 | 14-26             
   StartupAnimation.tsx      |     100 |      100 |     100 |     100 |                   
   TextInput.tsx             |       0 |      100 |       0 |       0 | 11                
  src/pages                  |       0 |        0 |       0 |       0 |                   
-  DetailedQuestions.tsx     |       0 |        0 |       0 |       0 | 9-33              
+  DetailedQuestions.tsx     |       0 |        0 |       0 |       0 | 10-34             
   HomePage.tsx              |       0 |      100 |       0 |       0 | 13-46             
   Results.tsx               |       0 |      100 |       0 |       0 | 9                 
   basicQuestions.tsx        |       0 |        0 |       0 |       0 | 12-39             
@@ -74,7 +74,7 @@ All files                   |   20.18 |       10 |    7.84 |   20.58 |
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.174 s
+Time:        3.239 s
 Ran all test suites.
 [0;33mOne of your dependencies, babel-preset-react-app, is importing the
 "@babel/plugin-proposal-private-property-in-object" package without
