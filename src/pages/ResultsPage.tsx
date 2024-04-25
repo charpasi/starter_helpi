@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 
 import LoadingAnimation from "../components/LoadingAnimation";
 
+import { Career, CareerDisplay } from "../components/CareerDisplay";
 import { saveKeyData, Page } from "../App";
 import { basicQuestions, detailedQuestions } from "../components/Question";
+
+const useApi = false;
 
 type ResponseObject = {
     id: string,
@@ -27,20 +30,13 @@ type ResponseObject = {
     }
 };
 
-type Career = {
-    name: string,
-    startingSalaryString: string,
-    description: string,
-    explanation: string
-}
-
 const basicQuestionsSystem = `You are tasked with helping a user find the best career for them based on a questionnaire. You will be provided input as follows:
 
 [Question 1 text]. [Response]&&&
 [Question 2 text]. [Response]&&&
 ...
 
-Response can be "Strongly Disagree", "Disagree", "Neither", "Agree", or "Strongly Agree". Each question and response will be separated by "&&&" as shown above.
+Response can be "Strongly Disagree", "Disagree", "Neither", "Agree", or "Strongly Agree". Each question and response pair will be separated by "&&&" as shown above.
 
 Please format your responses in this format:
 [Career name] - $[Starting salary]###[Short description of career]###[Short explanation as to why this career would be good]###
@@ -53,12 +49,20 @@ const detailedQuestionsSystem = `You are tasked with helping a user find the bes
 [Question 2 text]? [Response]&&&
 ...
 
-Each question and response will be separated by "&&&" as shown above.
+Each question and response pair will be separated by "&&&" as shown above.
 
 Please format your responses in this format:
 [Career name] - $[starting salary]###[Short description of career]###[Short explanation as to why this career would be good]###
 
 Please do not write anything else in your response other than information in the above format. Please respond with four different careers on different lines.`;
+
+const exampleResponseText = `Art Therapist - $40,000###Art therapists use the creative process of art-making to improve and enhance the physical, mental, and emotional well-being of individuals. This career would be good for you as it allows you to express your creativity, help others, and make a positive impact through your work.###
+
+Project Manager - $60,000###Project managers are responsible for planning, overseeing, and leading projects from initiation through completion. Your natural leadership ability, strong teamwork skills, and proficiency in time management make this a suitable career choice for you.###
+
+Social Worker - $45,000###Social workers help individuals, families, and communities deal with their personal and social problems. Your desire to help others, work well with people, and make a positive impact align well with this career.###
+
+Urban Planner - $50,000###Urban planners develop plans and programs for the use of land. Your logical problem-solving skills, ability to work well with others, and desire to create a positive impact on the community make this career a good fit for you.###`;
 
 function ResultsPage({
     setCurrentPage,
@@ -108,8 +112,8 @@ function ResultsPage({
         }
 
         const answersText = type === "basic" ?
-            answers.map((r, i) => `${basicQuestions[i]} ${r}`).join("\n").trim() :
-            answers.map((r, i) => `${detailedQuestions[i]} ${r}`).join("\n").trim();
+            answers.map((r, i) => `${basicQuestions[i]} ${r}&&&`).join("\n").trim() :
+            answers.map((r, i) => `${detailedQuestions[i]} ${r}&&&`).join("\n").trim();
     
         const postData = JSON.stringify({
             "model": "gpt-3.5-turbo", // gpt-4-turbo-preview
@@ -126,14 +130,29 @@ function ResultsPage({
             "max_tokens": 400
         });
     
-        const response = await fetch("https://api.openai.com/v1/chat/completions", {
+        const response = useApi ? await fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "Authorization": `Bearer ${JSON.parse(localStorage.getItem(saveKeyData) || "")}`
             },
             body: postData
-        });
+        }) : {
+            ok: true,
+            json: async () => new Promise((res, _) => {
+                setTimeout(() => {
+                    res({
+                        choices: [
+                            {
+                                message: {
+                                    content: exampleResponseText
+                                }
+                            }
+                        ]
+                    });
+                }, 2000);
+            })
+        };
     
         if(!response.ok) {
             console.error("Open AI API did not return a valid response");
@@ -191,7 +210,13 @@ function ResultsPage({
 
     return (
         <div className="Results">
-            <p>Results :3</p>
+            <h1 className="center">Your Future Careers!</h1>
+            {
+                careers.map(c => (
+                    <CareerDisplay career={c}/>
+                ))
+            }
+            <button onClick={() => setCurrentPage("main")}>Return home</button>
         </div>
     )
 }
