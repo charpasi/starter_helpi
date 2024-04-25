@@ -1,4 +1,19 @@
+.MultipleChoiceInput {
+    display: flex;
+    justify-content: center;
+}
+
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .radio-inline {
-    display: inline-block;
-    margin-right: 10px; /* Adjust spacing between radio buttons as needed */
+    margin-right: 30px;
+    text-align: center;
+}
+
+.radio-inline label {
+    display: block;
+    text-align: center;
 }

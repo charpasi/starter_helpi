@@ -40,7 +40,7 @@ const basicQuestionsSystem = `You are tasked with helping a user find the best c
 [Question 2 text]. [Response]&&&
 ...
 
-Response can be "Strongly disagree", "Disagree", "Neither agree nor disagree", "Agree", or "Strongly agree". Each question and response will be separated by "&&&" as shown above.
+Response can be "Strongly Disagree", "Disagree", "Neither", "Agree", or "Strongly Agree". Each question and response will be separated by "&&&" as shown above.
 
 Please format your responses in this format:
 [Career name] - $[Starting salary]###[Short description of career]###[Short explanation as to why this career would be good]###
@@ -77,13 +77,15 @@ function ResultsPage({
     useEffect(() => {
         if(loading !== null) return;
 
+        console.log("Contacting genie...");
+
         setLoading(true);
 
         const apiResponse = currentQuiz === "basic" ?
             getQuestionsResponse(basicAnswers, "basic") :
             getQuestionsResponse(detailedAnswers, "detailed");
 
-            apiResponse.then(careerList => {
+        apiResponse.then(careerList => {
             if(careerList === null) {
                 console.error("Cannot update results page");
                 alert("Fatal error while contacting the genie. Try rubbing the lamp again in a few minutes.");
@@ -93,9 +95,9 @@ function ResultsPage({
             setCareers(careerList);
             setLoading(false);
         });
-    });
+    }, []);
 
-    if(!loading) {
+    if(!!loading) {
         return <LoadingAnimation/>;
     }
 
@@ -145,9 +147,13 @@ function ResultsPage({
             console.error("Open AI API did not return a valid response object");
             return null;
         }
+
+        console.log(textResponse);
     
         const careers = [];
-        for(const careerText of textResponse.split("\n\n")) {
+        for(const careerText of textResponse.split("\n")) {
+            if(!careerText) continue;
+            
             const careerInfo = careerText.split("###").map(i => i.trim());
             const nameAndSalary = careerInfo[0].split("-").map(i => i.trim());
     
@@ -173,6 +179,11 @@ function ResultsPage({
             careers.push(career);
         }
     
+        if(careers.length === 0) {
+            console.error("Parsed career array is of length 0");
+            return null;
+        }
+
         return careers;
     }
 

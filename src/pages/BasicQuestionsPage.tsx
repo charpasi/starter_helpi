@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Page } from '../App';
 import Question, { basicQuestions } from '../components/Question';
 import { MultipleChoiceInput } from '../components/MultipleChoiceInput';
 import QuestionButtons from '../components/QuestionButtons';
 import BasicQuestionsReviewPage from '../components/ReviewAnswersBasic'; 
-import "./BasicQuestions.css";
+import "./BasicQuestionsPage.css";
 
 function BasicQuestionsPage({
     setCurrentPage,
@@ -19,6 +19,14 @@ function BasicQuestionsPage({
 }) {
     const [currentQuestion, setCurrentQuestion] = useState<number>(0);
     const [reviewMode, setReviewMode] = useState<boolean>(false);
+
+    const [running, setRunning] = useState<boolean>(false);
+
+    useEffect(() => {
+        if(running) return;
+        setRunning(true);
+        console.log("Running");
+    }, [running]); // https://stackoverflow.com/questions/60618844/react-hooks-useeffect-is-called-twice-even-if-an-empty-array-is-used-as-an-ar
 
     const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newAnswers = [...answers];
