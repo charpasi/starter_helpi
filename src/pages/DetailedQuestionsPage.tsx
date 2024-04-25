@@ -6,9 +6,16 @@ import QuestionButtons from "../components/QuestionButtons";
 import ReviewAnswersDetailed from "../components/ReviewAnswersDetailed"
 import "./DetailedQuestions.css"
 
-function DetailedQuestions({ setCurrentPage }: { setCurrentPage: (pageName: Page) => void }) {
+function DetailedQuestionsPage({
+    setCurrentPage,
+    answers,
+    setAnswers
+}: {
+    setCurrentPage: (pageName: Page) => void
+    answers: string[]
+    setAnswers: (answers: string[]) => void
+}) {
     const [currentQuestion, setCurrentQuestion] = useState<number>(0);
-    const [answers, setAnswers] = useState<string[]>(new Array(detailedQuestions.length).fill(''));
     const [reviewMode, setReviewMode] = useState<boolean>(false);
 
     const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,5 +67,4 @@ function DetailedQuestions({ setCurrentPage }: { setCurrentPage: (pageName: Page
     );
 }
 
-
-export default DetailedQuestions;
+export default DetailedQuestionsPage;

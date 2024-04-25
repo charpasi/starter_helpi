@@ -12,6 +12,10 @@
     flex-direction: column;
 }
 
+.center {
+    text-align: center;
+}
+
 div.page-renderer {
     margin: 2rem 4rem;
 }
