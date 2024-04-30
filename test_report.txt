@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (58 ms)
+  ✕ renders learn react link (68 ms)
 
   ● renders learn react link
 
@@ -186,13 +186,13 @@ go away.[0m
 ----------------------------|---------|----------|---------|---------|-------------------
 File                        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------------------|---------|----------|---------|---------|-------------------
-All files                   |   13.81 |     3.84 |    6.25 |    14.7 |                   
+All files                   |   13.73 |     3.84 |    6.15 |   14.61 |                   
  src                        |   41.66 |    16.66 |      25 |   41.66 |                   
   App.tsx                   |   76.92 |       50 |      50 |   76.92 | 17,31-32          
   index.tsx                 |       0 |      100 |     100 |       0 | 6-17              
   reportWebVitals.ts        |       0 |        0 |       0 |       0 | 3-10              
  src/components             |    23.8 |       10 |       8 |   24.39 |                   
-  CareerDisplay.tsx         |       0 |      100 |       0 |       0 | 9                 
+  CareerDisplay.tsx         |       0 |      100 |       0 |       0 | 11                
   Footer.tsx                |      50 |      100 |      50 |      50 | 14                
   Header.tsx                |   15.38 |     12.5 |   16.66 |   16.66 | 17-23,30-39       
   LoadingAnimation.tsx      |       0 |      100 |       0 |       0 | 5                 
@@ -204,14 +204,14 @@ All files                   |   13.81 |     3.84 |    6.25 |    14.7 |
   ReviewAnswersBasic.tsx    |      20 |        0 |       0 |      20 | 14-27             
   ReviewAnswersDetailed.tsx |      20 |      100 |       0 |      20 | 14-26             
   TextInput.tsx             |       0 |      100 |       0 |       0 | 11                
- src/pages                  |    4.34 |        0 |    2.85 |    4.76 |                   
+ src/pages                  |    4.31 |        0 |    2.77 |    4.71 |                   
   BasicQuestionsPage.tsx    |       0 |        0 |       0 |       0 | 20-54             
   DetailedQuestionsPage.tsx |       0 |        0 |       0 |       0 | 18-41             
   HomePage.tsx              |    12.5 |      100 |   16.66 |    12.5 | 12-18,40-57       
-  ResultsPage.tsx           |    5.97 |        0 |       0 |    6.45 | 78-219            
+  ResultsPage.tsx           |    5.88 |        0 |       0 |    6.34 | 80-227            
 ----------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.371 s
+Time:        3.317 s
 Ran all test suites.
