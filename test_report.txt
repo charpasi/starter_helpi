@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (47 ms)
+  ✕ renders learn react link (48 ms)
 
   ● renders learn react link
 
@@ -18,13 +18,29 @@ FAIL src/App.test.tsx
           [36m<header[39m
             [33mclass[39m=[32m"Header "[39m
           [36m>[39m
-            [36m<img[39m
-              [33malt[39m=[32m"logo"[39m
-              [33msrc[39m=[32m"logo.jpg"[39m
-            [36m/>[39m
             [36m<h1>[39m
               [0mCareer Genie[0m
             [36m</h1>[39m
+            [36m<img[39m
+              [33malt[39m=[32m"genie"[39m
+              [33mclass[39m=[32m"genie-image"[39m
+              [33msrc[39m=[32m"pikmin.png"[39m
+            [36m/>[39m
+            [36m<nav[39m
+              [33mclass[39m=[32m"NavBar"[39m
+            [36m>[39m
+              [36m<ul>[39m
+                [36m<li>[39m
+                  [0mMain Page[0m
+                [36m</li>[39m
+                [36m<li>[39m
+                  [0mBasic Quiz[0m
+                [36m</li>[39m
+                [36m<li>[39m
+                  [0mDetailed Quiz[0m
+                [36m</li>[39m
+              [36m</ul>[39m
+            [36m</nav>[39m
           [36m</header>[39m
           [36m<div[39m
             [33mclass[39m=[32m"page-renderer"[39m
@@ -32,14 +48,9 @@ FAIL src/App.test.tsx
             [36m<div[39m
               [33mclass[39m=[32m"HomePage"[39m
             [36m>[39m
-              [36m<div>[39m
-                [36m<div>[39m
-                  [36m<img[39m
-                    [33malt[39m=[32m"genie"[39m
-                    [33mclass[39m=[32m"genie-image"[39m
-                    [33msrc[39m=[32m"pikmin.png"[39m
-                  [36m/>[39m
-                [36m</div>[39m
+              [36m<div[39m
+                [33mclass[39m=[32m"intro"[39m
+              [36m>[39m
                 [36m<div>[39m
                   [36m<h1>[39m
                     [0mDo YOU Know what field you'll go into?[0m
@@ -49,11 +60,6 @@ FAIL src/App.test.tsx
                   [36m</p>[39m
                 [36m</div>[39m
               [36m</div>[39m
-              [36m<div>[39m
-                [36m<h1>[39m
-                  [0mTake your personalized quiz now![0m
-                [36m</h1>[39m
-              [36m</div>[39m
               [36m<div[39m
                 [33mclass[39m=[32m"quiz-wrapper"[39m
               [36m>[39m
@@ -62,8 +68,11 @@ FAIL src/App.test.tsx
                 [36m>[39m
                   [36m<div>[39m
                     [36m<h2>[39m
-                      [0mShort questionnaire (5 min)[0m
+                      [0mBasic Quiz[0m
                     [36m</h2>[39m
+                    [36m<h3>[39m
+                      [0mEstimated: 5 minutes[0m
+                    [36m</h3>[39m
                     [36m<button[39m
                       [33mclass[39m=[32m"larger"[39m
                     [36m>[39m
@@ -79,8 +88,11 @@ FAIL src/App.test.tsx
                 [36m>[39m
                   [36m<div>[39m
                     [36m<h2>[39m
-                      [0mLong questionnaire (15 min)[0m
+                      [0mDetailed Quiz[0m
                     [36m</h2>[39m
+                    [36m<h3>[39m
+                      [0mEstimated: 15 minutes[0m
+                    [36m</h3>[39m
                     [36m<button[39m
                       [33mclass[39m=[32m"larger"[39m
                     [36m>[39m
@@ -169,17 +181,18 @@ go away.[0m
 ----------------------------|---------|----------|---------|---------|-------------------
 File                        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------------------|---------|----------|---------|---------|-------------------
-All files                   |   14.36 |        4 |    6.66 |   15.33 |                   
+All files                   |   13.81 |        4 |    5.97 |    14.7 |                   
  src                        |   41.66 |    16.66 |      25 |   41.66 |                   
   App.tsx                   |   76.92 |       50 |      50 |   76.92 | 17,31-32          
   index.tsx                 |       0 |      100 |     100 |       0 | 6-17              
   reportWebVitals.ts        |       0 |        0 |       0 |       0 | 3-10              
- src/components             |   27.77 |     12.5 |    9.09 |   28.57 |                   
+ src/components             |   23.25 |     12.5 |    6.89 |    23.8 |                   
   CareerDisplay.tsx         |       0 |      100 |       0 |       0 | 9                 
   Footer.tsx                |      50 |      100 |      50 |      50 | 14                
-  Header.tsx                |   28.57 |    16.66 |   33.33 |   33.33 | 16-18,23          
+  Header.tsx                |      20 |    16.66 |   16.66 |   22.22 | 17-19,24-31       
   LoadingAnimation.tsx      |       0 |      100 |       0 |       0 | 5                 
   MultipleChoiceInput.tsx   |       0 |      100 |       0 |       0 | 11-24             
+  NavBar.tsx                |       0 |      100 |       0 |       0 | 10-15             
   PieChart.tsx              |       0 |        0 |       0 |       0 |                   
   ProgressBar.tsx           |      25 |      100 |       0 |      25 | 10-13             
   Question.tsx              |      60 |      100 |       0 |      60 | 55-56             
@@ -190,11 +203,11 @@ All files                   |   14.36 |        4 |    6.66 |   15.33 |
  src/pages                  |    4.38 |        0 |    2.94 |     4.8 |                   
   BasicQuestionsPage.tsx    |       0 |        0 |       0 |       0 | 20-54             
   DetailedQuestionsPage.tsx |       0 |        0 |       0 |       0 | 18-41             
-  HomePage.tsx              |   14.28 |      100 |      20 |   14.28 | 15-21,48-57       
+  HomePage.tsx              |   14.28 |      100 |      20 |   14.28 | 12-18,40-50       
   ResultsPage.tsx           |    5.97 |        0 |       0 |    6.45 | 78-219            
 ----------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.32 s
+Time:        3.64 s
 Ran all test suites.
