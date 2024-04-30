@@ -3,7 +3,7 @@
 > react-scripts test --coverage
 
 FAIL src/App.test.tsx
-  ✕ renders learn react link (48 ms)
+  ✕ renders learn react link (58 ms)
 
   ● renders learn react link
 
@@ -16,9 +16,11 @@ FAIL src/App.test.tsx
           [33mclass[39m=[32m"App"[39m
         [36m>[39m
           [36m<header[39m
-            [33mclass[39m=[32m"Header "[39m
+            [33mclass[39m=[32m"Header"[39m
           [36m>[39m
-            [36m<h1>[39m
+            [36m<h1[39m
+              [33mclass[39m=[32m""[39m
+            [36m>[39m
               [0mCareer Genie[0m
             [36m</h1>[39m
             [36m<img[39m
@@ -104,6 +106,9 @@ FAIL src/App.test.tsx
                   [36m</p>[39m
                 [36m</div>[39m
               [36m</div>[39m
+              [36m<button>[39m
+                [0mGo to results page[0m
+              [36m</button>[39m
             [36m</div>[39m
           [36m</div>[39m
           [36m<footer[39m
@@ -181,18 +186,17 @@ go away.[0m
 ----------------------------|---------|----------|---------|---------|-------------------
 File                        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------------------|---------|----------|---------|---------|-------------------
-All files                   |   13.81 |        4 |    5.97 |    14.7 |                   
+All files                   |   13.81 |     3.84 |    6.25 |    14.7 |                   
  src                        |   41.66 |    16.66 |      25 |   41.66 |                   
   App.tsx                   |   76.92 |       50 |      50 |   76.92 | 17,31-32          
   index.tsx                 |       0 |      100 |     100 |       0 | 6-17              
   reportWebVitals.ts        |       0 |        0 |       0 |       0 | 3-10              
- src/components             |   23.25 |     12.5 |    6.89 |    23.8 |                   
+ src/components             |    23.8 |       10 |       8 |   24.39 |                   
   CareerDisplay.tsx         |       0 |      100 |       0 |       0 | 9                 
   Footer.tsx                |      50 |      100 |      50 |      50 | 14                
-  Header.tsx                |      20 |    16.66 |   16.66 |   22.22 | 17-19,24-31       
+  Header.tsx                |   15.38 |     12.5 |   16.66 |   16.66 | 17-23,30-39       
   LoadingAnimation.tsx      |       0 |      100 |       0 |       0 | 5                 
   MultipleChoiceInput.tsx   |       0 |      100 |       0 |       0 | 11-24             
-  NavBar.tsx                |       0 |      100 |       0 |       0 | 10-15             
   PieChart.tsx              |       0 |        0 |       0 |       0 |                   
   ProgressBar.tsx           |      25 |      100 |       0 |      25 | 10-13             
   Question.tsx              |      60 |      100 |       0 |      60 | 55-56             
@@ -200,14 +204,14 @@ All files                   |   13.81 |        4 |    5.97 |    14.7 |
   ReviewAnswersBasic.tsx    |      20 |        0 |       0 |      20 | 14-27             
   ReviewAnswersDetailed.tsx |      20 |      100 |       0 |      20 | 14-26             
   TextInput.tsx             |       0 |      100 |       0 |       0 | 11                
- src/pages                  |    4.38 |        0 |    2.94 |     4.8 |                   
+ src/pages                  |    4.34 |        0 |    2.85 |    4.76 |                   
   BasicQuestionsPage.tsx    |       0 |        0 |       0 |       0 | 20-54             
   DetailedQuestionsPage.tsx |       0 |        0 |       0 |       0 | 18-41             
-  HomePage.tsx              |   14.28 |      100 |      20 |   14.28 | 12-18,40-50       
+  HomePage.tsx              |    12.5 |      100 |   16.66 |    12.5 | 12-18,40-57       
   ResultsPage.tsx           |    5.97 |        0 |       0 |    6.45 | 78-219            
 ----------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.64 s
+Time:        3.371 s
 Ran all test suites.
