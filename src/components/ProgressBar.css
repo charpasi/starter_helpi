@@ -2,9 +2,10 @@
     height: 10px;
     border-radius: 100px;
     overflow: hidden;
-    width: 50%;
+    width: 70%;
+    margin-top: 20px;
 }
 .progressBar::-webkit-progress-value {
-    background-color: purple; 
+    background-color: #800080; 
     width: 100%;
 }

@@ -4,12 +4,16 @@
     --blue: #348AA7;
     --green: #5DD39E;
     --verde: #BCE784;
+    --navy:rgb(41, 57, 124);
+
 }
 
 .App {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
+    background: rgb(226, 216, 232);
+
 }
 
 .center {

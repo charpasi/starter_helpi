@@ -14,5 +14,12 @@
 
 .QuestionButtons .button-container button {
     margin-right: 10px;
+    background-color: var(--blue);
+    color: white;
+}
+
+.QuestionButtons .button-container button:hover {
+    background-color: darken(#0cf, 15%);
+    transform: translateY(-3px);
 }
 

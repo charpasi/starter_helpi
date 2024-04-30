@@ -8,12 +8,20 @@
 
 .Question h2 {
     margin-bottom: 10px;
+    /* text */
+    color: var(--navy);
 }
 
 .question-container {
+    background-color: white;
     border: 1px solid purple;
     border-radius: 8px;
     padding: 12px;
-    width: 50%;
+    width: 70%;
     box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /* text */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+    color: var(--morado)
 }
