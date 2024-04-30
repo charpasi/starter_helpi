@@ -1,3 +1,5 @@
+import "./CareerDisplay.css";
+
 export type Career = {
     name: string,
     startingSalaryString: string,
@@ -7,11 +9,13 @@ export type Career = {
 
 function CareerDisplay({ career }: { career: Career }) {
     return (
-        <div className="CareerDisplay">
-            <h2>{career.name} - {career.startingSalaryString}</h2>
-            <p>{career.description}</p>
-            <p>{career.explanation}</p>
-        </div>
+        <li className="CareerDisplay">
+            <div>
+                <h2>{career.name} - {career.startingSalaryString}</h2>
+                <p>{career.description}</p>
+                <p>{career.explanation}</p>
+            </div>
+        </li>
     );
 }
 

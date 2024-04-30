@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import "./ResultsPage.css";
+
 import LoadingAnimation from "../components/LoadingAnimation";
 
 import { Career, CareerDisplay } from "../components/CareerDisplay";
@@ -206,16 +208,22 @@ function ResultsPage({
         return careers;
     }
 
-    console.log(careers);
+    careers.sort((a, b) => {
+        return Number(a.startingSalaryString.replace(/\$|,/g, "")) -
+            Number(b.startingSalaryString.replace(/\$|,/g, ""))
+    });
 
     return (
         <div className="Results">
             <h1 className="center">Your Future Careers!</h1>
-            {
-                careers.map(c => (
-                    <CareerDisplay career={c}/>
-                ))
-            }
+            <ol>
+                {
+                    careers
+                        .map(c => (
+                        <CareerDisplay career={c} key={c.name}/>
+                    ))
+                }
+            </ol>
             <button onClick={() => setCurrentPage("main")}>Return home</button>
         </div>
     )
