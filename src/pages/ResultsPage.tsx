@@ -208,15 +208,19 @@ function ResultsPage({
         return careers;
     }
 
-    console.log(careers);
+    careers.sort((a, b) => {
+        return Number(a.startingSalaryString.replace(/\$|,/g, "")) -
+            Number(b.startingSalaryString.replace(/\$|,/g, ""))
+    });
 
     return (
         <div className="Results">
             <h1 className="center">Your Future Careers!</h1>
             <ol>
                 {
-                    careers.map(c => (
-                        <CareerDisplay career={c}/>
+                    careers
+                        .map(c => (
+                        <CareerDisplay career={c} key={c.name}/>
                     ))
                 }
             </ol>
