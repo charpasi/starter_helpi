@@ -1,8 +1,5 @@
 import "./HomePage.css";
-
 import { Page } from "../App";
-
-import genie from "../assets/pikmin.png";
 
 function HomePage({
     setCurrentPage,
@@ -23,10 +20,7 @@ function HomePage({
 
     return (
         <div className="HomePage">
-            <div>
-                <div>
-                    <img src={genie} alt="genie" className="genie-image"/>
-                </div>
+            <div className = "intro">
                 <div>
                     <h1>Do YOU Know what field you'll go into?</h1>
                     <p>
@@ -38,13 +32,11 @@ function HomePage({
                     </p>
                 </div>
             </div>
-            <div>
-                <h1>Take your personalized quiz now!</h1>
-            </div>
             <div className="quiz-wrapper">
                 <div className="quiz-card">
                     <div>
-                        <h2>Short questionnaire (5 min)</h2>
+                        <h2>Basic Quiz</h2>
+                        <h3>Estimated: 5 minutes</h3>
                         <button onClick={() => navigateToBasicQuestions()} className="larger">Click me!</button>
                     </div>
                     <p>
@@ -53,7 +45,8 @@ function HomePage({
                 </div>
                 <div className="quiz-card">
                     <div>
-                        <h2>Long questionnaire (15 min)</h2>
+                        <h2>Detailed Quiz</h2>
+                        <h3>Estimated: 15 minutes</h3>
                         <button onClick={() => navigateToDetailedQuestions()} className="larger">Click me!</button>
                     </div>
                     <p>
