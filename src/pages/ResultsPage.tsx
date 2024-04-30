@@ -101,7 +101,7 @@ function ResultsPage({
         });
     }, [basicAnswers, detailedAnswers, currentQuiz, loading]);
 
-    if(!!loading) {
+    if(loading) {
         return <LoadingAnimation/>;
     }
 

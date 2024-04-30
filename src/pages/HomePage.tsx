@@ -61,6 +61,7 @@ function HomePage({
                     </p>
                 </div>
             </div>
+            <button onClick={() => setCurrentPage("results")}>Go to results page</button>
         </div>
     );
 }
