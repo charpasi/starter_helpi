@@ -1,3 +1,36 @@
-div.Results{
-    margin-top: 200px;
+div.Results {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin-top: 210px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    /*text*/
+    color: var(--navy);
+    text-align: left;
+    font-weight: 500;
+    font-family: "verdana";
+
+    h1{
+        color: var(--morado);
+    }
+
+    h2{
+        color: orange;
+    }
+
+    button {
+        background-color: var(--blue);
+        width: 100%;
+        margin-top: 25px;
+        /*text*/
+        color: white;
+        font-weight: bold;
+        font-family: "verdana";
+        text-align: center;
+    }
+
 }

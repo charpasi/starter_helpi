@@ -1,3 +1,5 @@
+import "./CareerDisplay.css";
+
 export type Career = {
     name: string,
     startingSalaryString: string,

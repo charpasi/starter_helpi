@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-
+import "./ResultsPage.css"
 import LoadingAnimation from "../components/LoadingAnimation";
 
 import { Career, CareerDisplay } from "../components/CareerDisplay";
 import { saveKeyData, Page } from "../App";
 import { basicQuestions, detailedQuestions } from "../components/Question";
+import PieChart from "../components/PieChart";
 
 const useApi = false;
 
@@ -75,6 +76,16 @@ function ResultsPage({
     basicAnswers: string[],
     detailedAnswers: string[]
 }) {
+    /*Pie Chart content */
+    const chartdata = {
+        labels: ['Red', 'Blue', 'Yellow'],
+        datasets: [
+          {
+            data: [300, 50, 100],
+            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
+          },
+        ],
+    }; 
     const [careers, setCareers] = useState<Career[]>([]);
     const [loading, setLoading] = useState<boolean | null>(null);
 
@@ -109,7 +120,7 @@ function ResultsPage({
         if(answers.length !== basicQuestions.length) {
             console.error("Responses array and questions array are of different lengths");
             return null;
-        }
+        }       
 
         const answersText = type === "basic" ?
             answers.map((r, i) => `${basicQuestions[i]} ${r}&&&`).join("\n").trim() :
@@ -216,7 +227,8 @@ function ResultsPage({
                     <CareerDisplay career={c}/>
                 ))
             }
-            <button onClick={() => setCurrentPage("main")}>Return home</button>
+            <PieChart data = {chartdata} />
+            <button onClick={() => setCurrentPage("main")}>Return Home</button>
         </div>
     )
 }

@@ -2,7 +2,7 @@ div.HomePage {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-top: 200px;
+    margin-top: 210px;
 
     > div {
         display: flex;

@@ -1,16 +1,16 @@
-import './PieChart.css';
-/*
-interface IPie {
-    x0: number;
-    y0: number;
-    radius: number;
-  };
-  
-  interface IParts {
-    value: number;
-    label: string;
-    startAngle: number;
-    endAngle: number;
-  };
-  
-  export class PieChart {}*/
+import React from 'react';
+import { Pie } from 'react-chartjs-2';
+
+interface PieChartProps {
+  data: { labels: string[]; datasets: { data: number[]; backgroundColor: string[] }[] };
+}
+
+const PieChart: React.FC<PieChartProps> = ({ data }) => {
+  return (
+    <div>
+      <Pie data={data} />
+    </div>
+  );
+};
+
+export default PieChart;
