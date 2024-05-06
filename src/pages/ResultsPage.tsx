@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import "./ResultsPage.css"
+
+import "./ResultsPage.css";
+
 import LoadingAnimation from "../components/LoadingAnimation";
 
 import { Career, CareerDisplay } from "../components/CareerDisplay";
 import { saveKeyData, Page } from "../App";
 import { basicQuestions, detailedQuestions } from "../components/Question";
-import PieChart from "../components/PieChart";
+import ResultsPieChart from "../components/ResultsPieChart";
 
 const useApi = false;
 
@@ -77,15 +79,7 @@ function ResultsPage({
     detailedAnswers: string[]
 }) {
     /*Pie Chart content */
-    const chartdata = {
-        labels: ['Red', 'Blue', 'Yellow'],
-        datasets: [
-          {
-            data: [300, 50, 100],
-            backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56'],
-          },
-        ],
-    }; 
+
     const [careers, setCareers] = useState<Career[]>([]);
     const [loading, setLoading] = useState<boolean | null>(null);
 
@@ -110,9 +104,9 @@ function ResultsPage({
             setCareers(careerList);
             setLoading(false);
         });
-    }, []);
+    }, [basicAnswers, detailedAnswers, currentQuiz, loading]);
 
-    if(!!loading) {
+    if(loading) {
         return <LoadingAnimation/>;
     }
 
@@ -217,18 +211,24 @@ function ResultsPage({
         return careers;
     }
 
-    console.log(careers);
+    careers.sort((a, b) => {
+        return Number(a.startingSalaryString.replace(/\$|,/g, "")) -
+            Number(b.startingSalaryString.replace(/\$|,/g, ""))
+    });
 
     return (
         <div className="Results">
             <h1 className="center">Your Future Careers!</h1>
-            {
-                careers.map(c => (
-                    <CareerDisplay career={c}/>
-                ))
-            }
-            <PieChart data = {chartdata} />
-            <button onClick={() => setCurrentPage("main")}>Return Home</button>
+            <ol>
+                {
+                    careers
+                        .map(c => (
+                        <CareerDisplay career={c} key={c.name}/>
+                    ))
+                }
+            </ol>
+            <ResultsPieChart stats={[5,5,40,20,20,10]}></ResultsPieChart>
+            <button onClick={() => setCurrentPage("main")}>Return home</button>
         </div>
     )
 }

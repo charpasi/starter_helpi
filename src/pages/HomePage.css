@@ -2,7 +2,6 @@ div.HomePage {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    margin-top: 210px;
 
     > div {
         display: flex;
@@ -10,10 +9,9 @@ div.HomePage {
         justify-content: center;
         align-items: center;
         gap: 4rem;
-        width: 100%;
     }
 
-    .intro{
+    .intro {
         background-color: white;
         border-radius: 10px;
         padding: 25px;
@@ -32,6 +30,7 @@ div.HomePage {
         justify-content: center;
         text-align: center;
         flex-direction: row;
+        align-items: stretch;
         /*text*/
         color: var(--navy);
         font-weight: 500;
