@@ -10,7 +10,7 @@ import { basicQuestions, detailedQuestions } from "../components/Question";
 
 const useApi = false;
 
-type ResponseObject = {
+export type ResponseObject = {
     id: string,
     object: string,
     created: number,
