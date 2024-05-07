@@ -118,7 +118,7 @@ function ResultsPage({
             answers.map((r, i) => `${detailedQuestions[i]} ${r}&&&`).join("\n").trim();
     
         const postData = JSON.stringify({
-            "model": "gpt-3.5-turbo", // gpt-4-turbo-preview
+            "model": "gpt-4-turbo", // gpt-4-turbo-preview
             "messages": [
                 {
                     "role": "system",

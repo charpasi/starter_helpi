@@ -42,7 +42,7 @@ function DetailedQuestionsPage({
         }
 
         const postData = JSON.stringify({
-            "model": "gpt-3.5-turbo",
+            "model": "gpt-4-turbo",
             "messages": [
                 {
                     "role": "system",
