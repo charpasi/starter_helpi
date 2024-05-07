@@ -204,9 +204,11 @@ function ResultsPage({
             getQuestionsResponse(basicAnswers, "basic") :
             getQuestionsResponse(detailedAnswers, "detailed");
 
-        const userScoreRespone = currentQuiz === "basic" ?
+        const userScoreResponse = currentQuiz === "basic" ?
             getUserScore(basicAnswers, "basic") :
             getUserScore(detailedAnswers, "detailed") ;
+
+        console.log(userScoreResponse);
 
         apiResponse.then(careerList => {
             if(careerList === null) {
