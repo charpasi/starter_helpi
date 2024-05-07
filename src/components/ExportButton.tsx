@@ -1,30 +1,32 @@
-import { Button } from "react-bootstrap";
+import React from "react";
+import jsPDF from "jspdf";
 import "./ExportButton.css";
-import React, { useRef } from 'react';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf'; 
 
-export const ExportButton: React.FC<{ careers: string[] }> = ({ careers }) => {
-    const contentRef = useRef<HTMLDivElement>(null); 
-    const generatePDF = async () => {
-        if (!contentRef.current) return;
-        const canvas = await html2canvas(contentRef.current); 
-        const imgData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'pt', 'a4');
-        pdf.addImage(imgData, 'PNG', 0, 0, canvas.width * 0.75, canvas.width * 0.75);
-        pdf.save('quiz_results.pdf');
-    };  
-    return (
-        <div className="exportbutton-container">
-            <div ref={contentRef} style={{ display: 'none' }}>
-                <h1>Quiz Results</h1>
-                <ul>
-                    {careers.map((career, index) => <li key={index}>Question {index + 1}: {career}</li>)}
-                </ul>
-            </div>
-            <Button onClick={generatePDF}>Save My Results</Button>
-        </div>
-    );
+interface ExportButtonProps {
+  careers: string[];
+}
+
+function ExportButton({ careers }: ExportButtonProps) {
+  const saveAsPDF = () => {
+    const doc = new jsPDF();
+
+    doc.text("Your Future Careers:", 10, 10);
+    doc.text("Holland's Six Personality Types:", 10, 20);
+
+    // careers list
+    careers.forEach((career, index) => {
+      doc.text(`${index + 1}. ${career}`, 10, 30 + index * 10);
+    });
+
+    // Add any additional content you want to include in the PDF
+    doc.save("your-future-careers.pdf");
+  };
+
+  return (
+    <div className="exportbutton-container">
+    <button onClick={saveAsPDF}>Export Results as PDF</button>
+    </div>
+  );
 }
 
 export default ExportButton;

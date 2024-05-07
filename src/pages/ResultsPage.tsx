@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
-
 import "./ResultsPage.css";
-
 import LoadingAnimation from "../components/LoadingAnimation";
-
 import { Career, CareerDisplay } from "../components/CareerDisplay";
 import { saveKeyData, Page } from "../App";
 import { basicQuestions, detailedQuestions } from "../components/Question";
@@ -240,8 +237,8 @@ function ResultsPage({
                 <li>Conventional Organizer</li>
             </ul>
             </div>
-            <ExportButton careers={["farmer","programmer","artist"]}></ExportButton>
-            <button onClick={() => setCurrentPage("main")}>Return home</button>
+            <ExportButton careers={careers.map(c => c.name)} />
+            <button onClick={() => setCurrentPage("main")}>Return Home</button>
         </div>
     )
 }
