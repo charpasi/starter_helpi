@@ -75,27 +75,27 @@ export const ResultsPieChart: React.FC<PieChartProps> = ({ stats }) => {
         );
     };
 
-    const colors = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#AF19FF', '#FF1919'];
+    const colors = ['#513B56', '#348AA7', '#525174', '#5DD39E', '#BCE784', 'rgb(41, 57, 124)'];
 
     return (
-        <PieChart width={700} height={700}>
-            <Pie
-                data={data}
-                dataKey="value"
-                cx="50%"
-                cy="50%"
-                outerRadius={250}
-                fill="#8884d8"
-                labelLine={false}
-                label={renderCustomizedLabel}
-            >
-                {data.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
-                ))}
-                <Label width={30} position="center">
-                </Label>
-            </Pie>
-        </PieChart>
+            <PieChart width={700} height={700}>
+                <Pie
+                    data={data}
+                    dataKey="value"
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={250}
+                    fill="#8884d8"
+                    labelLine={false}
+                    label={renderCustomizedLabel}
+                >
+                    {data.map((entry, index) => (
+                        <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                    ))}
+                    <Label width={30} position="center">
+                    </Label>
+                </Pie>
+            </PieChart>
     );
 };
 

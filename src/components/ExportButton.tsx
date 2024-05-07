@@ -1,39 +1,30 @@
-import React from 'react';
+import { Button } from "react-bootstrap";
+import "./ExportButton.css";
+import React, { useRef } from 'react';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf'; 
 
-const generatePdf = (elementId: string, fileName: string) => {
-  const element = document.getElementById(elementId);
-  if (element) {
-    html2pdf(element, {
-      margin: 1,
-      filename: fileName,
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { dpi: 192, letterRendering: true },
-      jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-    });
-  } else {
-    console.error(`Element with id ${elementId} not found`);
-  }
-};
-
-const MyComponent: React.FC = () => {
-  const handleSaveAsPdf = () => {
-    generatePdf('pdf-content', 'my_document.pdf');
-  };
-
-  return (
-    <div>
-      <div id="pdf-content">
-        {/* Your page content here */}
-        <h1>My PDF Content</h1>
-        <p>This is the content that will be saved as a PDF.</p>
-      </div>
-      <button onClick={handleSaveAsPdf}>Save as PDF</button>
-    </div>
-  );
-};
-
-export default MyComponent;
-function html2pdf(element: HTMLElement, arg1: { margin: number; filename: string; image: { type: string; quality: number; }; html2canvas: { dpi: number; letterRendering: boolean; }; jsPDF: { unit: string; format: string; orientation: string; }; }) {
-    throw new Error('Function not implemented.');
+export const ExportButton: React.FC<{ careers: string[] }> = ({ careers }) => {
+    const contentRef = useRef<HTMLDivElement>(null); 
+    const generatePDF = async () => {
+        if (!contentRef.current) return;
+        const canvas = await html2canvas(contentRef.current); 
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF('p', 'pt', 'a4');
+        pdf.addImage(imgData, 'PNG', 0, 0, canvas.width * 0.75, canvas.width * 0.75);
+        pdf.save('quiz_results.pdf');
+    };  
+    return (
+        <div className="exportbutton-container">
+            <div ref={contentRef} style={{ display: 'none' }}>
+                <h1>Quiz Results</h1>
+                <ul>
+                    {careers.map((career, index) => <li key={index}>Question {index + 1}: {career}</li>)}
+                </ul>
+            </div>
+            <Button onClick={generatePDF}>Save My Results</Button>
+        </div>
+    );
 }
 
+export default ExportButton;
