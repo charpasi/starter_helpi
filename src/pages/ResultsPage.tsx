@@ -400,8 +400,6 @@ function ResultsPage({
             while ((match = regex.exec(textResponse)) !== null) {
                 percentNumbers.push(parseInt(match[0], 10));
             }
-
-            // Arrange percent numbers into the specified order
             const userScores: number[] = percentNumbers;
 
             console.log(userScores);
