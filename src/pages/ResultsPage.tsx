@@ -204,7 +204,7 @@ function ResultsPage({
             getQuestionsResponse(basicAnswers, "basic") :
             getQuestionsResponse(detailedAnswers, "detailed");
 
-        const userScoreRespone = currentQuiz === "basic" ?
+        const userScoreResponse = currentQuiz === "basic" ?
             getUserScore(basicAnswers, "basic") :
             getUserScore(detailedAnswers, "detailed") ;
 
@@ -403,7 +403,7 @@ function ResultsPage({
             const userScores: number[] = percentNumbers;
 
             console.log(userScores);
-                    return userScores;
+        return userScores;
     };
     return (
         <div className="Results">
