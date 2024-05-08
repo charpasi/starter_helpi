@@ -208,6 +208,8 @@ function ResultsPage({
             getUserScore(basicAnswers, "basic") :
             getUserScore(detailedAnswers, "detailed") ;
 
+        console.log(userScoreResponse);
+
         apiResponse.then(careerList => {
             if(careerList === null) {
                 console.error("Cannot update results page");
