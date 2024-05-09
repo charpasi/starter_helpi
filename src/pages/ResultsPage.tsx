@@ -10,7 +10,7 @@ import { basicQuestions, detailedQuestions } from "../components/Question";
 
 const useApi = false; 
 
-type ResponseObject = {
+export type ResponseObject = {
     id: string,
     object: string,
     created: number,
@@ -237,7 +237,7 @@ function ResultsPage({
             answers.map((r, i) => `${detailedQuestions[i]} ${r}&&&`).join("\n").trim();
     
         const postData = JSON.stringify({
-            "model": "gpt-3.5-turbo", // gpt-4-turbo-preview
+            "model": "gpt-4-turbo", // gpt-4-turbo-preview
             "messages": [
                 {
                     "role": "system",
