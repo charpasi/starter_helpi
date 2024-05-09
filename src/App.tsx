@@ -7,7 +7,6 @@ import Footer from "./components/Footer";
 import ResultsPage from "./pages/ResultsPage";
 import DetailedQuestionsPage from "./pages/DetailedQuestionsPage";
 import BasicQuestionsPage from "./pages/BasicQuestionsPage";
-
 import { basicQuestions, detailedQuestions } from "./components/Question";
 
 let keyData = "";

@@ -33,7 +33,6 @@ export const detailedQuestions: string[] = [
     "What aspects of your current or past jobs do you find most fulfilling?",
     "Describe your preferred work environment.",
     "Are you more inclined towards creativity or structure in your work?",
-    "How do you handle ambiguity and uncertainty?",
     "Do you prefer working independently or collaborating with others?",
     "How do you approach decision-making in your work?",
     "Describe your communication style in a work setting.",
@@ -43,7 +42,7 @@ export const detailedQuestions: string[] = [
     "What extracurricular activities or hobbies reflect your interests?",
     "What do you hope to achieve through your career?",
     "What extracurricular activities or hobbies do you enjoy in your free time?",
-    "How do you handle pressure and tight deadlines?"
+    "To what extent is compensation a priority to you in your career?"
 ];
 
 interface QuestionProps {

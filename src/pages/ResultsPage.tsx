@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
-
 import "./ResultsPage.css";
 
 import LoadingAnimation from "../components/LoadingAnimation";
-
 import { Career, CareerDisplay } from "../components/CareerDisplay";
 import { saveKeyData, Page } from "../App";
 import { basicQuestions, detailedQuestions } from "../components/Question";
+import ResultsPieChart from "../components/ResultsPieChart";
+import ExportButton from "../components/ExportButton";
 
 const useApi = false; 
 
@@ -190,6 +190,8 @@ function ResultsPage({
     basicAnswers: string[],
     detailedAnswers: string[]
 }) {
+    /*Pie Chart content */
+
     const [careers, setCareers] = useState<Career[]>([]);
     const [loading, setLoading] = useState<boolean | null>(null);
 
@@ -230,7 +232,7 @@ function ResultsPage({
         if(answers.length !== basicQuestions.length) {
             console.error("Responses array and questions array are of different lengths");
             return null;
-        }
+        }       
 
         const answersText = type === "basic" ?
             answers.map((r, i) => `${basicQuestions[i]} ${r}&&&`).join("\n").trim() :
@@ -418,7 +420,20 @@ function ResultsPage({
                     ))
                 }
             </ol>
-            <button onClick={() => setCurrentPage("main")}>Return home</button>
+            <div className='piechart-wrapper'>
+            <h1>Holland's Six Personality Types</h1>
+            <ResultsPieChart stats={[5,5,40,20,20,10]}></ResultsPieChart>
+            <ul>
+                <li>Realistic Do-er</li>
+                <li>Investigative Thinker</li>
+                <li>Artistic Creator</li>
+                <li>Social Helper</li>
+                <li>Enterprising Persuader</li>
+                <li>Conventional Organizer</li>
+            </ul>
+            </div>
+            <ExportButton careers={careers.map(c => c.name)} />
+            <button onClick={() => setCurrentPage("main")}>Return Home</button>
         </div>
     )
 }
