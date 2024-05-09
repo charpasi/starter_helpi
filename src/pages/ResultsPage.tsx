@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import "./ResultsPage.css";
+
 import LoadingAnimation from "../components/LoadingAnimation";
 import { Career, CareerDisplay } from "../components/CareerDisplay";
 import { saveKeyData, Page } from "../App";
@@ -328,17 +330,111 @@ function ResultsPage({
         return careers;
     }
 
-    console.log(careers);
+    careers.sort((a, b) => {
+        return Number(a.startingSalaryString.replace(/\$|,/g, "")) -
+            Number(b.startingSalaryString.replace(/\$|,/g, ""))
+    });
 
+    async function getUserScore(answers: string[], type: "basic" | "detailed"): Promise<number[] | null> {
+        if(answers.length !== basicQuestions.length) {
+            console.error("Responses array and questions array are of different lengths");
+            return null;
+        }
+
+        const answersText = type === "basic" ?
+            answers.map((r, i) => `${basicQuestions[i]} ${r}&&&`).join("\n").trim() :
+            answers.map((r, i) => `${detailedQuestions[i]} ${r}&&&`).join("\n").trim();
+    
+        const postData = JSON.stringify({
+            "model": "gpt-3.5-turbo", // gpt-4-turbo-preview
+            "messages": [
+                {
+                    "role": "system",
+                    "content": type === "basic" ? basicUserScoreSystem : detailedUserScoreSystem
+                },
+                {
+                    "role": "user",
+                    "content": answersText
+                }
+            ],
+            "max_tokens": 400
+        });
+        const response = useApi ? await fetch("https://api.openai.com/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${JSON.parse(localStorage.getItem(saveKeyData) || "")}`
+            },
+            body: postData
+        }) : {
+            ok: true,
+            json: async () => new Promise((res, _) => {
+                setTimeout(() => {
+                    res({
+                        choices: [
+                            {
+                                message: {
+                                    content: exampleResponseText
+                                }
+                            }
+                        ]
+                    });
+                }, 2000);
+            })
+        };
+    
+        if(!response.ok) {
+            console.error("Open AI API did not return a valid response");
+            return null;
+        }
+    
+        const json: ResponseObject = await response.json();
+        const textResponse = json?.choices?.[0]?.message?.content;
+
+        if(!textResponse) {
+            console.error("Open AI API did not return a valid response object");
+            return null;
+        }
+
+        console.log(textResponse);
+        const regex: RegExp = /\d+(?=%)/g;
+
+            // Extract percent numbers from the text output from gpt
+            const percentNumbers: number[] = [];
+            let match;
+            while ((match = regex.exec(textResponse)) !== null) {
+                percentNumbers.push(parseInt(match[0], 10));
+            }
+            const userScores: number[] = percentNumbers;
+
+            console.log(userScores);
+                    return userScores;
+    };
     return (
         <div className="Results">
             <h1 className="center">Your Future Careers!</h1>
-            {
-                careers.map(c => (
-                    <CareerDisplay career={c}/>
-                ))
-            }
-            <button onClick={() => setCurrentPage("main")}>Return home</button>
+            <ol>
+                {
+                    careers
+                        .map(c => (
+                        <CareerDisplay career={c} key={c.name}/>
+                    ))
+                }
+            </ol>
+            <div className='piechart-wrapper'>
+            <h1>Holland's Six Personality Types</h1>
+            <ResultsPieChart stats={[5,5,40,20,20,10]}></ResultsPieChart>
+            <ul>
+                <li>Realistic Do-er</li>
+                <li>Investigative Thinker</li>
+                <li>Artistic Creator</li>
+                <li>Social Helper</li>
+                <li>Enterprising Persuader</li>
+                <li>Conventional Organizer</li>
+            </ul>
+            </div>
+            <ExportButton careers={careers.map(c => c.name)} />
+            <button onClick={() => setCurrentPage("main")}>Return Home</button>
         </div>
     )
 }
