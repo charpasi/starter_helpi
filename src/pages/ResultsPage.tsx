@@ -8,7 +8,7 @@ import { Career, CareerDisplay } from "../components/CareerDisplay";
 import { saveKeyData, Page } from "../App";
 import { basicQuestions, detailedQuestions } from "../components/Question";
 
-const useApi = false;
+const useApi = false; 
 
 export type ResponseObject = {
     id: string,
@@ -31,6 +31,119 @@ export type ResponseObject = {
         total_tokens: number
     }
 };
+
+const basicUserScoreSystem = `You are tasked with providing a personality score for a user based on a questionnaire. You will be provided input as follows:
+
+[Question 1 text]. [Response]&&&
+[Question 2 text]. [Response]&&&
+...
+
+Response can be "Strongly Disagree", "Disagree", "Neither", "Agree", or "Strongly Agree". Each question and response pair will be separated by "&&&" as shown above.
+
+The six personality scores are as follows:
+
+    Realistic: 
+        -Likes to work with animals, tools, or machines; generally avoids social activities like teaching, healing, and informing others;
+        -Has good skills in working with tools, mechanical or electrical drawings, machines, or plants and animals;
+        -Values practical things you can see, touch, and use like plants and animals, tools, equipment, or machines; and
+        -Sees self as practical, mechanical, and realistic.
+
+    Investigative:
+        -Likes to study and solve math or science problems; generally avoids leading, selling, or persuading people;
+        -Is good at understanding and solving science and math problems;
+        -Values science; and
+        -Sees self as precise, scientific, and intellectual.
+
+    Artistic:
+        -Likes to do creative activities like art, drama, crafts, dance, music, or creative writing; generally avoids highly ordered or repetitive activities;
+        -Has good artistic abilities -- in creative writing, drama, crafts, music, or art;
+        -Values the creative arts -- like drama, music, art, or the works of creative writers; and
+        -Sees self as expressive, original, and independent.
+
+    Social:
+        -Likes to do things to help people -- like, teaching, nursing, or giving first aid, providing information; generally avoids using machines, tools, or animals to achieve a goal;
+        -Is good at teaching, counseling, nursing, or giving information;
+        -Values helping people and solving social problems; and
+        -Sees self as helpful, friendly, and trustworthy.
+
+    Enterprising:
+        -Likes to lead and persuade people, and to sell things and ideas; generally avoids activities that require careful observation and scientific, analytical thinking;
+        -Is good at leading people and selling things or ideas;
+        -Values success in politics, leadership, or business; and
+        -Sees self as energetic, ambitious, and sociable.
+
+    Conventional:
+        -Likes to work with numbers, records, or machines in a set, orderly way; generally avoids ambiguous, unstructured activities
+        -Is good at working with written records and numbers in a systematic, orderly way;
+        -Values success in business; and
+        -Sees self as orderly, and good at following a set plan.
+    
+Please format your response in the following format. Please make sure all the percentages add up to exactly 100.:
+    Realistic: x%
+    Investigative: x%
+    Artistic: x%
+    Social: x%
+    Enterprising: x%
+    Conventional: x%
+
+Please do not write anything else in your response other than the information in the above format. Please respond with each personality and percentage on a new line.
+`;
+
+const detailedUserScoreSystem = `You are tasked with providing a personality score for a user based on a questionnaire. You will be provided input as follows:
+Each question and response pair will be separated by "&&&" as shown above.
+
+[Question 1 text]. [Response]&&&
+[Question 2 text]. [Response]&&&
+...
+
+The six personality scores are as follows:
+
+    Realistic: 
+        -Likes to work with animals, tools, or machines; generally avoids social activities like teaching, healing, and informing others;
+        -Has good skills in working with tools, mechanical or electrical drawings, machines, or plants and animals;
+        -Values practical things you can see, touch, and use like plants and animals, tools, equipment, or machines; and
+        -Sees self as practical, mechanical, and realistic.
+
+    Investigative:
+        -Likes to study and solve math or science problems; generally avoids leading, selling, or persuading people;
+        -Is good at understanding and solving science and math problems;
+        -Values science; and
+        -Sees self as precise, scientific, and intellectual.
+
+    Artistic:
+        -Likes to do creative activities like art, drama, crafts, dance, music, or creative writing; generally avoids highly ordered or repetitive activities;
+        -Has good artistic abilities -- in creative writing, drama, crafts, music, or art;
+        -Values the creative arts -- like drama, music, art, or the works of creative writers; and
+        -Sees self as expressive, original, and independent.
+
+    Social:
+        -Likes to do things to help people -- like, teaching, nursing, or giving first aid, providing information; generally avoids using machines, tools, or animals to achieve a goal;
+        -Is good at teaching, counseling, nursing, or giving information;
+        -Values helping people and solving social problems; and
+        -Sees self as helpful, friendly, and trustworthy.
+
+    Enterprising:
+        -Likes to lead and persuade people, and to sell things and ideas; generally avoids activities that require careful observation and scientific, analytical thinking;
+        -Is good at leading people and selling things or ideas;
+        -Values success in politics, leadership, or business; and
+        -Sees self as energetic, ambitious, and sociable.
+
+    Conventional:
+        -Likes to work with numbers, records, or machines in a set, orderly way; generally avoids ambiguous, unstructured activities
+        -Is good at working with written records and numbers in a systematic, orderly way;
+        -Values success in business; and
+        -Sees self as orderly, and good at following a set plan.
+    
+Please format your response in the following format. Please make sure all the percentages add up to exactly 100.:
+    Realistic: x%
+    Investigative: x%
+    Artistic: x%
+    Social: x%
+    Enterprising: x%
+    Conventional: x%
+
+Please do not write anything else in your response other than the information in the above format. Please respond with each personality and percentage on a new line.
+`;
 
 const basicQuestionsSystem = `You are tasked with helping a user find the best career for them based on a questionnaire. You will be provided input as follows:
 
@@ -90,6 +203,12 @@ function ResultsPage({
         const apiResponse = currentQuiz === "basic" ?
             getQuestionsResponse(basicAnswers, "basic") :
             getQuestionsResponse(detailedAnswers, "detailed");
+
+        const userScoreResponse = currentQuiz === "basic" ?
+            getUserScore(basicAnswers, "basic") :
+            getUserScore(detailedAnswers, "detailed") ;
+
+        console.log(userScoreResponse);
 
         apiResponse.then(careerList => {
             if(careerList === null) {
@@ -213,6 +332,81 @@ function ResultsPage({
             Number(b.startingSalaryString.replace(/\$|,/g, ""))
     });
 
+    async function getUserScore(answers: string[], type: "basic" | "detailed"): Promise<number[] | null> {
+        if(answers.length !== basicQuestions.length) {
+            console.error("Responses array and questions array are of different lengths");
+            return null;
+        }
+
+        const answersText = type === "basic" ?
+            answers.map((r, i) => `${basicQuestions[i]} ${r}&&&`).join("\n").trim() :
+            answers.map((r, i) => `${detailedQuestions[i]} ${r}&&&`).join("\n").trim();
+    
+        const postData = JSON.stringify({
+            "model": "gpt-3.5-turbo", // gpt-4-turbo-preview
+            "messages": [
+                {
+                    "role": "system",
+                    "content": type === "basic" ? basicUserScoreSystem : detailedUserScoreSystem
+                },
+                {
+                    "role": "user",
+                    "content": answersText
+                }
+            ],
+            "max_tokens": 400
+        });
+        const response = useApi ? await fetch("https://api.openai.com/v1/chat/completions", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${JSON.parse(localStorage.getItem(saveKeyData) || "")}`
+            },
+            body: postData
+        }) : {
+            ok: true,
+            json: async () => new Promise((res, _) => {
+                setTimeout(() => {
+                    res({
+                        choices: [
+                            {
+                                message: {
+                                    content: exampleResponseText
+                                }
+                            }
+                        ]
+                    });
+                }, 2000);
+            })
+        };
+    
+        if(!response.ok) {
+            console.error("Open AI API did not return a valid response");
+            return null;
+        }
+    
+        const json: ResponseObject = await response.json();
+        const textResponse = json?.choices?.[0]?.message?.content;
+
+        if(!textResponse) {
+            console.error("Open AI API did not return a valid response object");
+            return null;
+        }
+
+        console.log(textResponse);
+        const regex: RegExp = /\d+(?=%)/g;
+
+            // Extract percent numbers from the text output from gpt
+            const percentNumbers: number[] = [];
+            let match;
+            while ((match = regex.exec(textResponse)) !== null) {
+                percentNumbers.push(parseInt(match[0], 10));
+            }
+            const userScores: number[] = percentNumbers;
+
+            console.log(userScores);
+                    return userScores;
+    };
     return (
         <div className="Results">
             <h1 className="center">Your Future Careers!</h1>
