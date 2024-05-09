@@ -8,6 +8,8 @@ interface TextInputProps {
 }
 
 export function TextInput({ text, handleTextChange }: TextInputProps): JSX.Element {
+    const max = 1000;
+    const remainingChars = max - text.length;
     return (
         <div className="TextInput"> 
             <Form.Group controlId="formTextInput" as={Row}>
@@ -17,8 +19,11 @@ export function TextInput({ text, handleTextChange }: TextInputProps): JSX.Eleme
                         placeholder="Enter your response here."
                         value={text}
                         onChange={handleTextChange}
+                        maxLength={max}
                         className="text-input-box"/>
+                        <div className="char-count">{remainingChars} characters remaining</div>
                 </Col>
+                
             </Form.Group>
         </div>
     );
