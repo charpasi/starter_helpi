@@ -1,29 +1,3 @@
-
-/*import { PieChart, Pie } from 'recharts';
- 
-interface PieChartProps {
-    stats: number[];
-}
-
-export const ResultsPieChart: React.FC<PieChartProps> = ({stats}) => {
-    const data = [
-        { name: 'Realistic', value: stats[0] },
-        { name: 'Investigative', value: stats[1] },
-        { name: 'Artistic', value: stats[2] },
-        { name: 'Social', value: stats[3] }, 
-        { name: 'Enterprising', value: stats[4] },
-        { name: 'Conventional', value: stats[5] }
-    ];    
- 
-    return (
-        <PieChart width={700} height={700}>
-            <Pie nameKey = "name" data={data} dataKey="value" outerRadius={250} fill="blue" label/>
-        </PieChart>
-    );
-}
- 
-export default ResultsPieChart;
-*/
 import { PieChart, Pie, Cell, Label } from 'recharts';
 
 interface PieChartProps {
