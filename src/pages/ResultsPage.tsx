@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import "./ResultsPage.css";
 
 import LoadingAnimation from "../components/LoadingAnimation";
