@@ -8,7 +8,7 @@ import { Career, CareerDisplay } from "../components/CareerDisplay";
 import { saveKeyData, Page } from "../App";
 import { basicQuestions, detailedQuestions } from "../components/Question";
 
-const useApi = false; 
+const useApi = true; 
 
 type ResponseObject = {
     id: string,
