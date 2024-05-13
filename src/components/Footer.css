@@ -14,11 +14,13 @@ footer.Footer {
         align-items: center;
     }
 
+    /* separate items with a vetical bar */
     div:before {
         content: "|";
         margin-right: 0.5rem;
     }
 
+    /* first item doesn't have a separator */
     div:first-child:before {
         content: "";
     }

@@ -13,30 +13,32 @@ function Genie({
 }) {
     const [displayText, setDisplayText] = useState<string>("");
 
-    useEffect(() => {
+    useEffect(() => { // triggers when the text changes
         let currentIndex = 0;
         const words = text.split(" ");
-        const intervalFunction = setInterval(() => {
-            if(currentIndex < words.length) {
+        const intervalFunction = setInterval(() => { // every 100ms, append a new word to the displayed text
+            if(currentIndex < words.length) { // while there are still words to append,
+                // append it!
                 setDisplayText(prevText => prevText + (words[currentIndex] ? words[currentIndex] : "") + " ");
                 currentIndex++;
             } else {
-                clearInterval(intervalFunction);
+                clearInterval(intervalFunction); // no words left to append, so stop the appending function
             }
         }, interval);
 
         return () => clearInterval(intervalFunction)
     }, [text]);
 
+    // using just the above function doesn't display the first word, so we add a bodge here to fix that
     useEffect(() => {
-        setDisplayText(text.split(" ")[0] + " ");
+        setDisplayText(text.split(" ")[0] + " "); // first text displayed is the first word
     }, [text]);
 
     return (
         <div className={`Genie ${show ? "showing" : "not-showing"}`}>
             <img src={genie} alt="genie"/>
             {
-                text ? <p>{displayText}</p> : ""
+                text ? <p>{displayText}</p> : "" // don't display the bubble if there's no text displayed
             }
         </div>
     )

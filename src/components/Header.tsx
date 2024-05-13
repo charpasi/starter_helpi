@@ -14,11 +14,12 @@ function Header({
     setCurrentPage: (pageName: Page) => void;
 }) {
     const navigateToPage = useCallback((pageName: Page) => {
-        if(currentPage === pageName) return;
-        if(currentPage === "main") {
+        if(currentPage === pageName) return; // don't do anything if naving to same page
+        if(currentPage === "main") { // if we're on the main page, don't ask user if they want to nav off
             setCurrentPage(pageName);
             return;
         }
+        // otherwise, ask the user if they want to nav off since they may lose work
         if(window.confirm("Are you sure you want to navigate from the current page?")) {
             setCurrentPage(pageName);
         }
