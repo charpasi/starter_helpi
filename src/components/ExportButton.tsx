@@ -1,12 +1,9 @@
-import { useRef } from "react";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 
-const ExportButton = () => {
-  const pdfRef = useRef<HTMLDivElement>(null); 
-
+const ExportButton = ({ contentRef }: { contentRef: React.RefObject<HTMLDivElement> }) => {
   const downloadPDF = () => {
-    const input = pdfRef.current;
+    const input = contentRef.current;
 
     if (!input) {
       console.error("PDF reference not found");
@@ -37,7 +34,7 @@ const ExportButton = () => {
   };
 
   return (
-    <div ref={pdfRef}>
+    <div>
       <div className="export-button-wrapper">
         <button className="export-button" onClick={downloadPDF}>
           Export Results as PDF

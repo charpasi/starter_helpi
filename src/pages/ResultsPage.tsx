@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./ResultsPage.css";
 
 import LoadingAnimation from "../components/LoadingAnimation";
@@ -190,10 +190,10 @@ function ResultsPage({
     basicAnswers: string[],
     detailedAnswers: string[]
 }) {
-    /*Pie Chart content */
 
     const [careers, setCareers] = useState<Career[]>([]);
     const [loading, setLoading] = useState<boolean | null>(null);
+    const contentRef = useRef(null);
 
     useEffect(() => {
         if(loading !== null) return;
@@ -410,7 +410,7 @@ function ResultsPage({
                     return userScores;
     };
     return (
-        <div className="Results">
+        <div className="Results" ref = {contentRef}>
             <h1 className="center">Your Future Careers!</h1>
             <ol>
                 {
@@ -424,7 +424,7 @@ function ResultsPage({
             <h1>Holland's Six Personality Types</h1>
             <ResultsPieChart stats={[5,5,40,20,20,10]}></ResultsPieChart>
             </div>
-            <ExportButton/>
+            <ExportButton pdfContent = {contentRef}/>
             <button onClick={() => setCurrentPage("main")}>Return Home</button>
         </div>
     )
