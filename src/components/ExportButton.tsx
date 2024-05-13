@@ -1,4 +1,4 @@
-import jsPDF from "jspdf";
+/* import { jsPDF } from "jspdf";
 import "./ExportButton.css";
 
 interface ExportButtonProps {
@@ -25,3 +25,4 @@ return (
 
 export default ExportButton;
  
+*/
