@@ -17,7 +17,8 @@ function BasicQuestionsPage({
     answers: string[]
     setAnswers: (answers: string[]) => void
 }) {
-    const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+    const [currentQuestion, setCurrentQuestion] = useState<number>(0); // index of current question
+    // when review mode is true, answers page is replaced with the ReviewAnswers page
     const [reviewMode, setReviewMode] = useState<boolean>(false);
 
     const [running, setRunning] = useState<boolean>(false);
@@ -28,27 +29,24 @@ function BasicQuestionsPage({
         console.log("Running");
     }, [running]); // https://stackoverflow.com/questions/60618844/react-hooks-useeffect-is-called-twice-even-if-an-empty-array-is-used-as-an-ar
 
+    // updates the answers array
     const handleOptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const newAnswers = [...answers];
         newAnswers[currentQuestion] = e.target.value;
         setAnswers(newAnswers);
     };
 
-    const handleNext = () => {
+    const handleNext = () => { // go to next question
         setCurrentQuestion(prev => prev + 1);
     };
 
-    const handlePrevious = () => {
+    const handlePrevious = () => { // go to previous question
         setCurrentQuestion(prev => prev - 1);
     };
 
-    const handleFinish = () => {
-        console.log('Collected Answers:', answers); // placeholder for now :3 
+    const handleFinish = () => { // enters review mode when finished
+        console.log('Collected Answers:', answers);
         setReviewMode(true); // review mode goes on once we finish
-    };
-
-    const handleReturn = () => {
-        setReviewMode(false);
     };
 
     return (
