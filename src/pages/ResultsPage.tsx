@@ -423,16 +423,8 @@ function ResultsPage({
             <div className='piechart-wrapper'>
             <h1>Holland's Six Personality Types</h1>
             <ResultsPieChart stats={[5,5,40,20,20,10]}></ResultsPieChart>
-            <ul>
-                <li>Realistic Do-er</li>
-                <li>Investigative Thinker</li>
-                <li>Artistic Creator</li>
-                <li>Social Helper</li>
-                <li>Enterprising Persuader</li>
-                <li>Conventional Organizer</li>
-            </ul>
             </div>
-            <ExportButton careers={careers.map(c => c.name)} />
+            <ExportButton/>
             <button onClick={() => setCurrentPage("main")}>Return Home</button>
         </div>
     )
