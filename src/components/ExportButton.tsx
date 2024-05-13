@@ -1,28 +1,48 @@
-/* import { jsPDF } from "jspdf";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 import "./ExportButton.css";
 
-interface ExportButtonProps {
-  careers: string[];
-}
+const ExportButton = ({ pdfContent }: { pdfContent: React.RefObject<HTMLDivElement> }) => {
+  const downloadPDF = () => {
+    const input = pdfContent.current;
 
-function ExportButton({ careers }: ExportButtonProps) {
-  const saveAsPDF = () => {
-    const doc = new jsPDF(); // create a new PDF to save
+    if (!input) {
+      console.error("PDF reference not found");
+      return;
+    }
 
-    doc.text("Your Future Careers:", 10, 10);
-    // careers list
-    careers.forEach((career, index) => { // add each career to a list in the PDF
-      doc.text(`${index + 1}. ${career}`, 10, 30 + index * 10);
+    html2canvas(input).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      // p = potrait orientation, mm = dimensions, a4 = print sheet style true = pdf optimization for file size
+      const pdf = new jsPDF("p", "mm", "a4", true);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const imgWidth = canvas.width;
+      const imgHeight = canvas.height;
+      const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+      const imgX = (pdfWidth - imgWidth * ratio) / 2;
+      const imgY = 30;
+      pdf.addImage(
+        imgData,
+        "PNG",
+        imgX,
+        imgY,
+        imgWidth * ratio,
+        imgHeight * ratio
+      );
+      pdf.save("your-career-report.pdf");
     });
-    doc.text("Holland's Six Personality Types:", 10, 20);
-    doc.save("your-future-careers.pdf"); // save the newly generated PDF
+  };
+
+  return (
+    <div>
+      <div className="export-button-wrapper">
+        <button className="export-button" onClick={downloadPDF}>
+          Export Results as PDF
+        </button>
+      </div>
+    </div>
+  );
 };
 
-return (
-  <button onClick={saveAsPDF}>Export as PDF</button>
-);
-}
-
 export default ExportButton;
- 
-*/
