@@ -8,6 +8,7 @@ interface MultipleChoiceInputProps {
 }
 
 export function MultipleChoiceInput({ selectedOption, handleOptionChange }: MultipleChoiceInputProps): JSX.Element {
+    // answer options are quick swappable
     const answerOptions: string[] = [
         "Strongly Disagree",
         "Disagree",

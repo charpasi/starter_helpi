@@ -2,10 +2,10 @@
     0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
       }
-      40% {
+      40% { /* high bounce keyframe */
         transform: translateY(-30px);
       }
-      60% {
+      60% { /* low bounce keyframe */
         transform: translateY(-15px);
       }
 }
@@ -25,7 +25,8 @@
     animation: load 1.5s infinite;
     justify-content: center;
 }
-  
+
+/* purple loading bar horizontal expansion */
 @keyframes load {
     0%, 100% {
       width: 0%;
@@ -35,6 +36,7 @@
     }
   }
 
+/* loading animation takes up entire screen */
 .startup-animation {
     display: flex;
     flex-direction: column;

@@ -10,12 +10,12 @@ header.Header {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
     > h1 {
-        font-family: "luminari";
+        font-family: "luminari"; /* fancy text! */
         font-size: 5rem;
         margin-bottom: 0;
     }
 
-    > img.genie-image {
+    > img.genie-image { /* little genie image positioned around the text */
         position: absolute;
         top: 1; /* Place at the top */
         height: 5rem;

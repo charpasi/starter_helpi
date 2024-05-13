@@ -1,6 +1,6 @@
 import "./CareerDisplay.css";
 
-export type Career = {
+export type Career = { // basically just a string struct
     name: string,
     startingSalaryString: string,
     description: string,

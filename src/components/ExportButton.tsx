@@ -7,15 +7,15 @@ interface ExportButtonProps {
 
 function ExportButton({ careers }: ExportButtonProps) {
   const saveAsPDF = () => {
-    const doc = new jsPDF();
+    const doc = new jsPDF(); // create a new PDF to save
 
     doc.text("Your Future Careers:", 10, 10);
     // careers list
-    careers.forEach((career, index) => {
+    careers.forEach((career, index) => { // add each career to a list in the PDF
       doc.text(`${index + 1}. ${career}`, 10, 30 + index * 10);
     });
     doc.text("Holland's Six Personality Types:", 10, 20);
-    doc.save("your-future-careers.pdf");
+    doc.save("your-future-careers.pdf"); // save the newly generated PDF
 };
 
 return (

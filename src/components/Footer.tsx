@@ -10,6 +10,7 @@ function Footer({
     setKey: (key: string) => void;
     handleSubmit: () => void;
 }) {
+    // set the global API key
     function changeKey(event: React.ChangeEvent<HTMLInputElement>) {
         setKey(event.target.value);
     }

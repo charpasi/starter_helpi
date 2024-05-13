@@ -1,6 +1,7 @@
 import "./AnimationStyles.css";
 import genie from "../assets/pikmin.png";
 
+// displays the bouncing pikmin and horizontal loading bar
 function LoadingAnimation() {
     return (
         <div className="startup-animation">
