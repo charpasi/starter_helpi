@@ -5,7 +5,7 @@ interface PieChartProps {
 }
 
 export const ResultsPieChart: React.FC<PieChartProps> = ({ stats }) => {
-    const data = [ // categories of the pie chart and their relative values
+    const data = [
         { name: 'Realistic', value: stats[0] },
         { name: 'Investigative', value: stats[1] },
         { name: 'Artistic', value: stats[2] },
@@ -14,7 +14,6 @@ export const ResultsPieChart: React.FC<PieChartProps> = ({ stats }) => {
         { name: 'Conventional', value: stats[5] }
     ];
 
-    // renders the custom text label that appears on the pie chart
     const renderCustomizedLabel = ({
         cx,
         cy,
@@ -50,7 +49,6 @@ export const ResultsPieChart: React.FC<PieChartProps> = ({ stats }) => {
         );
     };
 
-    // colors of the pie chart correspond to order defined in data
     const colors = ['#513B56', '#348AA7', '#525174', '#5DD39E', '#BCE784', 'rgb(41, 57, 124)'];
 
     return (
@@ -65,7 +63,7 @@ export const ResultsPieChart: React.FC<PieChartProps> = ({ stats }) => {
                     labelLine={false}
                     label={renderCustomizedLabel}
                 >
-                    {data.map((_, index) => (
+                    {data.map((entry, index) => (
                         <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
                     ))}
                     <Label width={30} position="center">

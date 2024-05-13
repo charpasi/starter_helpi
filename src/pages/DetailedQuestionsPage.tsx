@@ -10,7 +10,6 @@ import { saveKeyData } from "../App";
 import "./DetailedQuestions.css"
 import { ResponseObject } from "./ResultsPage";
 
-// system text that GPT uses to provide (essentially) real-time feedback on your answer
 const genieResponseSystem = `You are tasked with helping a user find the best career for them based on a questionnaire. You will be provided with a single question and the user's answer in the following format:
 
 [Question 1 text]. [Response]
@@ -26,19 +25,18 @@ function DetailedQuestionsPage({
     answers: string[]
     setAnswers: (answers: string[]) => void
 }) {
-    const [currentQuestion, setCurrentQuestion] = useState<number>(0); // question of current answer index
-    const [furthestQuestion, setFurthestQuestion] = useState<number>(0); // furthest question reached
-    const [reviewMode, setReviewMode] = useState<boolean>(false); // review mode similar to BasicQuestionsPage
+    const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+    const [furthestQuestion, setFurthestQuestion] = useState<number>(0);
+    const [reviewMode, setReviewMode] = useState<boolean>(false);
 
-    const [genieText, setGenieText] = useState<string>(""); // text that displays in the genie's speech bubble
-    const [genieShowing, setGenieShowing] = useState<boolean>(false); // toggles displaying the genie
+    const [genieText, setGenieText] = useState<string>("");
+    const [genieShowing, setGenieShowing] = useState<boolean>(false);
 
-    // called when the genie should respond to an answer
     const getGenieResponse = useCallback(async () => {
         console.log("Starting genie response algorithm...");
 
         const answer = answers[currentQuestion];
-        if(!answer) { // do NOT contact the genie if there isn't a response! the genie will get mad!!
+        if(!answer) {
             console.error("No answer detected");
             return;
         }
@@ -48,21 +46,20 @@ function DetailedQuestionsPage({
             "messages": [
                 {
                     "role": "system",
-                    "content": genieResponseSystem // system defined above
+                    "content": genieResponseSystem
                 },
                 {
                     "role": "user",
-                    "content": `${detailedQuestions[currentQuestion]} ${answer}` // format in the way defined in the system
+                    "content": `${detailedQuestions[currentQuestion]} ${answer}`
                 }
             ],
-            "max_tokens": 255 // don't talk too much...
+            "max_tokens": 255
         });
 
         console.log("Contacting Genie...");
 
-        setGenieShowing(true); // slide genie in from the left
+        setGenieShowing(true);
 
-        // fetch response from API
         const response = await fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -78,7 +75,7 @@ function DetailedQuestionsPage({
         }
 
         const json: ResponseObject = await response.json();
-        const textResponse = json?.choices?.[0]?.message?.content; // get text response
+        const textResponse = json?.choices?.[0]?.message?.content;
 
         if(!textResponse) {
             console.error("Open AI API did not return a valid response object");
@@ -87,10 +84,9 @@ function DetailedQuestionsPage({
 
         console.log(textResponse);
 
-        setGenieText(textResponse); // set genie text, displaying is done in the genie component
+        setGenieText(textResponse);
     }, [answers, currentQuestion]);
 
-    // similar to BasicQuestionsPage function
     const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const updatedAnswers = [...answers];
         updatedAnswers[currentQuestion] = event.target.value;
@@ -98,12 +94,10 @@ function DetailedQuestionsPage({
     };
 
     const handleNext = () => {
-        // if the genie isn't showing and we're progressing to a new question, make the genie go away
         if(genieShowing || furthestQuestion !== currentQuestion) {
             setGenieShowing(false);
             setCurrentQuestion(prevIndex => prevIndex + 1);
         } else if(answers[currentQuestion]) {
-            // if we're on a new question, the genie isn't showing, and we've written a response, contact the genie
             setGenieText("");
             getGenieResponse();
             setFurthestQuestion(furthestQuestion + 1);
