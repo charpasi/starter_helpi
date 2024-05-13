@@ -28,6 +28,7 @@ div.Results {
         width: 100%;
         color: var(--morado)
     }
+    text-align: center;
     background-color:white;
     border-radius: 15px;
     width: 87%;
