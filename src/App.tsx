@@ -8,6 +8,8 @@ import ResultsPage from "./pages/ResultsPage";
 import DetailedQuestionsPage from "./pages/DetailedQuestionsPage";
 import BasicQuestionsPage from "./pages/BasicQuestionsPage";
 import { basicQuestions, detailedQuestions } from "./components/Question";
+import backgroundImage from "./assets/genie-background.png"; 
+
 
 let keyData = "";
 export const saveKeyData = "MYKEY";
@@ -32,7 +34,7 @@ function App() {
     }
     
     return (
-        <div className="App">
+        <div className="App" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <Header
                 currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
