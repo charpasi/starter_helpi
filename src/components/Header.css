@@ -53,3 +53,7 @@ header.Header.pointer {
 .NavBar ul li.active {
     font-weight: bold;
 }
+
+.page-options :hover{
+    color: var(--navy);
+}

@@ -55,7 +55,6 @@ export const Question: React.FC<QuestionProps> = ({current, questionArray}) => {
     return (
         <div className="Question"> 
             <ProgressBar current={current + 1} max={questions.length} />
-            <h2>Question {current + 1}:</h2>
             <div className="question-container">
                 <p>{ questions[current] }</p>
             </div>

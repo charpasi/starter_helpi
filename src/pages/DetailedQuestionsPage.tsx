@@ -118,13 +118,14 @@ function DetailedQuestionsPage({
         <div className="DetailedPage">
             <h1>Detailed Questions</h1>
             {reviewMode ? ( // conditionally rendering the review page again like in basic
-                <ReviewAnswersDetailed
+                <ReviewAnswersDetailed 
                     answers={answers}
                     setCurrentPage={setCurrentPage}
                     setReviewMode={setReviewMode}
                 />
             ) : (
                 <>
+                    <div className = "QuestionBox">
                     <Question current={currentQuestion} questionArray={detailedQuestions}/>
                     <TextInput
                         text={answers[currentQuestion]}
@@ -137,6 +138,7 @@ function DetailedQuestionsPage({
                         current={currentQuestion}
                         length={detailedQuestions.length}
                     />
+                    </div>
                 </>
             )}
             <Genie

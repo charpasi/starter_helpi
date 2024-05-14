@@ -5,7 +5,6 @@ import "./Header.css";
 import { Page } from "../App";
 import genie from "../assets/pikmin.png";
 
-
 function Header({
     currentPage,
     setCurrentPage
@@ -34,8 +33,8 @@ function Header({
             </h1>
             <img src={genie} alt="genie" className="genie-image"/>
             <nav className="NavBar">
-                <ul>
-                    <li onClick={() => navigateToPage("main")}>Main Page</li>
+                <ul className = "page-options">
+                    <li onClick={() => navigateToPage("main")}>Home Page</li>
                     <li onClick={() => navigateToPage("basic")}>Basic Quiz</li>
                     <li onClick={() => navigateToPage("detailed")}>Detailed Quiz</li>
                 </ul>

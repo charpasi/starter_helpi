@@ -57,9 +57,6 @@ function BasicQuestionsPage({
                 <div className="Title">
                     <p>Basic Quiz</p>
                 </div>
-                <div className="Description">
-                    <p>A short, basic, multiple choice quiz catered towards those who already have an idea of what they want to do.</p>
-                </div>
             </div>
             <div className="QuestionBox">
                 {reviewMode ? ( // conditionally render the review page

@@ -21,7 +21,7 @@ const ExportButton = ({ pdfContent }: { pdfContent: React.RefObject<HTMLDivEleme
       const imgHeight = canvas.height;
       const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
       const imgX = (pdfWidth - imgWidth * ratio) / 2;
-      const imgY = 30;
+      const imgY = 10;
       pdf.addImage(
         imgData,
         "PNG",

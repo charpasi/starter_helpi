@@ -11,30 +11,36 @@ div.HomePage {
         gap: 4rem;
     }
 
+    .lamp-image {
+       height: 5rem;
+    }
+
     .intro {
         background-color: white;
         border-radius: 10px;
         padding: 25px;
         justify-content: center;
-        margin-bottom: 50px;
+        margin-bottom: 25px;
         box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         /*text*/
         color: var(--navy);
         text-align: center;
         font-weight: 500;
         font-family: "verdana";
+
     }
 
     .quiz-wrapper {
-        padding: 25px;
+        padding: 20px;
         justify-content: center;
-        text-align: center;
         flex-direction: row;
         align-items: stretch;
+        margin-bottom: 10px;
         /*text*/
         color: var(--navy);
         font-weight: 500;
         font-family: "verdana";
+        text-align: center;
     }
 
     .quiz-card {
@@ -65,8 +71,12 @@ div.HomePage {
     }
 
     .quiz-card:hover {
-    background-color: darken(#0cf, 15%);
+    background-color: var(--navy);
     transform: translateY(-3px);
+    color: white;
+    h3{
+        color: white;
+    }
 }
 
 }
