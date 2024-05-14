@@ -35,7 +35,7 @@ function Header({
             <img src={genie} alt="genie" className="genie-image"/>
             <nav className="NavBar">
                 <ul className = "page-options">
-                    <li onClick={() => navigateToPage("main")}>Main Page</li>
+                    <li onClick={() => navigateToPage("main")}>Home Page</li>
                     <li onClick={() => navigateToPage("basic")}>Basic Quiz</li>
                     <li onClick={() => navigateToPage("detailed")}>Detailed Quiz</li>
                 </ul>

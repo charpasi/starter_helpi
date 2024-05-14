@@ -66,9 +66,12 @@ div.HomePage {
     }
 
     .quiz-card:hover {
-    background-color: var(--blue);
+    background-color: var(--navy);
     transform: translateY(-3px);
     color: white;
+    h3{
+        color: white;
+    }
 }
 
 }
