@@ -79,6 +79,7 @@ FAIL src/App.test.tsx
       [36m<div>[39m
         [36m<div[39m
           [33mclass[39m=[32m"App"[39m
+          [33mstyle[39m=[32m"background-image: url(genie-background.png); background-size: cover; background-position: center;"[39m
         [36m>[39m
           [36m<header[39m
             [33mclass[39m=[32m"Header"[39m
@@ -96,9 +97,11 @@ FAIL src/App.test.tsx
             [36m<nav[39m
               [33mclass[39m=[32m"NavBar"[39m
             [36m>[39m
-              [36m<ul>[39m
+              [36m<ul[39m
+                [33mclass[39m=[32m"page-options"[39m
+              [36m>[39m
                 [36m<li>[39m
-                  [0mMain Page[0m
+                  [0mHome Page[0m
                 [36m</li>[39m
                 [36m<li>[39m
                   [0mBasic Quiz[0m
@@ -119,6 +122,11 @@ FAIL src/App.test.tsx
                 [33mclass[39m=[32m"intro"[39m
               [36m>[39m
                 [36m<div>[39m
+                  [36m<img[39m
+                    [33malt[39m=[32m"lamp"[39m
+                    [33mclass[39m=[32m"lamp-image"[39m
+                    [33msrc[39m=[32m"lamp-image.png"[39m
+                  [36m/>[39m
                   [36m<h1>[39m
                     [0mDo YOU Know what field you'll go into?[0m
                   [36m</h1>[39m
@@ -140,11 +148,6 @@ FAIL src/App.test.tsx
                     [36m<h3>[39m
                       [0mEstimated: 5 minutes[0m
                     [36m</h3>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"larger"[39m
-                    [36m>[39m
-                      [0mClick me![0m
-                    [36m</button>[39m
                   [36m</div>[39m
                   [36m<p>[39m
                     [0mA short, basic, multiple choice quiz catered towards those who already have an idea of what they want to do.[0m
@@ -160,20 +163,12 @@ FAIL src/App.test.tsx
                     [36m<h3>[39m
                       [0mEstimated: 15 minutes[0m
                     [36m</h3>[39m
-                    [36m<button[39m
-                      [33mclass[39m=[32m"larger"[39m
-                    [36m>[39m
-                      [0mClick me![0m
-                    [36m</button>[39m
                   [36m</div>[39m
                   [36m<p>[39m
                     [0mLong, detailed, open ended quiz catered towards those who want a thorough list of possible career options.[0m
                   [36m</p>[39m
                 [36m</div>[39m
               [36m</div>[39m
-              [36m<button>[39m
-                [0mGo to results page[0m
-              [36m</button>[39m
             [36m</div>[39m
           [36m</div>[39m
           [36m<footer[39m
@@ -251,34 +246,34 @@ go away.[0m
 ----------------------------|---------|----------|---------|---------|-------------------
 File                        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------------------|---------|----------|---------|---------|-------------------
-All files                   |   10.54 |     2.12 |    4.76 |   11.03 |                   
+All files                   |    10.5 |     2.08 |    4.81 |   10.99 |                   
  src                        |   41.66 |    16.66 |      25 |   41.66 |                   
-  App.tsx                   |   76.92 |       50 |      50 |   76.92 | 16,30-31          
+  App.tsx                   |   76.92 |       50 |      50 |   76.92 | 18,32-33          
   index.tsx                 |       0 |      100 |     100 |       0 | 6-17              
   reportWebVitals.ts        |       0 |        0 |       0 |       0 | 3-10              
- src/components             |   14.44 |     4.54 |     5.4 |   14.94 |                   
+ src/components             |   14.13 |     4.16 |     5.4 |    14.6 |                   
   CareerDisplay.tsx         |       0 |      100 |       0 |       0 | 11                
   ExportButton.tsx          |    5.26 |        0 |       0 |    5.26 | 6-37              
   Footer.tsx                |      50 |      100 |      50 |      50 | 15                
   Genie.tsx                 |    6.25 |        0 |       0 |    7.14 | 14-37             
-  Header.tsx                |   15.38 |     12.5 |   16.66 |   16.66 | 17-24,31-40       
+  Header.tsx                |   15.38 |     12.5 |   16.66 |   16.66 | 16-23,30-39       
   LoadingAnimation.tsx      |       0 |      100 |       0 |       0 | 6                 
   MultipleChoiceInput.tsx   |       0 |      100 |       0 |       0 | 12-25             
   ProgressBar.tsx           |      25 |      100 |       0 |      25 | 10-13             
   Question.tsx              |      60 |      100 |       0 |      60 | 54-55             
   QuestionButtons.tsx       |      50 |      100 |       0 |      50 | 15                
-  ResultsPieChart.tsx       |    9.09 |        0 |       0 |    9.09 | 8-67              
+  ResultsPieChart.tsx       |    7.69 |        0 |       0 |    7.69 | 8-70              
   ReviewAnswersBasic.tsx    |      20 |        0 |       0 |      20 | 14-27             
   ReviewAnswersDetailed.tsx |      20 |      100 |       0 |      20 | 14-26             
   TextInput.tsx             |       0 |      100 |       0 |       0 | 11-13             
- src/pages                  |    4.44 |        0 |    2.32 |     4.7 |                   
+ src/pages                  |    4.46 |        0 |    2.38 |    4.73 |                   
   BasicQuestionsPage.tsx    |       0 |        0 |       0 |       0 | 20-54             
   DetailedQuestionsPage.tsx |    2.17 |        0 |       0 |    2.27 | 28-117            
-  HomePage.tsx              |    12.5 |      100 |   16.66 |    12.5 | 12-18,40-57       
+  HomePage.tsx              |   14.28 |      100 |      20 |   14.28 | 13-19,37-47       
   ResultsPage.tsx           |    5.88 |        0 |       0 |    6.18 | 194-430           
 ----------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.804 s
+Time:        3.998 s
 Ran all test suites.
