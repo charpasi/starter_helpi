@@ -194,6 +194,7 @@ function ResultsPage({
     const [careers, setCareers] = useState<Career[]>([]);
     const [loading, setLoading] = useState<boolean | null>(null);
     const contentRef = useRef(null);
+    const [scores, setScores] = useState<number[]>([]);
 
     useEffect(() => {
         if(loading !== null) return;
@@ -405,6 +406,7 @@ function ResultsPage({
                 percentNumbers.push(parseInt(match[0], 10));
             }
             const userScores: number[] = percentNumbers;
+            setScores(userScores);
 
             console.log(userScores);
                     return userScores;
@@ -422,7 +424,7 @@ function ResultsPage({
             </ol>
             <div className='piechart-wrapper'>
             <h1>Holland's Six Personality Types</h1>
-            <ResultsPieChart stats={[5,5,40,20,20,10]}></ResultsPieChart>
+            <ResultsPieChart stats={scores}></ResultsPieChart>
             </div>
             <ExportButton pdfContent = {contentRef}/>
             <button onClick={() => setCurrentPage("main")}>Return Home</button>
