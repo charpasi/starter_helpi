@@ -11,6 +11,10 @@ div.HomePage {
         gap: 4rem;
     }
 
+    .lamp-image {
+       height: 5rem;
+    }
+
     .intro {
         background-color: white;
         border-radius: 10px;
@@ -23,6 +27,7 @@ div.HomePage {
         text-align: center;
         font-weight: 500;
         font-family: "verdana";
+
     }
 
     .quiz-wrapper {

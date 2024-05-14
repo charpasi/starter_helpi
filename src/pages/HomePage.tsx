@@ -1,5 +1,6 @@
 import "./HomePage.css";
 import { Page } from "../App";
+import lamp from "../assets/lamp-image.png";
 
 function HomePage({
     setCurrentPage,
@@ -22,6 +23,7 @@ function HomePage({
         <div className="HomePage">
             <div className = "intro">
                 <div>
+                    <img src={lamp} alt="lamp" className="lamp-image"/>
                     <h1>Do YOU Know what field you'll go into?</h1>
                     <p>
                         A quarter of high school graduates still have no idea what career they'd like to have post-graduation. But don't worry: you're in good hands.

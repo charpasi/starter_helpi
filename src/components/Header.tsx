@@ -5,7 +5,6 @@ import "./Header.css";
 import { Page } from "../App";
 import genie from "../assets/pikmin.png";
 
-
 function Header({
     currentPage,
     setCurrentPage
