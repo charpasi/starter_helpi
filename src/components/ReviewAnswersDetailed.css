@@ -2,14 +2,12 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #f9f9f9;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .DetailedQuestionsReviewPage h1 {
     text-align: center;
-    color: #333;
+    color: var(--morado);
 }
 
 .DetailedQuestionsReviewPage ul {
@@ -29,11 +27,11 @@
 }
 
 .DetailedQuestionsReviewPage h3 {
-    color: #555;
+    color: var(--morado);
 }
 
 .DetailedQuestionsReviewPage p {
-    color: #777;
+    color: var(--purple);
 }
 
 .DetailedQuestionsReviewPage button {
@@ -42,12 +40,12 @@
     padding: 10px 20px;
     font-size: 16px;
     border: none;
-    background-color: #007bff;
+    background-color: var(--blue);
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .DetailedQuestionsReviewPage button:hover {
-    background-color: #0056b3;
+    background-color: var(--navy);
 }
