@@ -8,7 +8,7 @@ import { basicQuestions, detailedQuestions } from "../components/Question";
 import ResultsPieChart from "../components/ResultsPieChart";
 import ExportButton from "../components/ExportButton";
 
-const useApi = false; 
+const useApi = true; 
 
 export type ResponseObject = {
     id: string,
