@@ -1,11 +1,22 @@
+.progress-wrapper{
+    width: 100%;
+    color: var(--navy);
+    display: flex;    
+    justify-content: center;
+}
 .progressBar {
     height: 10px;
     border-radius: 100px;
     overflow: hidden;
-    width: 70%;
+    width: 75%;
     margin-top: 20px;
 }
+
 .progressBar::-webkit-progress-value {
     background-color: #800080; 
     width: 100%;
+}
+
+.questionCount{
+    margin-left: 10px;
 }
