@@ -16,7 +16,7 @@
     color: white;
 }
 
-.button-container button:hover {
+.button-container button:hover:enabled{
     background-color: darken(#0cf, 15%);
     transform: translateY(-3px);
 }
@@ -29,6 +29,6 @@
     color: white;
 }
 
-.finishButton[disabled] {
+button[disabled] {
     background-color: gray; 
 }

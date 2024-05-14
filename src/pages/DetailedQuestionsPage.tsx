@@ -125,6 +125,7 @@ function DetailedQuestionsPage({
                 />
             ) : (
                 <>
+                    <div className = "QuestionBox">
                     <Question current={currentQuestion} questionArray={detailedQuestions}/>
                     <TextInput
                         text={answers[currentQuestion]}
@@ -137,6 +138,7 @@ function DetailedQuestionsPage({
                         current={currentQuestion}
                         length={detailedQuestions.length}
                     />
+                    </div>
                 </>
             )}
             <Genie

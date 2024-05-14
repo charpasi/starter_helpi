@@ -21,7 +21,7 @@ export function TextInput({ text, handleTextChange }: TextInputProps): JSX.Eleme
                         onChange={handleTextChange}
                         maxLength={max}
                         className="text-input-box"/>
-                        <div className="char-count">{remainingChars} characters remaining</div>
+                        <div className="char-count">{remainingChars}/{1000} characters remaining</div>
                 </Col>
                 
             </Form.Group>
