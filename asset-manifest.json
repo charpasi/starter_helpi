@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/starter_helpi/static/css/main.94fbc924.css",
-    "main.js": "/starter_helpi/static/js/main.e5b582ac.js",
+    "main.css": "/starter_helpi/static/css/main.cf61d414.css",
+    "main.js": "/starter_helpi/static/js/main.72ba57f5.js",
     "static/js/213.65658809.chunk.js": "/starter_helpi/static/js/213.65658809.chunk.js",
     "static/js/732.19a6df2c.chunk.js": "/starter_helpi/static/js/732.19a6df2c.chunk.js",
     "static/js/453.dda23872.chunk.js": "/starter_helpi/static/js/453.dda23872.chunk.js",
@@ -9,14 +9,14 @@
     "static/media/genie-background.png": "/starter_helpi/static/media/genie-background.a6494f95b13c7a19a302.png",
     "static/media/lamp-image.png": "/starter_helpi/static/media/lamp-image.1911c9f32b37790c4ed7.png",
     "index.html": "/starter_helpi/index.html",
-    "main.94fbc924.css.map": "/starter_helpi/static/css/main.94fbc924.css.map",
-    "main.e5b582ac.js.map": "/starter_helpi/static/js/main.e5b582ac.js.map",
+    "main.cf61d414.css.map": "/starter_helpi/static/css/main.cf61d414.css.map",
+    "main.72ba57f5.js.map": "/starter_helpi/static/js/main.72ba57f5.js.map",
     "213.65658809.chunk.js.map": "/starter_helpi/static/js/213.65658809.chunk.js.map",
     "732.19a6df2c.chunk.js.map": "/starter_helpi/static/js/732.19a6df2c.chunk.js.map",
     "453.dda23872.chunk.js.map": "/starter_helpi/static/js/453.dda23872.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.94fbc924.css",
-    "static/js/main.e5b582ac.js"
+    "static/css/main.cf61d414.css",
+    "static/js/main.72ba57f5.js"
   ]
 }
