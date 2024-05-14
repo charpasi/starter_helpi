@@ -20,8 +20,9 @@
 
 .radio-inline input[type="radio"] {
     transform: scale(1.5); 
+    accent-color: var(--blue);
 }
 
-.radio-inline input[type="radio"] {
-    accent-color: var(--blue);
+.radio-inline :hover {
+    color: var(--blue);
 }

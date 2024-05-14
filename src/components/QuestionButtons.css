@@ -1,28 +1,34 @@
 .QuestionButtons {
+    position: relative;
     margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    width: 100%;
     margin-bottom: 10px;
 }
 
-.QuestionButtons .button-container {
+.button-container {
     display: flex;
     justify-content: center;
 }
 
-.QuestionButtons .button-container button:hover:enabled {
-    transform: translateY(-3px);
+.button-container button {
+    width: 100px; 
+    margin-right: 10px;
     background-color: var(--blue);
     color: white;
+}
+
+.button-container button:hover {
+    background-color: darken(#0cf, 15%);
+    transform: translateY(-3px);
 }
 
 .finishButton {
+    position: absolute;
+    bottom: 0;
+    right: 0;
     background-color: var(--blue);
     color: white;
 }
 
-.finishButton:disabled {
+.finishButton[disabled] {
     background-color: gray; 
 }
-
