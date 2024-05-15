@@ -246,9 +246,9 @@ go away.[0m
 ----------------------------|---------|----------|---------|---------|-------------------
 File                        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 ----------------------------|---------|----------|---------|---------|-------------------
-All files                   |    10.5 |     2.08 |    4.81 |   10.99 |                   
+All files                   |   10.58 |     2.08 |    4.87 |   11.07 |                   
  src                        |   41.66 |    16.66 |      25 |   41.66 |                   
-  App.tsx                   |   76.92 |       50 |      50 |   76.92 | 18,32-33          
+  App.tsx                   |   76.92 |       50 |      50 |   76.92 | 18,33-34          
   index.tsx                 |       0 |      100 |     100 |       0 | 6-17              
   reportWebVitals.ts        |       0 |        0 |       0 |       0 | 3-10              
  src/components             |   14.13 |     4.16 |     5.4 |    14.6 |                   
@@ -262,18 +262,18 @@ All files                   |    10.5 |     2.08 |    4.81 |   10.99 |
   ProgressBar.tsx           |      25 |      100 |       0 |      25 | 10-13             
   Question.tsx              |      60 |      100 |       0 |      60 | 54-55             
   QuestionButtons.tsx       |      50 |      100 |       0 |      50 | 15                
-  ResultsPieChart.tsx       |    7.69 |        0 |       0 |    7.69 | 8-70              
+  ResultsPieChart.tsx       |    7.69 |        0 |       0 |    7.69 | 8-71              
   ReviewAnswersBasic.tsx    |      20 |        0 |       0 |      20 | 14-27             
   ReviewAnswersDetailed.tsx |      20 |      100 |       0 |      20 | 14-26             
   TextInput.tsx             |       0 |      100 |       0 |       0 | 11-13             
- src/pages                  |    4.46 |        0 |    2.38 |    4.73 |                   
-  BasicQuestionsPage.tsx    |       0 |        0 |       0 |       0 | 20-54             
-  DetailedQuestionsPage.tsx |    2.17 |        0 |       0 |    2.27 | 28-117            
+ src/pages                  |    4.51 |        0 |    2.43 |    4.79 |                   
+  BasicQuestionsPage.tsx    |       0 |        0 |       0 |       0 | 21-56             
+  DetailedQuestionsPage.tsx |    2.17 |        0 |       0 |    2.27 | 30-124            
   HomePage.tsx              |   14.28 |      100 |      20 |   14.28 | 13-19,37-47       
-  ResultsPage.tsx           |    5.88 |        0 |       0 |    6.18 | 194-430           
+  ResultsPage.tsx           |    5.88 |        0 |       0 |    6.18 | 194-437           
 ----------------------------|---------|----------|---------|---------|-------------------
 Test Suites: 1 failed, 1 total
 Tests:       1 failed, 1 total
 Snapshots:   0 total
-Time:        3.709 s
+Time:        3.753 s
 Ran all test suites.
