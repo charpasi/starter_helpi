@@ -21,13 +21,14 @@ if(prevKey !== null) {
 export type Page = "main" | "basic" | "detailed" | "results";
 
 function App() {
-    const [key, setKey] = useState<string>(keyData);
-    const [currentPage, setCurrentPage] = useState<Page>("main");
-
+    const [key, setKey] = useState<string>(keyData); // API key
+    const [currentPage, setCurrentPage] = useState<Page>("main"); // basic page router using a stateful string
+    // initalize answers to empty
     const [basicAnswers, setBasicAnswers] = useState<string[]>(new Array(basicQuestions.length).fill(""));
     const [detailedAnswers, setDetailedAnswers] = useState<string[]>(new Array(detailedQuestions.length).fill(""));
+    // keep track of which quiz we're going through for use in the results page
     const [currentQuiz, setCurrentQuiz] = useState<"basic" | "detailed">("basic");
-
+    // submits a new API key
     function handleSubmit() {
         localStorage.setItem(saveKeyData, JSON.stringify(key));
         window.location.reload();
@@ -40,7 +41,7 @@ function App() {
                 setCurrentPage={setCurrentPage}
             />
             <div className="page-renderer">
-                {
+                { // this is our router, uses a switch statement with a stateful string keeping track of the current page
                     {
                         "main": <HomePage
                             setCurrentPage={setCurrentPage}

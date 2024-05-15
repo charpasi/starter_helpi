@@ -10,6 +10,7 @@ import ExportButton from "../components/ExportButton";
 
 const useApi = true; 
 
+// object returned by the Open AI API
 export type ResponseObject = {
     id: string,
     object: string,
@@ -190,19 +191,19 @@ function ResultsPage({
     basicAnswers: string[],
     detailedAnswers: string[]
 }) {
-
-    const [careers, setCareers] = useState<Career[]>([]);
-    const [loading, setLoading] = useState<boolean | null>(null);
-    const contentRef = useRef(null);
+    const [careers, setCareers] = useState<Career[]>([]); // list of careers to display
+    // toggles whether or not we're currently loading
+    const [loading, setLoading] = useState<boolean | null>(null); // null = newly loaded page, false = not loading, true = loading
+    const contentRef = useRef(null);  
     const [scores, setScores] = useState<number[]>([]);
 
     useEffect(() => {
-        if(loading !== null) return;
+        if(loading !== null) return;  // prevents occasional double contacts
 
         console.log("Contacting genie...");
 
         setLoading(true);
-
+        // different function calls depending on the quiz type
         const apiResponse = currentQuiz === "basic" ?
             getQuestionsResponse(basicAnswers, "basic") :
             getQuestionsResponse(detailedAnswers, "detailed");
@@ -214,33 +215,35 @@ function ResultsPage({
         console.log(userScoreResponse);
 
         apiResponse.then(careerList => {
-            if(careerList === null) {
+            if(careerList === null) { // couldn't get the results page
+                // basic error handling
                 console.error("Cannot update results page");
                 alert("Fatal error while contacting the genie. Try rubbing the lamp again in a few minutes.");
                 return;
             }
-    
+            // display the careers
             setCareers(careerList);
+            // done loading, display the career list
             setLoading(false);
         });
     }, [basicAnswers, detailedAnswers, currentQuiz, loading]);
 
     if(loading) {
-        return <LoadingAnimation/>;
+        return <LoadingAnimation/>;  // if we're loading, don't display anything but the loading screen
     }
 
     async function getQuestionsResponse(answers: string[], type: "basic" | "detailed"): Promise<Career[] | null> {
-        if(answers.length !== basicQuestions.length) {
+        if(answers.length !== basicQuestions.length) { // simple error checking
             console.error("Responses array and questions array are of different lengths");
             return null;
         }       
-
+        // map the answers into a long string defined in the career fetching system
         const answersText = type === "basic" ?
             answers.map((r, i) => `${basicQuestions[i]} ${r}&&&`).join("\n").trim() :
             answers.map((r, i) => `${detailedQuestions[i]} ${r}&&&`).join("\n").trim();
     
         const postData = JSON.stringify({
-            "model": "gpt-4-turbo", // gpt-4-turbo-preview
+            "model": "gpt-4-turbo", // gpt-4-turbo-preview is slower
             "messages": [
                 {
                     "role": "system",
@@ -253,7 +256,7 @@ function ResultsPage({
             ],
             "max_tokens": 400
         });
-    
+        // call API with the above options or return a dummy response if we're in debug mode
         const response = useApi ? await fetch("https://api.openai.com/v1/chat/completions", {
             method: "POST",
             headers: {
@@ -284,6 +287,7 @@ function ResultsPage({
         }
     
         const json: ResponseObject = await response.json();
+        // text response returned by GPT
         const textResponse = json?.choices?.[0]?.message?.content;
 
         if(!textResponse) {
@@ -294,20 +298,22 @@ function ResultsPage({
         console.log(textResponse);
     
         const careers = [];
-        for(const careerText of textResponse.split("\n")) {
-            if(!careerText) continue;
-            
+        for(const careerText of textResponse.split("\n")) { // careers are split onto different lines
+            if(!careerText) continue; // skip any empty lines
+            // career info is separated with three hashes
             const careerInfo = careerText.split("###").map(i => i.trim());
+            // separate title and starting salary
             const nameAndSalary = careerInfo[0].split("-").map(i => i.trim());
-    
+            
+            // create a career
             const career = {
                 name: nameAndSalary[0],
                 startingSalaryString: nameAndSalary[1],
                 description: careerInfo[1],
                 explanation: careerInfo[2]
             };
-    
-            if(!career.explanation) {
+            // occasionally GPT doesn't return a proper explanation portion
+            if(!career.explanation) { // if so, just use [1..] sentences as the explanation, leaving [0] as the description
                 const descriptionSentencesRaw = careerInfo[1].split(".");
                 const descriptionSentences = [];
     
@@ -319,7 +325,7 @@ function ResultsPage({
                 career.explanation = descriptionSentences.slice(1).join(". ").trim();
             }
     
-            careers.push(career);
+            careers.push(career); // add to our output list of careers
         }
     
         if(careers.length === 0) {
@@ -327,14 +333,15 @@ function ResultsPage({
             return null;
         }
 
-        return careers;
+        return careers; // return our final list of careers :)
     }
-
+    // sort careers by starting salary --> user story!
     careers.sort((a, b) => {
         return Number(a.startingSalaryString.replace(/\$|,/g, "")) -
             Number(b.startingSalaryString.replace(/\$|,/g, ""))
     });
-
+    // get scores for pie chart
+    // mostly reused code from the above function
     async function getUserScore(answers: string[], type: "basic" | "detailed"): Promise<number[] | null> {
         if(answers.length !== basicQuestions.length) {
             console.error("Responses array and questions array are of different lengths");
@@ -346,7 +353,7 @@ function ResultsPage({
             answers.map((r, i) => `${detailedQuestions[i]} ${r}&&&`).join("\n").trim();
     
         const postData = JSON.stringify({
-            "model": "gpt-3.5-turbo", // gpt-4-turbo-preview
+            "model": "gpt-4.0-turbo", // gpt-4-turbo-preview
             "messages": [
                 {
                     "role": "system",
@@ -397,19 +404,19 @@ function ResultsPage({
         }
 
         console.log(textResponse);
-        const regex: RegExp = /\d+(?=%)/g;
+        const regex: RegExp = /\d+(?=%)/g;  
 
             // Extract percent numbers from the text output from gpt
             const percentNumbers: number[] = [];
             let match;
             while ((match = regex.exec(textResponse)) !== null) {
-                percentNumbers.push(parseInt(match[0], 10));
+                percentNumbers.push(parseInt(match[0], 10)); // parse numbers and add to our list
             }
             const userScores: number[] = percentNumbers;
             setScores(userScores);
 
             console.log(userScores);
-                    return userScores;
+                    return userScores;  // returns the list of numbers used to populate pie chart data
     };
     return (
         <div className="Results" ref = {contentRef}>

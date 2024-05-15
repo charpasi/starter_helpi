@@ -8,7 +8,7 @@ interface ProgressBarProps {
 
 const ProgressBar: React.FC<ProgressBarProps> = ({ current, max }) => {
     const calculateProgress = () => {
-        return (current / max) * 100;
+        return (current / max) * 100; // normalize to a value in [0, 100]
     };
     return (
         <div className = "progress-wrapper">
