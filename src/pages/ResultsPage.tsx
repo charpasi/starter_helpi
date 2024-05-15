@@ -10,6 +10,7 @@ import ExportButton from "../components/ExportButton";
 
 const useApi = false; 
 
+// object returned by the Open AI API
 export type ResponseObject = {
     id: string,
     object: string,
@@ -190,19 +191,19 @@ function ResultsPage({
     basicAnswers: string[],
     detailedAnswers: string[]
 }) {
-
-    const [careers, setCareers] = useState<Career[]>([]);
-    const [loading, setLoading] = useState<boolean | null>(null);
-    const contentRef = useRef(null);
+    const [careers, setCareers] = useState<Career[]>([]); // list of careers to display
+    // toggles whether or not we're currently loading
+    const [loading, setLoading] = useState<boolean | null>(null); // null = newly loaded page, false = not loading, true = loading
+    const contentRef = useRef(null);  
     const [scores, setScores] = useState<number[]>([]);
 
     useEffect(() => {
-        if(loading !== null) return;
+        if(loading !== null) return;  // prevents occasional double contacts
 
         console.log("Contacting genie...");
 
         setLoading(true);
-
+        // different function calls depending on the quiz type
         const apiResponse = currentQuiz === "basic" ?
             getQuestionsResponse(basicAnswers, "basic") :
             getQuestionsResponse(detailedAnswers, "detailed");
@@ -214,13 +215,15 @@ function ResultsPage({
         console.log(userScoreResponse);
 
         apiResponse.then(careerList => {
-            if(careerList === null) {
+            if(careerList === null) { // couldn't get the results page
+                // basic error handling
                 console.error("Cannot update results page");
                 alert("Fatal error while contacting the genie. Try rubbing the lamp again in a few minutes.");
                 return;
             }
-    
+            // display the careers
             setCareers(careerList);
+            // done loading, display the career list
             setLoading(false);
         });
     }, [basicAnswers, detailedAnswers, currentQuiz, loading]);

@@ -10,6 +10,7 @@ import { saveKeyData } from "../App";
 import "./DetailedQuestions.css"
 import { ResponseObject } from "./ResultsPage";
 
+// system text that GPT uses to provide (essentially) real-time feedback on your answer
 const genieResponseSystem = `You are tasked with helping a user find the best career for them based on a questionnaire. You will be provided with a single question and the user's answer in the following format:
 
 [Question 1 text]. [Response]
@@ -25,18 +26,22 @@ function DetailedQuestionsPage({
     answers: string[]
     setAnswers: (answers: string[]) => void
 }) {
+    // question of current answer index
     const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+    // furthest question reached
     const [furthestQuestion, setFurthestQuestion] = useState<number>(0);
+    // review mode similar to BasicQuestionsPage
     const [reviewMode, setReviewMode] = useState<boolean>(false);
-
+    // text that displays in the genie's speech bubble  
     const [genieText, setGenieText] = useState<string>("");
+    // toggles displaying the genie
     const [genieShowing, setGenieShowing] = useState<boolean>(false);
 
     const getGenieResponse = useCallback(async () => {
         console.log("Starting genie response algorithm...");
 
         const answer = answers[currentQuestion];
-        if(!answer) {
+        if(!answer) { // do NOT contact the genie if there isn't a response! the genie will get mad!!
             console.error("No answer detected");
             return;
         }
@@ -46,18 +51,19 @@ function DetailedQuestionsPage({
             "messages": [
                 {
                     "role": "system",
-                    "content": genieResponseSystem
+                    "content": genieResponseSystem // system defined above
                 },
                 {
                     "role": "user",
-                    "content": `${detailedQuestions[currentQuestion]} ${answer}`
+                    "content": `${detailedQuestions[currentQuestion]} ${answer}` // format in the way defined in the system
                 }
             ],
-            "max_tokens": 255
+            "max_tokens": 255 // don't talk too much...
         });
 
         console.log("Contacting Genie...");
-
+        
+        // slide genie in from the left
         setGenieShowing(true);
 
         const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -75,7 +81,8 @@ function DetailedQuestionsPage({
         }
 
         const json: ResponseObject = await response.json();
-        const textResponse = json?.choices?.[0]?.message?.content;
+        // get text response
+        const textResponse = json?.choices?.[0]?.message?.content; 
 
         if(!textResponse) {
             console.error("Open AI API did not return a valid response object");
@@ -84,20 +91,20 @@ function DetailedQuestionsPage({
 
         console.log(textResponse);
 
-        setGenieText(textResponse);
+        setGenieText(textResponse); // set genie text, displaying is done in the genie component
     }, [answers, currentQuestion]);
-
+    // similar to BasicQuestionsPage function
     const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const updatedAnswers = [...answers];
         updatedAnswers[currentQuestion] = event.target.value;
         setAnswers(updatedAnswers);
     };
-
+    // if the genie isn't showing and we're progressing to a new question, make the genie go away
     const handleNext = () => {
         if(genieShowing || furthestQuestion !== currentQuestion) {
             setGenieShowing(false);
             setCurrentQuestion(prevIndex => prevIndex + 1);
-        } else if(answers[currentQuestion]) {
+        } else if(answers[currentQuestion]) { // if we're on a new question, the genie isn't showing, and we've written a response, contact the genie
             setGenieText("");
             getGenieResponse();
             setFurthestQuestion(furthestQuestion + 1);

@@ -1,7 +1,7 @@
 import "./Question.css";
 import React, { useState } from 'react';
 import ProgressBar from './ProgressBar';
-
+// list of all the basic questions
 export const basicQuestions: string[] = [
     "I express my creativity whenever I work.",
     "I think more logically than emotionally when solving problems.",
@@ -22,7 +22,7 @@ export const basicQuestions: string[] = [
     "I am comfortable challenging authority or traditional ways of thinking.",
     "I am driven by a sense of purpose in my work."
 ];
-
+// list of all the detailed questions
 export const detailedQuestions: string[] = [
     "What are your top three technical strengths or skills?",
     "What are your top three soft skills?",
@@ -51,7 +51,7 @@ interface QuestionProps {
 }
 
 export const Question: React.FC<QuestionProps> = ({current, questionArray}) => {
-    const [questions] = useState<string[]>(questionArray);
+    const [questions] = useState<string[]>(questionArray); // questions list is a stateful array
     return (
         <div className="Question"> 
             <ProgressBar current={current + 1} max={questions.length} />
